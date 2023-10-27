@@ -1,13 +1,77 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url(images/backroundImage.png);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container h1 {
+  color: white;
+  font-size: 3rem;
+  margin-left: 4rem;
+  margin-bottom: 0;
+}
+
+.container p {
+  color: white;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.location-input {
+  width: 20rem;
+  padding: 10px;
+  border: none;
+  border-top-right-radius: 18px;
+  border-bottom-right-radius: 18px;
+  margin-left: 1.6px;
+  cursor: pointer;
+  background-image: url("images/location-icon.jpg");
+  background-repeat: no-repeat;
+  background-size: 15px 15px;
+  padding-left: 25px;
+  background-position: right center;
+  background-position-x: 8px;
+}
+
+.search-input {
+  width: 20rem;
+  padding: 10px;
+  border: none;
+  border-bottom-left-radius: 18px;
+  border-top-left-radius: 18px;
+  margin-left: 1px;
+  cursor: pointer;
+  background-image: url("images/search-icon.png");
+  background-repeat: no-repeat;
+  background-size: 15px 15px;
+  padding-left: 28px;
+  background-position: left center;
+  background-position-x: 8px;
+}
+
+input::placeholder {
+  padding-left: 18px;
+}
+
+.search-input:focus,
+.location-input:focus {
+  border: 2px solid #1adeff;
+  outline: none;
 }
