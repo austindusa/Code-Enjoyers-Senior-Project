@@ -32,8 +32,8 @@ function ImageTextBox() {
     marginTop: "3%",
     marginLeft: "5%",
     marginBottom: "5%",
-    width: "40%", // Adjusted width to be more responsive
-    height: "auto", // Allows images to maintain aspect ratio
+    width: "40%", 
+    height: "auto", 
     maxWidth: "100%",
     maxHeight: "100%",
   };
@@ -55,33 +55,33 @@ function ImageTextBox() {
   };
   
   const textCube = {
-    marginLeft: "10%", // Adjusted to a percentage for responsiveness
+    marginLeft: "10%", 
     fontSize: "1.5vw",
   };
   
   const secondTextCube = {
-    marginLeft: "57%", // Adjusted to a percentage for responsiveness
-    marginTop: "-8%", // Adjusted to a percentage for responsiveness
+    marginLeft: "57%", 
+    marginTop: "-8%",
     fontSize: "1.5vw",
   };
   
   const paraText = {
-    marginLeft: "10%", // Adjusted to a percentage for responsiveness
-    fontSize: "0.7vw", // Adjusted font size to be more readable and responsive
+    marginLeft: "10%", 
+    fontSize: "0.7vw", 
   };
   
   const secondParaText = {
-    marginLeft: "57%", // Adjusted to a percentage for responsiveness
-    marginTop: "1%", // Adjusted to a percentage for responsiveness
-    fontSize: "0.7vw", // Adjusted font size to be more readable and responsive
+    marginLeft: "57%", 
+    marginTop: "1%", 
+    fontSize: "0.7vw", 
   };
   
   const startButton = {
-    marginLeft: "10%", // Adjusted to a percentage for responsiveness
-    marginTop: "5%", // Adjusted to a percentage for responsiveness
+    marginLeft: "10%", 
+    marginTop: "5%", 
     width: "15%",
     height: "6%",
-    fontSize: "0.7vw", // Adjusted font size to be responsive
+    fontSize: "0.7vw", 
   };
   
   return (
