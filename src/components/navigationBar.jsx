@@ -1,5 +1,6 @@
 import React from "react";
 import logo from '../images/logo.svg';
+import { Link } from "react-router-dom";
 
 function NavigationBar() {
     const navigationStyle = {
@@ -13,6 +14,11 @@ function NavigationBar() {
         background: 'var(--White, #FFF)',
 
       };
+
+    const navigate = (url) =>
+    {
+        window.location.href = url;
+    };
 
     const innerContainerStyle = {
         display: 'flex',
@@ -35,8 +41,8 @@ function NavigationBar() {
                 <div style={clickableComponentsStyle}>
                     <lable>Home</lable>
                     <label>Add Externship</label>
-                    <button>Sign in</button>
-                    <button>Sign up</button>
+                    <Link to = "/login"><button>Sign in</button></Link>
+                    <Link to = "/signup"><button>Sign up</button></Link>
                 </div>
             </div>
         </div>

@@ -1,17 +1,21 @@
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import NavigationBar from "./components/navigationBar";
-import SearchBar from "./components/searchComponent";
-import SecondPage from "./components/imageTextBox";
-import SignUpForm from "./components/SignUpForm";
+import Home from "./home";
+import LogIn from "./login";
+import SignUp from "./signup";
 
 
 function App() {
-  return <div>
-    <NavigationBar />
-    <SearchBar />
-    <SecondPage/>
-    <SignUpForm/>
-  </div>;
+  return <Router> 
+    <div>
+    <Routes>
+      <Route path = "/" element = {<Home/>} />
+      <Route path = "/login" element = {<LogIn/>}/>
+      <Route path = "/signup" element = {<SignUp/>}/>
+    </Routes>
+  </div>
+  </Router>;
 }
 
 export default App;
