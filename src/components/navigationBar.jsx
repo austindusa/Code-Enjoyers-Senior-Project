@@ -28,6 +28,21 @@ function NavigationBar() {
         gap: '2rem',
     }
 
+    const signInStyle = {
+        background: 'black',
+        color: 'white',
+        border: '2px solid black', 
+        padding: '10px 20px',
+    };
+    
+    const signUpStyle = {
+        background: 'white',
+        color: 'black',
+        border: '2px solid black',
+        padding: '10px 20px', 
+    };
+    
+
     return (
         <div style={navigationStyle}>
             <div style={innerContainerStyle}>
@@ -35,8 +50,8 @@ function NavigationBar() {
                 <div style={clickableComponentsStyle}>
                     <lable>Home</lable>
                     <label>Add Externship</label>
-                    <button>Sign in</button>
-                    <button>Sign up</button>
+                    <button style = {signInStyle}>Sign in</button>
+                    <button style = {signUpStyle}>Sign up</button>
                 </div>
             </div>
         </div>
