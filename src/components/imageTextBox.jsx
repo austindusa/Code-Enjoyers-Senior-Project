@@ -13,14 +13,14 @@ function ImageTextBox() {
   };
   
   const headStyle = {
-    marginTop: "8%",
+    marginTop: "6%",
     marginLeft: "10%",
     fontSize: "1vw",
   };
   
   const bodyStyle = {
     marginLeft: "10%",
-    fontSize: "3.5vw",
+    fontSize: "3.3vw",
   };
   
   const parStyle = {
@@ -48,7 +48,7 @@ function ImageTextBox() {
   
   const secondCubeStyle = {
     marginLeft: "40%",
-    marginTop: "0.5%",
+    marginTop: "2.5%",
     width: "7%",
     height: "auto",
     maxWidth: "100%",
@@ -61,7 +61,7 @@ function ImageTextBox() {
   
   const secondTextCube = {
     marginLeft: "57%", 
-    marginTop: "-8%",
+    marginTop: "-9.25%",
     fontSize: "1.5vw",
   };
   
