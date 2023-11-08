@@ -1,5 +1,7 @@
 import React from "react";
 import logo from '../images/logo.svg';
+import SignInButton from './signInButton';
+import SignUpButton from './signUpButton';
 
 function NavigationBar() {
     const navigationStyle = {
@@ -35,8 +37,8 @@ function NavigationBar() {
                 <div style={clickableComponentsStyle}>
                     <lable>Home</lable>
                     <label>Add Externship</label>
-                    <button>Sign in</button>
-                    <button>Sign up</button>
+                    <SignInButton />
+                    <SignUpButton />
                 </div>
             </div>
         </div>

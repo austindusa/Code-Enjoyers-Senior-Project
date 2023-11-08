@@ -1,6 +1,7 @@
 import React from "react";
 import imgHolder from '../images/imageHold.jpeg';
 import Cube from '../images/cube.png';
+import GetStartedButton from "./getStartedButton";
 
 function ImageTextBox() {
   const textBoxStyle = {
@@ -76,14 +77,6 @@ function ImageTextBox() {
     fontSize: "0.7vw", 
   };
   
-  const startButton = {
-    marginLeft: "10%", 
-    marginTop: "5%", 
-    width: "15%",
-    height: "6%",
-    fontSize: "0.7vw", 
-  };
-  
   return (
     <div style={textBoxStyle}>
       <img style={imgStyle} src={imgHolder} alt="Image Holder" />
@@ -99,7 +92,7 @@ function ImageTextBox() {
         <p style={paraText}>Find the Perfect Externship for You</p>
         <h1 style={secondTextCube}>Share</h1>
         <p style={secondParaText}>Share Your Valuable Externship Experiences with Others</p>
-        <button style={startButton}>Get Started</button>
+        <GetStartedButton />
       </div>
     </div>
   );
