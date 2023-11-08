@@ -30,6 +30,21 @@ function NavigationBar() {
         gap: '2rem',
     }
 
+    const signInStyle = {
+        background: 'black',
+        color: 'white',
+        border: '2px solid black', 
+        padding: '10px 20px',
+    };
+    
+    const signUpStyle = {
+        background: 'white',
+        color: 'black',
+        border: '2px solid black',
+        padding: '10px 20px', 
+    };
+    
+
     return (
         <div style={navigationStyle}>
             <div style={innerContainerStyle}>
