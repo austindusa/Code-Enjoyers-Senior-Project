@@ -1,6 +1,7 @@
 import React from "react";
 import logo from '../images/logo.svg';
-import { Link } from "react-router-dom";
+import SignInButton from './signInButton';
+import SignUpButton from './signUpButton';
 
 function NavigationBar() {
     const navigationStyle = {
@@ -56,8 +57,8 @@ function NavigationBar() {
                 <div style={clickableComponentsStyle}>
                     <lable>Home</lable>
                     <label>Add Externship</label>
-                    <Link to = "/login"><button style = {signInStyle}>Sign in</button></Link>
-                    <Link to = "/signup"><button style = {signUpStyle}>Sign up</button></Link>
+                    <SignInButton />
+                    <SignUpButton />
                 </div>
             </div>
         </div>
