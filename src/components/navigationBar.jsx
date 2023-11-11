@@ -1,7 +1,12 @@
 import React from "react";
 import logo from '../images/logo.svg';
+import AddExternship from "./AddExternship";
+import { Link } from "react-router-dom";
+import {useState} from 'react'
 
 function NavigationBar() {
+    const [addExternshipButton, setButtonAddExternship] = useState(false);
+
     const navigationStyle = {
         display: 'flex',
         height: '3.25rem',
@@ -29,17 +34,20 @@ function NavigationBar() {
     }
 
     return (
-        <div style={navigationStyle}>
+        <><div style={navigationStyle}>
             <div style={innerContainerStyle}>
                 <img src={logo} alt="Logo" className="logo" />
                 <div style={clickableComponentsStyle}>
-                    <lable>Home</lable>
-                    <label>Add Externship</label>
+                    <ul className='navbar-menu'>
+                        <li><Link to="/">Home</Link></li>
+                        <button onClick={() => setButtonAddExternship(true)}>Add Externship</button>
+                    </ul>
                     <button>Sign in</button>
                     <button>Sign up</button>
                 </div>
             </div>
-        </div>
+        </div><AddExternship trigger={addExternshipButton}
+         setTrigger={setButtonAddExternship}></AddExternship></>
     );
 }
 

@@ -1,17 +1,20 @@
 import "./App.css";
-import NavigationBar from "./components/navigationBar";
 import SearchBar from "./components/searchComponent";
 import SecondPage from "./components/imageTextBox";
 import SignUpForm from "./components/SignUpForm";
+import MainLayout from "./layout/MainLayout";
 
 
 function App() {
-  return <div>
-    <NavigationBar />
+  return( 
+
+  <MainLayout>
     <SearchBar />
     <SecondPage/>
     <SignUpForm/>
-  </div>;
+  </MainLayout>
+
+  );
 }
 
 export default App;
