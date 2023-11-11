@@ -7,7 +7,7 @@ import SignUp from "./signup";
 
 
 function App() {
-  return <Router> 
+  return  <Router>
     <div>
     <Routes>
       <Route path = "/" element = {<Home/>} />
@@ -15,7 +15,7 @@ function App() {
       <Route path = "/signup" element = {<SignUp/>}/>
     </Routes>
   </div>
-  </Router>;
+  </Router>
 }
 
 export default App;
