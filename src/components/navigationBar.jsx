@@ -1,5 +1,7 @@
 import React from "react";
 import logo from '../images/logo.svg';
+import SignInButton from './signInButton';
+import SignUpButton from './signUpButton';
 import AddExternship from "./AddExternship";
 import { Link } from "react-router-dom";
 import {useState} from 'react'
@@ -19,6 +21,11 @@ function NavigationBar() {
 
       };
 
+    const navigate = (url) =>
+    {
+        window.location.href = url;
+    };
+
     const innerContainerStyle = {
         display: 'flex',
         justifyContent: 'space-between',
@@ -33,6 +40,21 @@ function NavigationBar() {
         gap: '2rem',
     }
 
+    const signInStyle = {
+        background: 'black',
+        color: 'white',
+        border: '2px solid black', 
+        padding: '10px 20px',
+    };
+    
+    const signUpStyle = {
+        background: 'white',
+        color: 'black',
+        border: '2px solid black',
+        padding: '10px 20px', 
+    };
+    
+
     return (
         <><div style={navigationStyle}>
             <div style={innerContainerStyle}>
@@ -42,8 +64,8 @@ function NavigationBar() {
                         <li><Link to="/">Home</Link></li>
                         <button onClick={() => setButtonAddExternship(true)}>Add Externship</button>
                     </ul>
-                    <button>Sign in</button>
-                    <button>Sign up</button>
+                    <SignInButton />
+                    <SignUpButton />
                 </div>
             </div>
         </div><AddExternship trigger={addExternshipButton}

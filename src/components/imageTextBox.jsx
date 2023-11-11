@@ -1,6 +1,7 @@
 import React from "react";
 import imgHolder from '../images/imageHold.jpeg';
 import Cube from '../images/cube.png';
+import GetStartedButton from "./getStartedButton";
 
 function ImageTextBox() {
   const textBoxStyle = {
@@ -13,14 +14,14 @@ function ImageTextBox() {
   };
   
   const headStyle = {
-    marginTop: "8%",
+    marginTop: "6%",
     marginLeft: "10%",
     fontSize: "1vw",
   };
   
   const bodyStyle = {
     marginLeft: "10%",
-    fontSize: "3.5vw",
+    fontSize: "3.3vw",
   };
   
   const parStyle = {
@@ -48,7 +49,7 @@ function ImageTextBox() {
   
   const secondCubeStyle = {
     marginLeft: "40%",
-    marginTop: "0.5%",
+    marginTop: "2.5%",
     width: "7%",
     height: "auto",
     maxWidth: "100%",
@@ -61,7 +62,7 @@ function ImageTextBox() {
   
   const secondTextCube = {
     marginLeft: "57%", 
-    marginTop: "-8%",
+    marginTop: "-9.25%",
     fontSize: "1.5vw",
   };
   
@@ -73,14 +74,6 @@ function ImageTextBox() {
   const secondParaText = {
     marginLeft: "57%", 
     marginTop: "1%", 
-    fontSize: "0.7vw", 
-  };
-  
-  const startButton = {
-    marginLeft: "10%", 
-    marginTop: "5%", 
-    width: "15%",
-    height: "6%",
     fontSize: "0.7vw", 
   };
   
@@ -99,7 +92,7 @@ function ImageTextBox() {
         <p style={paraText}>Find the Perfect Externship for You</p>
         <h1 style={secondTextCube}>Share</h1>
         <p style={secondParaText}>Share Your Valuable Externship Experiences with Others</p>
-        <button style={startButton}>Get Started</button>
+        <GetStartedButton />
       </div>
     </div>
   );
