@@ -1,72 +1,54 @@
-
-
-
 import React, { useState } from 'react';
 
 const SignUpForm = () => {
-  const [userData, setUserData] = useState({
-    username: '',
-    email: '',
-    password: '',
-  });
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setUserData({ ...userData, [name]: value });
-  };
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleSignUp = () => {
-  
-    console.log('User Registration Data:', userData);
-
-    // reset the form after registration if needed
-    setUserData({
-      username: '',
-      email: '',
-      password: '',
-    });
+    // Implement sign-up logic here
+    console.log('Signing up...');
   };
 
   return (
-    <div>
-      <h2>Create an Account</h2>
-      <form>
-        <div>
-          <label>Username:</label>
-          <input
-            type="text"
-            name="username"
-            value={userData.username}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={userData.email}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={userData.password}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <button type="button" onClick={handleSignUp}>
-            Sign Up
-          </button>
-        </div>
-      </form>
+    <div className="sign-up-form">
+      <img src="path/to/logo.png" alt="Logo" className="logo" />
+
+      <h2>Sign Up</h2>
+      
+      <label htmlFor="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      /><br></br>
+
+      <label htmlFor="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+        <br></br>
+      <label htmlFor="confirmPassword">Confirm Password</label>
+      <input
+        type="password"
+        id="confirmPassword"
+        value={confirmPassword}
+        onChange={(e) => setConfirmPassword(e.target.value)}
+      />
+
+      <button onClick={handleSignUp}>Sign Up</button>
+      <br></br>
+      <button className="google-sign-up">Sign Up with Google</button>
+
+      <p>
+        Already have an account? <a href="#">Log in</a>
+      </p>
     </div>
   );
 };
 
 export default SignUpForm;
-
