@@ -6,25 +6,27 @@
     height: 100vh;
   }
   
-  .containerH1 {
+  .container H1 {
     color: white;
     font-size: 3rem;
     margin-left: 4rem;
     margin-bottom: 0;
   }
   
-  .containerP {
+  .container P {
     color: white;
     font-size: 1.2rem;
     margin-bottom: 1rem;
   }
   
   .locationInput {
-    width: 20rem;
+    width: 23rem;
     padding: 10px;
     border: none;
     border-top-right-radius: 18px;
     border-bottom-right-radius: 18px;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
     margin-left: 1.6px;
     cursor: pointer;
     background-image: url("../images/location-icon.jpg");
@@ -36,11 +38,13 @@
   }
   
   .searchInput {
-    width: 20rem;
+    width: 23rem;
     padding: 10px;
     border: none;
     border-bottom-left-radius: 18px;
     border-top-left-radius: 18px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
     margin-left: 1px;
     cursor: pointer;
     background-image: url("../images/search-icon.png");
