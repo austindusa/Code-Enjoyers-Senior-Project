@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from './SignUpForm.module.css';
 
 const SignUpForm = () => {
   const [email, setEmail] = useState('');
@@ -11,41 +12,44 @@ const SignUpForm = () => {
   };
 
   return (
-    <div className="sign-up-form">
-      <img src="path/to/logo.png" alt="Logo" className="logo" />
+    <div className={styles.signUpForm}>
+      <img src="path/to/logo.png" alt="Logo" className={styles.logo} />
 
-      <h2>Sign Up</h2>
+      <h2 className={styles.heading}>Sign Up</h2>
       
-      <label htmlFor="email">Email</label>
+      <label htmlFor="email" className={styles.label}>Email</label>
       <input
         type="email"
         id="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-      /><br></br>
+        className={styles.input}
+      />
 
-      <label htmlFor="password">Password</label>
+      <label htmlFor="password" className={styles.label}>Password</label>
       <input
         type="password"
         id="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+        className={styles.input}
       />
-        <br></br>
-      <label htmlFor="confirmPassword">Confirm Password</label>
+
+      <label htmlFor="confirmPassword" className={styles.label}>Confirm Password</label>
       <input
         type="password"
         id="confirmPassword"
         value={confirmPassword}
         onChange={(e) => setConfirmPassword(e.target.value)}
+        className={styles.input}
       />
 
-      <button onClick={handleSignUp}>Sign Up</button>
-      <br></br>
-      <button className="google-sign-up">Sign Up with Google</button>
+      <button onClick={handleSignUp} className={styles.button}>Sign Up</button>
 
-      <p>
-        Already have an account? <a href="#">Log in</a>
+      <button className={`${styles.button} ${styles.googleSignUp}`}>Sign Up with Google</button>
+
+      <p className={styles.text}>
+        Already have an account? <a href="#" className={styles.link}>Log in</a>
       </p>
     </div>
   );
