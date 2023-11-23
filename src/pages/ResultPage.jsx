@@ -1,11 +1,11 @@
 import React from "react";
+import CardListWindow from "../components/CardListWindow";
 
 function ResultPage(){
-    return (
-        <div>
-            <h1>Results</h1>
-        </div>
+    return(
+        <CardListWindow/>
     );
+
 }
 
 export default ResultPage;
