@@ -1,6 +1,7 @@
 import React from 'react'
 import {useState} from 'react'
 import {FaStar} from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 function WriteReview(props) {
 
@@ -202,7 +203,7 @@ function WriteReview(props) {
                     <div className="writeReviewQuestion-text" style = {writeReviewQuestionTextStyle}>Please share your overall experience participating in this externship.</div>
                     <textarea className="experience" style = {experienceStyle} placeholder='Type your message...'></textarea>
                     <div className="buttonContainer" style = {buttonContainer}>
-                        <button className="writeReview-btn" style = {writeReviewBtnStyle}>Add Review</button>
+                        <Link to="/login"><button className="writeReview-btn" style = {writeReviewBtnStyle}>Add Review</button></Link>
                         <button className="close-btn" style = {closeBtnStyle} onClick={() => props.setTrigger(false)}>Cancel</button>
                         {props.children}
                     </div>

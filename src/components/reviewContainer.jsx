@@ -1,7 +1,20 @@
-import React from "react";
+
 import userName from "../images/userName.jpg";
+import WriteReview from './WriteReview';
+import React, { useState } from 'react';
 
 const ReviewContainer = () => {
+  const [showWriteReview, setShowWriteReview] = useState(false);
+
+  const handleAddReviewClick = () => {
+    setShowWriteReview(true);
+  };
+
+  const handleCloseWriteReview = () => {
+    setShowWriteReview(false);
+  };
+
+
   return (
     <div className="review-container">
       <div className="title-and-bookmark">
@@ -63,9 +76,18 @@ const ReviewContainer = () => {
       <div className="reviews">
         <div className="user-review">
           <span>Reviews:</span>
-          <button>Add Review</button>
+          <button onClick={handleAddReviewClick}>Add Review</button>
         </div>
       </div>
+
+      {showWriteReview && (
+        <WriteReview
+          trigger={showWriteReview}
+          setTrigger={setShowWriteReview}
+        />
+      )}
+
+      
       <div className="user-review-container">
         <img
           className="user-image"

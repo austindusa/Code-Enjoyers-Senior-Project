@@ -5,7 +5,7 @@ import Home from "./home";
 import LogIn from "./login";
 import SignUp from "./signup";
 import ResultPage from "./pages/ResultPage";
-
+import WriteReview from "./components/WriteReview";
 
 function App() {
   return  <Router>
