@@ -4,7 +4,7 @@ import "./App.css";
 import Home from "./home";
 import LogIn from "./login";
 import SignUp from "./signup";
-import ResultPage from "./pages/ResultPage";
+import ResultPage from "./pages/ResultPage"
 
 
 function App() {

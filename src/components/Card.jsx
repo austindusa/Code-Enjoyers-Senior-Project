@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Icon from '../images/Avatar Image.jpg';
 
 function Card({organizationName, externshipTitle, location, description}){
+    const [bColor, setBColor] = useState('#FFF');
+
     const cardStyle = {
         display: 'flex',
         width: '32.875rem',
@@ -10,8 +12,13 @@ function Card({organizationName, externshipTitle, location, description}){
         flexDirection: 'column',
         alignItems: 'flex-start',
         gap: '0.0625rem',
-        background: '#FFF',
+        background: bColor,
         boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
+    };
+
+    const click = () => {
+        document.querySelectorAll('.card').forEach((card) => {card.style.background = '#FFF'});
+        setBColor((oldBColor) => (oldBColor === '#FFF' ? '#CCC' : '#FFF'));
     };
 
     const horizontalContainer = {
@@ -69,7 +76,7 @@ function Card({organizationName, externshipTitle, location, description}){
     }
 
     return(
-        <div style={cardStyle}>
+        <div className = "card" style={cardStyle} onClick = {() => click()}>
             <div style={horizontalContainer}>
                 <img style ={imageStyle} src={Icon}/>
                 <text style={h1Style}>{organizationName}</text>

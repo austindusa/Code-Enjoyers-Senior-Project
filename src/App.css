@@ -192,6 +192,10 @@
   background: var(--White, #FFF);
 }
 
+.writeReview-inner .buttonContainer .close-btn:hover {
+  background: rgb(197, 197, 197);
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -199,4 +203,242 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.review-container {
+  font-family: "Roboto", sans-serif;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 642px;
+  height: 743px;
+  background: #fff;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+#title {
+  width: 512px;
+  height: 35px;
+  flex-shrink: 0;
+  margin-top: 24px;
+  margin-bottom: 10px;
+  margin-left: 27px;
+  margin-right: 10px;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%; /* 48px */
+}
+
+.organization-name {
+  margin-top: 0;
+  margin-left: 27px;
+  color: #000;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.name {
+  color: #000;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.location-1 {
+  margin-top: 0;
+}
+
+.review-container .location,
+.review-container .city-state {
+  font-size: 24px;
+}
+
+.review-container .location {
+  color: black;
+}
+
+.review-container .city-state {
+  color: gray;
+}
+
+.title-and-bookmark {
+  display: flex;
+  align-items: flex-end;
+}
+
+#book-mark {
+  width: 18.667px;
+  height: 25.833px;
+  fill: #000;
+  cursor: pointer;
+}
+
+.description h3 {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%; /* 33.6px */
+  margin-left: 27px;
+  margin-bottom: 0;
+}
+.description p {
+  margin-bottom: 0;
+}
+
+.review-desc {
+  flex-shrink: 0;
+  overflow: hidden;
+  color: #000;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 24px */
+  margin-top: 0;
+  margin-left: 27px;
+  word-wrap: break-word;
+  text-indent: 1rem;
+  text-align: left;
+  margin-bottom: 0;
+  margin-right: 80px;
+}
+.ratings {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 24px */
+}
+
+.my-rating {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%;
+  margin-top: 0;
+  margin-left: 27px;
+  margin-bottom: 5px;
+}
+
+.rating-title,
+.percent-title,
+.paid-title {
+  margin-left: 70px;
+}
+.rate {
+  margin-left: 182px;
+}
+.percent {
+  margin-left: 155px;
+}
+.paid-result {
+  margin-left: 165px;
+}
+
+.margin {
+  margin-bottom: 5px;
+}
+
+.user-review {
+  display: flex;
+  flex-direction: row;
+}
+
+.user-review span {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%;
+  margin-left: 28px;
+}
+
+.user-review button {
+  height: 34px;
+  padding: 8px 20px;
+  gap: 8px;
+  flex-shrink: 0;
+  margin-left: 320px;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  margin-bottom: 24px;
+}
+
+.user-review-container {
+  display: grid;
+  grid-template-columns: 75px 67fr 67fr; /* Set the width of the columns */
+  grid-template-rows: auto auto 1fr;
+  border: 0.5px solid black;
+  width: 618px; /* Set the width of the container */
+  height: 283px;
+  justify-items: center;
+  margin-left: 12px;
+  row-gap: 12px;
+}
+
+.user-image {
+  grid-column: 1;
+  width: 41px;
+  height: 40px;
+  border-radius: 41px;
+  object-fit: cover;
+  justify-self: start;
+  margin-left: 24px;
+  margin-top: 12px;
+}
+
+.user-name-1 {
+  grid-column: 2;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; /* 24px */
+  justify-self: start;
+  margin-top: 20px;
+}
+.rating {
+  grid-column: 3;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 24px */
+  justify-self: end;
+  margin-top: 12px;
+  margin-right: 24px;
+}
+
+.user-preference {
+  grid-column: 1 / span 2;
+  justify-self: start;
+  margin-left: 24px;
+}
+.user-preference-1 {
+  grid-column: 1 / span2;
+  justify-self: start;
+  margin-left: 24px;
+  margin-top: 0;
+}
+
+.paragraph {
+  grid-column: 1 / span 3;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 24px */
+  color: #000;
+  overflow: hidden;
+  justify-self: start;
+  margin-left: 24px;
+  margin-right: 24px;
+  text-indent: 2rem;
+}
+
+.review-container {
+  overflow: hidden;
 }
