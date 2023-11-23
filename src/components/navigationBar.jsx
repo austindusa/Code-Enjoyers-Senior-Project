@@ -3,11 +3,13 @@ import logo from '../images/logo.svg';
 import SignInButton from './signInButton';
 import SignUpButton from './signUpButton';
 import AddExternship from "./AddExternship";
+import WriteReview from "./WriteReview";
 import { Link } from "react-router-dom";
 import {useState} from 'react'
 
 function NavigationBar() {
     const [addExternshipButton, setButtonAddExternship] = useState(false);
+    const [writeReviewButton, setButtonWriteReview] = useState(false);
 
     const navigationStyle = {
         display: 'flex',
@@ -69,7 +71,10 @@ function NavigationBar() {
                 </div>
             </div>
         </div><AddExternship trigger={addExternshipButton}
-         setTrigger={setButtonAddExternship}></AddExternship></>
+         setTrigger={setButtonAddExternship}></AddExternship>
+         <WriteReview trigger={writeReviewButton}
+         setTrigger={setButtonWriteReview}></WriteReview></>
+         
     );
 }
 
