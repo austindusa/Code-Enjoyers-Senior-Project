@@ -207,10 +207,8 @@
 
 .review-container {
   font-family: "Roboto", sans-serif;
-  position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   width: 642px;
   height: 743px;
   background: #fff;

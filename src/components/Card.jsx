@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Icon from '../images/Avatar Image.jpg';
 
-function Card({organizationName, externshipTitle, location, description}){
+function Card({organizationName, externshipTitle, location, description, onClick}){
     const [bColor, setBColor] = useState('#FFF');
 
     const cardStyle = {
@@ -19,6 +19,7 @@ function Card({organizationName, externshipTitle, location, description}){
     const click = () => {
         document.querySelectorAll('.card').forEach((card) => {card.style.background = '#FFF'});
         setBColor((oldBColor) => (oldBColor === '#FFF' ? '#CCC' : '#FFF'));
+        onClick();
     };
 
     const horizontalContainer = {

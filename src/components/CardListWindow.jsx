@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Card from './Card';
 import Pagination from './Pagination';
 
-function CardListWindow(){
+function CardListWindow({onCardClick}){
     const cards = 34;
 
     const cardData = {
@@ -28,6 +28,7 @@ function CardListWindow(){
             externshipTitle={cardData.externshipTitle}
             location={cardData.location}
             description={cardData.description}
+            onClick={() => onCardClick(cardData)}
         />
     ));
     

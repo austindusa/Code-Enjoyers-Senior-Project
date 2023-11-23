@@ -8,7 +8,7 @@ function Home() {
         <div>
             <NavigationBar />
             <SearchBar />
-            <SecondPage/>
+            <SecondPage/> 
         </div>
     );
 };
