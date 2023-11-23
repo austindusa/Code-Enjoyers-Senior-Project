@@ -1,22 +1,27 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 function GetStartedButton() {
-
     const buttonStyle = {
         display: 'flex',
-        padding: '0.75rem 1.5rem',
+        padding: '1.5em 3em',
         justifyContent: 'center',
         alignItems: 'center',
-        gap: '0.5rem',
+        gap: '0.5em',
         border: '1px solid var(--Black, #060606)',
         color: 'var(--Black, #060606)',
-    }
+        marginTop: '7em',
+        marginLeft: '5em',
+    };
 
     return (
-        <button className={"getStarted"} style={buttonStyle}>
+        <Link to="/resultpage">
+          <button className="getStarted" style={buttonStyle}>
             Get Started
-        </button>
-    )
+          </button>
+        </Link>
+      );
+
 }
 
-export default GetStartedButton
+export default GetStartedButton;

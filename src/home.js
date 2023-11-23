@@ -9,6 +9,7 @@ function Home() {
             <NavigationBar />
             <SearchBar />
             <SecondPage/>
+            
         </div>
     );
 };

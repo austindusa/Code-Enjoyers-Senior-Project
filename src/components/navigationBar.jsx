@@ -62,6 +62,7 @@ function NavigationBar() {
                 <div style={clickableComponentsStyle}>
                     <ul className='navbar-menu'>
                         <li><Link to="/">Home</Link></li>
+    
                         <button onClick={() => setButtonAddExternship(true)}>Add Externship</button>
                     </ul>
                     <SignInButton />
