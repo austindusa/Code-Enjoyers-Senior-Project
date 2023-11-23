@@ -35,18 +35,18 @@
   }
   
   /* Style the heading */
-  h2 {
+  .h2 {
     color: #333333;
     margin-bottom: 20px;
   }
   
   /* Style form labels and inputs */
-  label {
+  .label {
     display: block;
     margin-bottom: 8px;
   }
   
-  input {
+  .input {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -56,7 +56,7 @@
   }
   
   /* Style the buttons */
-  button {
+  .button {
     background-color: #4caf50;
     color: #ffffff;
     padding: 10px 20px;
@@ -65,7 +65,7 @@
     cursor: pointer;
   }
   
-  button.googleSignUp {
+  .button.googleSignUp {
     background-color: #4285f4;
   }
   
@@ -94,17 +94,17 @@
   }
   
   /* Style the "Already have an account?" link */
-  p {
+  .p {
     margin-top: 20px;
     color: #333333;
   }
   
-  a {
+  .a {
     color: #4caf50;
     text-decoration: none;
   }
   
-  a:hover {
+  .a:hover {
     text-decoration: underline;
   }
   
