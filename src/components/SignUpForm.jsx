@@ -12,9 +12,10 @@ const SignUpForm = () => {
   };
 
   return (
-    <div className={styles.signUpForm}>
-      <img src="path/to/logo.png" alt="Logo" className={styles.logo} />
-
+    
+    <div class="container"className={styles.signUpForm}>
+      <div><img src="path/to/logo.png" alt="Logo" className={styles.logo} /></div>
+      
       <h2 className={styles.heading}>Sign Up</h2>
       
       <label htmlFor="email" className={styles.label}>Email</label>
@@ -45,9 +46,9 @@ const SignUpForm = () => {
       />
 
       <button onClick={handleSignUp} className={styles.button}>Sign Up</button>
-
+      <br></br>
       <button className={`${styles.button} ${styles.googleSignUp}`}>Sign Up with Google</button>
-
+      <br></br>
       <p className={styles.text}>
         Already have an account? <a href="#" className={styles.link}>Log in</a>
       </p>
