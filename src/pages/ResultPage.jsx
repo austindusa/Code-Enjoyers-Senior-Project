@@ -1,5 +1,5 @@
 import React from "react";
-import CardListWindow from "../components/cardListWindow";
+import CardListWindow from "../components/CardListWindow";
 
 function ResultPage(){
     return(
