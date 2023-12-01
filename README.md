@@ -1,5 +1,5 @@
 
-![Logo](src\images\sac-state-sign.jpg)
+![Logo](src/images/sac-state-sign.jpg)
 
 
 # Project Title
@@ -9,7 +9,7 @@ A brief description of what this project does and who it's for
 
 ## Screenshots
 
-![App Screenshot](src\images\Diagram_-_Senior_Project.jpg)
+![App Screenshot](src/images/sac-state-sign.jpg)
 
 
 ## Features
