@@ -9,7 +9,7 @@ A brief description of what this project does and who it's for
 
 ## Screenshots
 
-![App Screenshot](src/images/sac-state-sign.jpg)
+![App Screenshot](src/images/Diagram_-_Senior_Project.jpg)
 
 
 ## Features
