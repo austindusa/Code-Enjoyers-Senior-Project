@@ -2,9 +2,9 @@
 ![Logo](src/images/sac-state-sign.jpg)
 
 
-# Project Title
+# Rate My Externship
 
-A brief description of what this project does and who it's for
+Audiology externs lack adequate resources sharing their experiences. As a consequence, new externs struggle for information about externships. Our client, Professor Venkitakrishnan, has a critical need for  a website that can improve this situation. What is needed here is a website similar to “Rate My Professor”. That is what we will deliver in this project. The key difference here is this we will be rating externships instead of rating professors. The client expects this site to fulfill a critical need in her field. This will help students seeking externships. This website will serve both as a valuable resource for students looking to apply for externships and a data collection tool for departmental researchers.
 
 
 ## Screenshots
@@ -14,22 +14,32 @@ A brief description of what this project does and who it's for
 
 ## Features
 
-- Light/dark mode toggle
-- Live previews
-- Fullscreen mode
-- Cross platform
+- Searching & Browsing
+- Filtering & Sorting
+- Ability to Create an Account
+- Ability to Add Reviews
+- Ability to Add Externships
+- A Database to Support These Funcionalities
 
 
 ## Tech Stack
 
-**Client:** React, Redux, TailwindCSS
+**Frontend:** React
 
-**Server:** Node, Express
+**HTTP Client** Axios
+
+**Backend:** Spring Boot
+
+**Database:** NoSQL
+
+**Server** Firebase
+
+**APIs** Stripe, Google Ads
 
 
-## Roadmap
+## Roadmap For Next Phase
 
-- Additional browser support
-
-- Add more integrations
-
+- Completing the Remaining Features
+- Testing the Completed Product
+- Run Usability Tests on the Deployed Product
+- Make Further Improvements From the Usability Tests of the Deployed Product
