@@ -26,15 +26,15 @@ Audiology externs lack adequate resources sharing their experiences. As a conseq
 
 **Frontend:** React
 
-**HTTP Client** Axios
+**HTTP Client:** Axios
 
 **Backend:** Spring Boot
 
 **Database:** NoSQL
 
-**Server** Firebase
+**Server:** Firebase
 
-**APIs** Stripe, Google Ads
+**APIs:** Stripe, Google Ads
 
 
 ## Roadmap For Next Phase
