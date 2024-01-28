@@ -4,8 +4,15 @@
   justify-content: center;
   width: 40%;
   height: 100vh;
-  background-color: #f0f0f0;
   padding-top: 0;
+}
+
+.background-img {
+  height: 100vh;
+  background-image: url("../images/imageHold.jpeg");
+  background-size: 60% 100%;
+  background-position: right;
+  background-repeat: no-repeat;
 }
 
 .box-border {
