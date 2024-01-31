@@ -1,11 +1,12 @@
-import React from 'react';
- 
+import React from "react";
+import SignInForm from "./components/SignInForm.jsx";
+
 function LogIn() {
-    return (
-        <div>
-            <h1>Login method here</h1>
-        </div>
-    );
-};
- 
+  return (
+    <div>
+      <SignInForm />
+    </div>
+  );
+}
+
 export default LogIn;
