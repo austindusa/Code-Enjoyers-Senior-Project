@@ -111,3 +111,23 @@
   text-decoration-line: underline;
   cursor: pointer;
 }
+/*CSS for the forgot password*/
+.forgot-password-button {
+  color: #0a0000; /* Text color */
+  padding: 10px 15px; /* Padding for the button */
+  border: 1px solid #0a0000; /* Border with a dark color */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Cursor style on hover */
+  font-size: 16px; /* Font size */
+  margin: 10px;
+  margin-bottom: 10px; /* Margin at the bottom for spacing */
+}
+
+.forgot-password-button[type="button"] {
+  background-color: white; /* Background color for "Back to Login" button */
+}
+
+.forgot-password-button:hover {
+  background-color: white; /* Lighter background on hover */
+}
+

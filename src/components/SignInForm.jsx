@@ -25,8 +25,11 @@ const ForgotPasswordForm = ({ onBackToLogin }) => {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <button type="button" onClick={onBackToLogin}>Back to Login</button>
-        <button type="submit">Send Recovery Email</button>
+        <div>
+        <button type="button" onClick={onBackToLogin} className="forgot-password-button">Back to Login</button>
+        <button type="submit" className="forgot-password-button">Send Recovery Email</button>
+        </div>
+        
       </form>
     </div>
   );
