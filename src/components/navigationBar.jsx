@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import logo from '../images/logo.svg';
-import SignInButton from './signInButton';
-import SignUpButton from './signUpButton';
-import AddExternship from './AddExternship';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import logo from "../images/logo.svg";
+import SignInButton from "./signInButton";
+import SignUpButton from "./signUpButton";
+import AddExternship from "./AddExternship";
+import { Link, useNavigate } from "react-router-dom";
+import SignInForm from "./SignInForm.jsx";
 
 function NavigationBar() {
   const [addExternshipButton, setButtonAddExternship] = useState(false);
@@ -18,7 +19,7 @@ function NavigationBar() {
 
   const redirectToLoginPage = () => {
     // Redirect to the login page using React Router
-    navigate('/login');
+    navigate("/login");
   };
 
   const handleAddExternshipClick = () => {
@@ -32,42 +33,42 @@ function NavigationBar() {
   };
 
   const navigationStyle = {
-    display: 'flex',
-    height: '3.25rem',
-    padding: '0rem 4rem',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderBottom: '1px solid var(--Black, #060606)',
-    background: 'var(--White, #FFF)',
+    display: "flex",
+    height: "3.25rem",
+    padding: "0rem 4rem",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    borderBottom: "1px solid var(--Black, #060606)",
+    background: "var(--White, #FFF)",
   };
 
   const innerContainerStyle = {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    alignSelf: 'stretch',
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    alignSelf: "stretch",
   };
 
   const clickableComponentsStyle = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: '2rem',
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "2rem",
   };
 
   const signInStyle = {
-    background: 'black',
-    color: 'white',
-    border: '2px solid black',
-    padding: '10px 20px',
+    background: "black",
+    color: "white",
+    border: "2px solid black",
+    padding: "10px 20px",
   };
 
   const signUpStyle = {
-    background: 'white',
-    color: 'black',
-    border: '2px solid black',
-    padding: '10px 20px',
+    background: "white",
+    color: "black",
+    border: "2px solid black",
+    padding: "10px 20px",
   };
 
   return (
@@ -87,7 +88,10 @@ function NavigationBar() {
           </div>
         </div>
       </div>
-      <AddExternship trigger={addExternshipButton} setTrigger={setButtonAddExternship} />
+      <AddExternship
+        trigger={addExternshipButton}
+        setTrigger={setButtonAddExternship}
+      />
     </>
   );
 }
