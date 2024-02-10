@@ -5,6 +5,7 @@ import Home from "./home";
 import LogIn from "./login";
 import SignUp from "./signup";
 import ResultPage from "./pages/ResultPage";
+import Bookmarks from "./pages/Bookmarks.jsx";
 import WriteReview from "./components/WriteReview";
 import SignInForm from "./components/SignInForm.jsx";
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="/login" element={<LogIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/resultpage" element={<ResultPage />} />
+          <Route path="/bookmarks" element={<Bookmarks />} />
         </Routes>
       </div>
     </Router>

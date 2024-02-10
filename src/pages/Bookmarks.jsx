@@ -5,9 +5,11 @@ import NavigationBar from "../components/navigationBar";
 import ResultSearchBar from "../components/resultSearchComp";
 import BookmarkToggle from "../components/bookmarkToggle";
 
-function ResultPage(){
+function Bookmarks(){
+    
     const [selectedCard, setSelected] = useState(null);
 
+    
     const horizontalStyle = {
         display: 'flex',
         justifyContent: 'center',
@@ -45,4 +47,4 @@ function ResultPage(){
 
 }
 
-export default ResultPage; 
+export default Bookmarks;
