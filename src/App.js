@@ -8,6 +8,8 @@ import ResultPage from "./pages/ResultPage";
 import Bookmarks from "./pages/Bookmarks.jsx";
 import WriteReview from "./components/WriteReview";
 import SignInForm from "./components/SignInForm.jsx";
+import ChangePasswordPage from "./pages/ChangePasswordPage.jsx"; 
+
 
 function App() {
   return (
@@ -19,6 +21,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/resultpage" element={<ResultPage />} />
           <Route path="/bookmarks" element={<Bookmarks />} />
+          <Route path="/change-password" element={<ChangePasswordPage />} />
         </Routes>
       </div>
     </Router>

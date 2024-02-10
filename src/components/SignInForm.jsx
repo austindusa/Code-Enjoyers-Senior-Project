@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
 import "./SignInForm.css";
-
-// Separate component for Forgot Password form
-
+import { Link } from 'react-router-dom';
 
 const ForgotPasswordForm = ({ onBackToLogin }) => {
   const [email, setEmail] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // TODO: Implement the logic to send a password recovery email
     console.log('Send password recovery email to:', email);
   };
 
@@ -26,10 +23,9 @@ const ForgotPasswordForm = ({ onBackToLogin }) => {
           required
         />
         <div>
-        <button type="button" onClick={onBackToLogin} className="forgot-password-button">Back to Login</button>
-        <button type="submit" className="forgot-password-button">Send Recovery Email</button>
+          <button type="button" onClick={onBackToLogin} className="forgot-password-button">Back to Login</button>
+          <button type="submit" className="forgot-password-button">Send Recovery Email</button>
         </div>
-        
       </form>
     </div>
   );
@@ -66,6 +62,7 @@ export default function SignInForm() {
             <div id="input-field">
               <label>Password</label>
               <input type="password" required />
+              <Link to="/change-password" className="change-password-link">Enter New Password Placeholder</Link>
               <button type="button" id="change-pass-btn" onClick={handleForgotPassword}>
                 Forgot Your Password?
               </button>
