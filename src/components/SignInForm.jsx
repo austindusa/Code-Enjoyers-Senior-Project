@@ -62,10 +62,7 @@ export default function SignInForm() {
             <div id="input-field">
               <label>Password</label>
               <input type="password" required />
-              <Link to="/change-password" className="change-password-link">Enter New Password Placeholder</Link>
-              <button type="button" id="change-pass-btn" onClick={handleForgotPassword}>
-                Forgot Your Password?
-              </button>
+              <Link to = "/forgotpassword"><button type="button" id="change-pass-btn">Forgot Your Password</button></Link>
             </div>
             <div id="log-in-btn">
               <button id="login">Login</button>

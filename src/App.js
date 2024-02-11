@@ -9,6 +9,7 @@ import Bookmarks from "./pages/Bookmarks.jsx";
 import WriteReview from "./components/WriteReview";
 import SignInForm from "./components/SignInForm.jsx";
 import ChangePasswordPage from "./pages/ChangePasswordPage.jsx"; 
+import ForgotPassword from "./components/ForgotPassword.jsx";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/resultpage" element={<ResultPage />} />
           <Route path="/bookmarks" element={<Bookmarks />} />
           <Route path="/change-password" element={<ChangePasswordPage />} />
+          <Route path="/forgotpassword" element={<ForgotPassword />} />
         </Routes>
       </div>
     </Router>
