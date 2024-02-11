@@ -10,7 +10,7 @@ const RecoveryCodePage = () => {
   const verifyCode = async (email, code) => {
     event.preventDefault();
     setError("");
-    // Place holder for API
+    // Placeholder for API
     
     try {
       const response = await fetch("/api/verify-recovery-code", {
