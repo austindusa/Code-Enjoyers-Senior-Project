@@ -29,7 +29,7 @@ function BookmarkToggle() {
             {BookmarksText ? (
                 <Link to="/bookmarks" className={styles.bookmarkText}>Bookmarks</Link>
             ) : (
-                <button onClick={handleBookmarksClick} className={styles.bookmarkText}>Bookmarks</button>
+                <Link to = "/login" onClick={handleBookmarksClick} className={styles.bookmarkText}>Bookmarks</Link>
             )}
         </div>
     )  

@@ -1,7 +1,8 @@
 .container {
 display: flex;
-flex-direction: row;
+flex-direction: column;
 flex-wrap: wrap;
+justify-content: center;
 align-items: center;
 align-content: center;
 padding: 0px 221px;
@@ -12,12 +13,12 @@ width: 672px;
 height: 23px;
 left: 384px;
 top: 56px;
-background: #FFFFFF;}
+background:  none;}
 
 
 .searchResultsText{
 width: 101px;
-height: 20px;
+height: 15px;
 font-family: 'Inter';
 font-style: normal;
 font-weight: 600;
@@ -30,7 +31,7 @@ color: #000000;}
 
 .bookmarkText{
 width: 77px;
-height: 20px;
+height: 15px;
 font-family: 'Inter';
 font-style: normal;
 font-weight: 600;
