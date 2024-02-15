@@ -1,4 +1,7 @@
+
 import React, { useState } from 'react';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase/config.js'; // Make sure this is the initialized instance
 import styles from './SignUpForm.module.css';
 
 const SignUpForm = () => {
@@ -7,12 +10,23 @@ const SignUpForm = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleSignUp = () => {
-    // Implement sign-up logic here
-    console.log('Signing up...');
+    if (password !== confirmPassword) {
+      alert("Passwords don't match");
+      return;
+    }
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in 
+        console.log('User signed up:', userCredential.user);
+        // Redirect to home/dashboard or clear form
+      })
+      .catch((error) => {
+        console.error('Error signing up:', error.message);
+        // Handle errors here, such as displaying a notification
+      });
   };
 
   return (
-    
     <div class="container"className={styles.signUpForm}>
       <div><img src="path/to/logo.png" alt="Logo" className={styles.logo} /></div>
       
