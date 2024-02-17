@@ -4,6 +4,7 @@ import ReviewContainer from "../components/reviewContainer";
 import NavigationBar from "../components/navigationBar";
 import ResultSearchBar from "../components/resultSearchComp";
 import BookmarkToggle from "../components/bookmarkToggle";
+import "./SearchResultContainer.css";
 
 function ResultPage() {
   const [selectedCard, setSelected] = useState(null);
@@ -12,7 +13,7 @@ function ResultPage() {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    width: "80%",
+    width: "70%",
     margin: "auto",
   };
 
@@ -37,9 +38,11 @@ function ResultPage() {
           <BookmarkToggle />
         </div>
       </div>
-      <div style={horizontalStyle}>
+      <div className="result-container">
         <CardListWindow onCardClick={handleCardClick} />
-        {selectedCard && <ReviewContainer cardData={selectedCard} />}
+        <div className="detailed-result-container">
+          {selectedCard && <ReviewContainer cardData={selectedCard} />}
+        </div>
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ function Card({
 }) {
   const cardStyle = {
     display: "flex",
-    width: "32.875rem",
+    width: "29rem",
     height: "6.4375rem",
     padding: "0.5rem 0.5rem 0.5rem 0.5rem",
     flexDirection: "column",
@@ -19,6 +19,7 @@ function Card({
     gap: "0.0625rem",
     background: isSelected ? "#CCC" : "white",
     boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+    marginLeft: "50px",
   };
 
   function handleClick() {

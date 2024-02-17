@@ -15,7 +15,7 @@ function CardListWindow({ onCardClick }) {
 
   const windowStyle = {
     display: "flex",
-    width: "40.125rem",
+    width: "30.125rem",
     height: "46.4375rem",
     flexDirection: "column",
     alignItems: "flex-start",
@@ -56,11 +56,6 @@ function CardListWindow({ onCardClick }) {
       onCardClick(cardData);
     }
   };
-
-  //   useEffect(() => {
-  //     setSelectedCardIndex(selectedCardIndex);
-  //     onCardClick(cardData);
-  //   });
 
   return (
     <div style={windowStyle}>

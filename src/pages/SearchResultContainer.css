@@ -1,0 +1,12 @@
+.result-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  column-gap: 65px;
+  margin-top: 2rem;
+}
+
+.detailed-result-container {
+  height: 743px;
+}
