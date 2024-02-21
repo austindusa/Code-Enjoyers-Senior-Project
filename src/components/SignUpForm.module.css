@@ -82,3 +82,10 @@ body {
 .link:hover {
   text-decoration: underline;
 }
+/* Style for error messages */
+.error {
+  color: red;
+  font-size: 0.9em;
+  margin-bottom: 10px;
+}
+

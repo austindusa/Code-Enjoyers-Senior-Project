@@ -1,30 +1,36 @@
-
-import React, { useState } from 'react';
+// Implement the log in functionality
+import { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase/config.js'; // Make sure this is the initialized instance
 import styles from './SignUpForm.module.css';
 
 const SignUpForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [loginType, setLoginType] = useState('login');
+  const [userCredentials, setUserCredentials] = useState({});
+  const [error, setError] = useState('');
 
-  const handleSignUp = () => {
-    if (password !== confirmPassword) {
-      alert("Passwords don't match");
-      return;
-    }
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in 
-        console.log('User signed up:', userCredential.user);
-        // Redirect to home/dashboard or clear form
-      })
-      .catch((error) => {
-        console.error('Error signing up:', error.message);
-        // Handle errors here, such as displaying a notification
-      });
-  };
+  function handleCredentiales(e){
+    setUserCredentials({...userCredentials, [e.target.name]: e.target.value});
+    
+  }
+
+  function handleSignup(e){
+    e.preventDefault();
+    setError("");
+    createUserWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
+  .then((userCredential) => {
+    // Signed up 
+    const user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    setError(error.message);
+ 
+    // ..
+  });
+}
+//  
 
   return (
     <div class="container"className={styles.signUpForm}>
@@ -33,34 +39,37 @@ const SignUpForm = () => {
       <h2 className={styles.heading}>Sign Up</h2>
       
       <label htmlFor="email" className={styles.label}>Email</label>
-      <input
+      <input onChange={(e)=>{handleCredentiales(e)}}
         type="email"
+        name='email'
         id="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
         className={styles.input}
       />
 
       <label htmlFor="password" className={styles.label}>Password</label>
-      <input
+      <input onChange={(e)=>{handleCredentiales(e)}}
         type="password"
+        name='password'
         id="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
         className={styles.input}
       />
 
       <label htmlFor="confirmPassword" className={styles.label}>Confirm Password</label>
-      <input
+      <input onChange={(e)=>{handleCredentiales(e)}}
         type="password"
+        name='confirmPassword'
         id="confirmPassword"
-        value={confirmPassword}
-        onChange={(e) => setConfirmPassword(e.target.value)}
         className={styles.input}
       />
 
-      <button onClick={handleSignUp} className={styles.button}>Sign Up</button>
+      <button onClick={(e)=>{handleSignup(e)}} className={styles.button}>Sign Up</button>
       <br></br>
+      {error &&
+        <div className="error">
+          {error}
+        </div>
+}
+
       <button className={`${styles.button} ${styles.googleSignUp}`}>Sign Up with Google</button>
       <br></br>
       <p className={styles.text}>
