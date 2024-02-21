@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PutMapping;
-//import org.springframework.web.bind.annotation.PathVariable;
 
 
 
@@ -27,7 +26,6 @@ public class Controller {
         this.service = service;
     }
 
-    //Please Copy and Change these methods to fit the needs of the program
 
     @PostMapping("/create") //create
     public String postMethodName(@RequestBody CRUD crud) throws ExecutionException, InterruptedException {
