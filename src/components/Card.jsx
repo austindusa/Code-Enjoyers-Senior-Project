@@ -83,12 +83,12 @@ function Card({
   return (
     <div className="card" style={cardStyle} onClick={handleClick}>
       <div style={horizontalContainer}>
-        <img style={imageStyle} src={Icon} />
-        <text style={h1Style}>{organizationName}</text>
+        <img style={imageStyle} src={Icon} alt="Organization Icon" />
+        <span style={h1Style}>{organizationName}</span>
       </div>
-      <text style={h2Style}>{externshipTitle}</text>
-      <text style={locationTextStyle}>{location}</text>
-      <p style={descriptionStyle}>{description}</p>
+      <span style={h2Style}>{externshipTitle}</span>
+      <span style={locationTextStyle}>{location}</span>
+      <span style={descriptionStyle}>{description}</span>
     </div>
   );
 }

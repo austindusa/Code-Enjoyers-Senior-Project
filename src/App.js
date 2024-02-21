@@ -6,11 +6,8 @@ import LogIn from "./login";
 import SignUp from "./signup";
 import ResultPage from "./pages/ResultPage";
 import Bookmarks from "./pages/Bookmarks.jsx";
-import WriteReview from "./components/WriteReview";
-import SignInForm from "./components/SignInForm.jsx";
-import ChangePasswordPage from "./pages/ChangePasswordPage.jsx"; 
+import ChangePasswordPage from "./pages/ChangePasswordPage.jsx";
 import ForgotPassword from "./components/ForgotPassword.jsx";
-
 
 function App() {
   return (
