@@ -1,0 +1,47 @@
+package com.codeenjoyers.ce.controller;
+
+import org.springframework.stereotype.Service;
+
+import java.util.concurrent.ExecutionException;
+
+import com.codeenjoyers.ce.model.SurveyInfo;
+import com.google.api.core.ApiFuture;
+import com.google.cloud.firestore.DocumentReference;
+import com.google.cloud.firestore.DocumentSnapshot;
+import com.google.cloud.firestore.Firestore;
+import com.google.cloud.firestore.WriteResult;
+import com.google.firebase.cloud.FirestoreClient;
+
+@Service
+public class SurveyInfoService {
+    public String createSurveyInfo(SurveyInfo info) throws ExecutionException, InterruptedException {
+        Firestore dbFirestore = FirestoreClient.getFirestore();
+        ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection("info").document(info.getTitle()).set(info);
+        return collectionsApiFuture.get().getUpdateTime().toString();
+    }
+
+    public SurveyInfo getSurveyInfo(String documentId) throws InterruptedException, ExecutionException {
+        Firestore dbFirestore = FirestoreClient.getFirestore();
+        DocumentReference documentReference = dbFirestore.collection("info").document(documentId);
+        ApiFuture<DocumentSnapshot> future = documentReference.get();
+        DocumentSnapshot document = future.get();
+        SurveyInfo info;
+        if (document.exists()) {
+            info = document.toObject(SurveyInfo.class);
+            return info;
+        }
+        return null;
+    }
+
+    public String updateSurveyInfo(SurveyInfo info) throws InterruptedException, ExecutionException {
+        Firestore dbFirestore = FirestoreClient.getFirestore();
+        ApiFuture<WriteResult> collecApiFuture = dbFirestore.collection("info").document(info.getTitle()).set(info);
+        return collecApiFuture.get().getUpdateTime().toString();
+    }
+
+    public String deleteSurveyInfo(String documentId) {
+        Firestore dbFirestore = FirestoreClient.getFirestore();
+        ApiFuture<WriteResult> writeResult = dbFirestore.collection("info").document(documentId).delete();
+        return "Successfully deleted " + documentId;
+    }
+}
