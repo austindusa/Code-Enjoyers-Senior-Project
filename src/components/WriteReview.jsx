@@ -2,6 +2,7 @@ import React from 'react'
 import {useState} from 'react'
 import { Link } from 'react-router-dom'
 import SurveyComponent from './SurveyComponent'
+import {reviewSurveyJson} from '../json'
 
 function WriteReview(props) {
 
@@ -82,11 +83,8 @@ function WriteReview(props) {
                 <div className="writeReview-text" style = {writeReviewTextStyle}>Adding New Review For:
                     <div className="writeReview-text" style = {writeReviewTextStyle}>Externship Title</div>
                     <div className="scrollableContainer" style={{ maxHeight: '450px', overflowY: 'auto' }}>           
-                        
-                        <SurveyComponent></SurveyComponent>
-
+                        <SurveyComponent surveyJson={reviewSurveyJson} />
                     </div>
-
                     <div className="buttonContainer" style = {buttonContainer}>
                         <button className="close-btn" style = {closeBtnStyle} onClick={() => props.setTrigger(false)}>Cancel</button>
                         {props.children}

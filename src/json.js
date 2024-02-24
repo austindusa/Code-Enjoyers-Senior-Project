@@ -1,5 +1,32 @@
+import { FunctionFactory } from "survey-core";
 
-export const json = {
+function isValidInput(input) {
+    //letters, numbers, and common punctuation are allowed.
+    var allowedPattern = /^[a-zA-Z0-9\s.,?!'"()]+$/;
+  
+    // Check if the input matches the allowed pattern
+    if (allowedPattern.test(input)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+function isValidYear(yearString) {
+    const year = parseInt(yearString, 10);
+  
+    if (!isNaN(year) && year >= 1990 && year <= new Date().getFullYear()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  
+FunctionFactory.Instance.register("isValidInput", isValidInput);
+FunctionFactory.Instance.register("isValidYear", isValidYear);
+  
+
+export const reviewSurveyJson = {
     "logoPosition": "right",
     "pages": [
      {
@@ -7,36 +34,18 @@ export const json = {
       "elements": [
        {
         "type": "text",
-        "name": "question1",
-        "title": "Externship Site Name:",
-        "isRequired": true,
-        "validators": [
-         {
-          "type": "text",
-          "minLength": 3,
-          "maxLength": 50,
-          "allowDigits": false
-         }
-        ],
-        "autocomplete": "organization-title"
-       },
-       {
-        "type": "text",
         "name": "question2",
         "title": "Which year did/ will you graduate/ complete your externship?",
         "isRequired": true,
         "validators": [
          {
-          "type": "numeric",
-          "text": "Please enter a valid year."
+          "type": "expression",
+          "text": "Please enter a valid year.",
+          "expression": "isValidYear({question2})",
          }
         ],
         "inputType": "number",
         "autocomplete": "bday-year",
-        "min": 1990,
-        "max": 3000,
-        "minErrorText": "The value should not be less than 1990.",
-        "maxErrorText": "The value should not be greater than 3000.",
         "maxLength": 4,
         "placeholder": "YYYY"
        },
@@ -55,14 +64,28 @@ export const json = {
         "name": "question4",
         "title": "If not, where was your externship located?",
         "enableIf": "{question3} = 'No'",
-        "isRequired": true
+        "isRequired": true,
+        "validators": [
+            {
+             "type": "expression",
+             "text": "Please enter a valid answer containing only letters, numbers, or common punctuation.",
+             "expression": "isValidInput({question4})",
+            }
+           ],
        },
        {
         "type": "text",
         "name": "question5",
         "title": "Externship State or Territory?",
         "enableIf": "{question3} = 'Yes'",
-        "isRequired": true
+        "isRequired": true,
+        "validators": [
+            {
+             "type": "expression",
+             "text": "Please enter a valid answer containing only letters, numbers, or common punctuation.",
+             "expression": "isValidInput({question5})",
+            }
+           ],
        },
        {
         "type": "radiogroup",
@@ -164,7 +187,14 @@ export const json = {
         "name": "question13",
         "title": "If yes, could you provide details?",
         "enableIf": "{question12} = 'Yes'",
-        "isRequired": true
+        "isRequired": true,
+        "validators": [
+            {
+             "type": "expression",
+             "text": "Please enter a valid answer containing only letters, numbers, or common punctuation.",
+             "expression": "isValidInput({question13})",
+            }
+           ],
        }
       ],
       "title": "Compensation"
@@ -228,7 +258,14 @@ export const json = {
         "type": "text",
         "name": "question18",
         "title": "How supported did you feel during the externship?",
-        "isRequired": true
+        "isRequired": true,
+        "validators": [
+            {
+             "type": "expression",
+             "text": "Please enter a valid answer containing only letters, numbers, or common punctuation.",
+             "expression": "isValidInput({question18})",
+            }
+           ],
        }
       ],
       "title": "Preceptors"
@@ -324,7 +361,14 @@ export const json = {
         "name": "question25",
         "title": "Please provide more details about each rotation:",
         "enableIf": "{question24} = 'Yes'",
-        "isRequired": true
+        "isRequired": true,
+        "validators": [
+            {
+             "type": "expression",
+             "text": "Please enter a valid answer containing only letters, numbers, or common punctuation.",
+             "expression": "isValidInput({question25})",
+            }
+           ],
        },
        {
         "type": "checkbox",
@@ -839,7 +883,14 @@ export const json = {
         "type": "comment",
         "name": "question59",
         "title": "Are there continuing education opportunities? Please describe.",
-        "isRequired": true
+        "isRequired": true,
+        "validators": [
+            {
+             "type": "expression",
+             "text": "Please enter a valid answer containing only letters, numbers, or common punctuation.",
+             "expression": "isValidInput({question59})",
+            }
+           ],
        }
       ],
       "title": "Research"
@@ -867,13 +918,27 @@ export const json = {
         "type": "text",
         "name": "question61",
         "title": "What is the specialty/most attractive feature of this externship?",
-        "isRequired": true
+        "isRequired": true,
+        "validators": [
+            {
+             "type": "expression",
+             "text": "Please enter a valid answer containing only letters, numbers, or common punctuation.",
+             "expression": "isValidInput({question61})",
+            }
+           ],
        },
        {
         "type": "text",
         "name": "question62",
         "title": "What are the weaknesses of this externship?",
-        "isRequired": true
+        "isRequired": true,
+        "validators": [
+            {
+             "type": "expression",
+             "text": "Please enter a valid answer containing only letters, numbers, or common punctuation.",
+             "expression": "isValidInput({question62})",
+            }
+           ],
        },
        {
         "type": "radiogroup",
@@ -907,13 +972,27 @@ export const json = {
         "type": "text",
         "name": "question65",
         "title": "What is the cost of living in the area?",
-        "isRequired": true
+        "isRequired": true,
+        "validators": [
+            {
+             "type": "expression",
+             "text": "Please enter a valid answer containing only letters, numbers, or common punctuation.",
+             "expression": "isValidInput({question65})",
+            }
+           ],
        },
        {
         "type": "text",
         "name": "question66",
         "title": "Is there affordable housing in the area and how is it found?",
-        "isRequired": true
+        "isRequired": true,
+        "validators": [
+            {
+             "type": "expression",
+             "text": "Please enter a valid answer containing only letters, numbers, or common punctuation.",
+             "expression": "isValidInput({question66})",
+            }
+           ],
        }
       ],
       "title": "Details about Clinic Area"
@@ -921,3 +1000,22 @@ export const json = {
     ],
     "widthMode": "responsive"
    }
+
+   export const externshipSurveyJson = JSON.parse(JSON.stringify(reviewSurveyJson))
+   externshipSurveyJson.pages[0].elements.unshift(
+       {
+           "type": "text",
+           "name": "question1",
+           "title": "Externship Site Name:",
+           "isRequired": true,
+           "validators": [
+            {
+             "type": "text",
+             "minLength": 3,
+             "maxLength": 50,
+             "allowDigits": false
+            }
+           ],
+           "autocomplete": "organization-title"
+          },
+   );
