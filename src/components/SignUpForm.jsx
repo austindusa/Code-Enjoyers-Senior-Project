@@ -1,7 +1,7 @@
 // Implement the log in functionality
 import { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebase/config.js'; // Make sure this is the initialized instance
+import { auth } from '../firebase/config'; // Make sure this is the initialized instance
 import styles from './SignUpForm.module.css';
 
 const SignUpForm = () => {

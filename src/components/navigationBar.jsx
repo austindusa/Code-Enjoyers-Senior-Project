@@ -5,6 +5,7 @@ import SignUpButton from "./signUpButton";
 import AddExternship from "./AddExternship";
 import { Link, useNavigate } from "react-router-dom";
 import SignInForm from "./SignInForm.jsx";
+import SurveyPlanPage from "./SurveyPlanPage.jsx";
 
 function NavigationBar() {
   const [addExternshipButton, setButtonAddExternship] = useState(false);
@@ -80,6 +81,10 @@ function NavigationBar() {
             <ul className="navbar-menu">
               <li>
                 <Link to="/">Home</Link>
+              </li>
+
+              <li> 
+                <Link to="/SurveyPlanPage">Pricing</Link>
               </li>
               <button onClick={handleAddExternshipClick}>Add Externship</button>
             </ul>
