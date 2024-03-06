@@ -34,3 +34,4 @@ build/
 
 ### Service Key ###
 serviceAccountKey.json
+config.js

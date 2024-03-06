@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Form } from "react-router-dom";
 import "./App.css";
 import Home from "./home";
 import LogIn from "./login";
@@ -8,6 +8,7 @@ import ResultPage from "./pages/ResultPage";
 import Bookmarks from "./pages/Bookmarks.jsx";
 import ChangePasswordPage from "./pages/ChangePasswordPage.jsx";
 import ForgotPassword from "./components/ForgotPassword.jsx";
+import SurveyPlanPage from "./components/SurveyPlanPage.jsx"
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/bookmarks" element={<Bookmarks />} />
           <Route path="/change-password" element={<ChangePasswordPage />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
+          <Route path="/surveyplanpage" element={<SurveyPlanPage />} />
         </Routes>
       </div>
     </Router>
