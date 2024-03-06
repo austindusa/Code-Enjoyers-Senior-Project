@@ -1,34 +1,42 @@
-import React from "react";
-import imgHolder from '../images/imageHold.jpeg';
+import React, { useState } from "react";
+import imgHolder from "../images/imageHold.jpeg";
+import { useNavigate } from "react-router-dom";
 
 const SurveyPlanPage = () => {
-    return (
-      <div style={surveyPlanPageStyle}>
-        <img src={imgHolder} alt="Image Holder" style={imgHolderStyle} />
-        <h2 style={headingStyle1}>
-          <span>Join Our Audiology</span> 
-          <span>Survey</span>
-          <span>Community</span>
-        </h2>
-        <h2 style={headingStyle2}>Membership</h2>
-        <h2 style={headingStyle3}>$1,500<span style={slashMStyle}>/m</span></h2>
-        <div style={buttonFilledStyle}>
-          <span style={monthlyStyle}>Monthly</span>
-        </div>
-        <div style={lineStyle} />
-        <h3 style={headingStyle4}>Pause Or Cancel nytime</h3>
-        <h3 style={includedTextStyle}>What's included</h3>
-        <ul style={listStyle}>
-          <li>Unlimited Reviews</li>
-          <li>Feedbacks</li>
-          <li>Unlimited Users</li>
-          <li>Pause or cancel anytime</li>
-        </ul>
-        <button style={buttonStyle}>
-          Get Started
-        </button>
+  const navigate = useNavigate();
+
+  function handleGetStarted() {
+    navigate("/subscription");
+  }
+  return (
+    <div style={surveyPlanPageStyle}>
+      <img src={imgHolder} alt="Image Holder" style={imgHolderStyle} />
+      <h2 style={headingStyle1}>
+        <span>Join Our Audiology</span>
+        <span>Survey</span>
+        <span>Community</span>
+      </h2>
+      <h2 style={headingStyle2}>Membership</h2>
+      <h2 style={headingStyle3}>
+        $1,500<span style={slashMStyle}>/m</span>
+      </h2>
+      <div style={buttonFilledStyle}>
+        <span style={monthlyStyle}>Monthly</span>
       </div>
-    );
+      <div style={lineStyle} />
+      <h3 style={headingStyle4}>Pause Or Cancel nytime</h3>
+      <h3 style={includedTextStyle}>What's included</h3>
+      <ul style={listStyle}>
+        <li>Unlimited Reviews</li>
+        <li>Feedbacks</li>
+        <li>Unlimited Users</li>
+        <li>Pause or cancel anytime</li>
+      </ul>
+      <button style={buttonStyle} onClick={handleGetStarted}>
+        Get Started
+      </button>
+    </div>
+  );
 };
 
 const surveyPlanPageStyle = {
@@ -47,13 +55,13 @@ const surveyPlanPageStyle = {
 };
 
 const imgHolderStyle = {
-    position: "absolute",
-    width: "500px", 
-    height: "400px", 
-    top: "-50px",
-    left: "19%", 
-    transform: "translateX(-50%)",
-  };
+  position: "absolute",
+  width: "500px",
+  height: "400px",
+  top: "-50px",
+  left: "19%",
+  transform: "translateX(-50%)",
+};
 
 const headingStyle1 = {
   display: "flex",
@@ -100,7 +108,7 @@ const headingStyle3 = {
 };
 
 const slashMStyle = {
-  fontSize: "24px", 
+  fontSize: "24px",
 };
 
 const buttonFilledStyle = {
@@ -116,7 +124,8 @@ const buttonFilledStyle = {
   height: "20px",
   left: "766px",
   top: "10px",
-  background: "linear-gradient(273.22deg, #000000 4.74%, rgba(162, 129, 134, 0.58) 103.12%)",
+  background:
+    "linear-gradient(273.22deg, #000000 4.74%, rgba(162, 129, 134, 0.58) 103.12%)",
   borderRadius: "100px",
 };
 
@@ -161,21 +170,21 @@ const headingStyle4 = {
 };
 
 const buttonStyle = {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "12px 24px",
-    gap: "8px",
-    position: "absolute",
-    width: "141px",
-    height: "52px",
-    left: "770px",
-    top: "400px",
-    background: "#000000",
-    color: "#FFFFFF", 
-    border: "1px solid #000000",
-  };
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "center",
+  alignItems: "center",
+  padding: "12px 24px",
+  gap: "8px",
+  position: "absolute",
+  width: "141px",
+  height: "52px",
+  left: "770px",
+  top: "400px",
+  background: "#000000",
+  color: "#FFFFFF",
+  border: "1px solid #000000",
+};
 
 const includedTextStyle = {
   position: "absolute",
@@ -194,7 +203,7 @@ const includedTextStyle = {
 const listStyle = {
   position: "absolute",
   left: "766px",
-  top: "290px", 
+  top: "290px",
   fontFamily: "'Roboto'",
   fontStyle: "normal",
   fontWeight: 400,

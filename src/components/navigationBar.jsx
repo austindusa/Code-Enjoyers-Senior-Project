@@ -83,7 +83,7 @@ function NavigationBar() {
                 <Link to="/">Home</Link>
               </li>
 
-              <li> 
+              <li>
                 <Link to="/SurveyPlanPage">Pricing</Link>
               </li>
               <button onClick={handleAddExternshipClick}>Add Externship</button>

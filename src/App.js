@@ -8,7 +8,8 @@ import ResultPage from "./pages/ResultPage";
 import Bookmarks from "./pages/Bookmarks.jsx";
 import ChangePasswordPage from "./pages/ChangePasswordPage.jsx";
 import ForgotPassword from "./components/ForgotPassword.jsx";
-import SurveyPlanPage from "./components/SurveyPlanPage.jsx"
+import SurveyPlanPage from "./components/SurveyPlanPage.jsx";
+import SubscriptionServiceInfoPage from "./components/SubscriptionServiceInfoPage.jsx";
 
 function App() {
   return (
@@ -23,6 +24,10 @@ function App() {
           <Route path="/change-password" element={<ChangePasswordPage />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/surveyplanpage" element={<SurveyPlanPage />} />
+          <Route
+            path="/subscription"
+            element={<SubscriptionServiceInfoPage />}
+          />
         </Routes>
       </div>
     </Router>
