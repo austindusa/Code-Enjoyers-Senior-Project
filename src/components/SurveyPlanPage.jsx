@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import imgHolder from "../images/imageHold.jpeg";
 import { useNavigate } from "react-router-dom";
+import PaypalCheckoutButton from "./PaypalCheckoutButton";
 
 const SurveyPlanPage = () => {
   const navigate = useNavigate();
@@ -8,52 +9,36 @@ const SurveyPlanPage = () => {
   function handleGetStarted() {
     navigate("/subscription");
   }
+
+  const [isCheckout, setIsCheckout] = useState(false); // State to manage the navigation simulation
+
+  // Function to simulate navigation
+  const handleMonthlyClick = () => {
+    setIsCheckout(true); // Simulates navigating to the PaypalCheckoutButton page
+  };
+
+  if (isCheckout) {
+    return <PaypalCheckoutButton />; // Show the PayPal checkout page if isCheckout is true
+  }
+
   return (
-    <div style={surveyPlanPageStyle}>
-      <img src={imgHolder} alt="Image Holder" style={imgHolderStyle} />
-      <h2 style={headingStyle1}>
-        <span>Join Our Audiology</span>
-        <span>Survey</span>
-        <span>Community</span>
-      </h2>
-      <h2 style={headingStyle2}>Membership</h2>
-      <h2 style={headingStyle3}>
-        $1,500<span style={slashMStyle}>/m</span>
-      </h2>
-      <div style={buttonFilledStyle}>
-        <span style={monthlyStyle}>Monthly</span>
-// SurveyPlanPage.js
-import React, { useState } from "react";
-import imgHolder from '../images/imageHold.jpeg';
-import PaypalCheckoutButton from './PaypalCheckoutButton'; // Import the PayPalCheckoutButton component
-
-const SurveyPlanPage = () => {
-    const [isCheckout, setIsCheckout] = useState(false); // State to manage the navigation simulation
-
-    // Function to simulate navigation
-    const handleMonthlyClick = () => {
-        setIsCheckout(true); // Simulates navigating to the PaypalCheckoutButton page
-    };
-
-    if (isCheckout) {
-        return <PaypalCheckoutButton />; // Show the PayPal checkout page if isCheckout is true
-    }
-
-    return (
+    <div>
       <div style={surveyPlanPageStyle}>
         <img src={imgHolder} alt="Image Holder" style={imgHolderStyle} />
         <h2 style={headingStyle1}>
-          <span>Join Our Audiology</span> 
+          <span>Join Our Audiology</span>
           <span>Survey</span>
           <span>Community</span>
         </h2>
         <h2 style={headingStyle2}>Membership</h2>
-        <h2 style={headingStyle3}>$1,500<span style={slashMStyle}>/m</span></h2>
-        <div style={buttonFilledStyle} onClick={handleMonthlyClick}> {/* Add onClick event handler */}
+        <h2 style={headingStyle3}>
+          $1,500<span style={slashMStyle}>/m</span>
+        </h2>
+        <div style={buttonFilledStyle} onClick={handleMonthlyClick}>
           <span style={monthlyStyle}>Monthly</span>
         </div>
         <div style={lineStyle} />
-        <h3 style={headingStyle4}>Pause Or Cancel Anytime</h3>
+        <h3 style={headingStyle4}>Pause Or Cancel nytime</h3>
         <h3 style={includedTextStyle}>What's included</h3>
         <ul style={listStyle}>
           <li>Unlimited Reviews</li>
@@ -61,22 +46,10 @@ const SurveyPlanPage = () => {
           <li>Unlimited Users</li>
           <li>Pause or cancel anytime</li>
         </ul>
-        <button style={buttonStyle}>
+        <button style={buttonStyle} onClick={handleGetStarted}>
           Get Started
         </button>
       </div>
-      <div style={lineStyle} />
-      <h3 style={headingStyle4}>Pause Or Cancel nytime</h3>
-      <h3 style={includedTextStyle}>What's included</h3>
-      <ul style={listStyle}>
-        <li>Unlimited Reviews</li>
-        <li>Feedbacks</li>
-        <li>Unlimited Users</li>
-        <li>Pause or cancel anytime</li>
-      </ul>
-      <button style={buttonStyle} onClick={handleGetStarted}>
-        Get Started
-      </button>
     </div>
   );
 };
