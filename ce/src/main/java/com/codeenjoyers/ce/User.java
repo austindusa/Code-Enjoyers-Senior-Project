@@ -5,6 +5,7 @@ public class User {
     private String id; 
     private String email;
     private String passwordHash;
+    private boolean emailVerified; // Field to indicate email confirmation
 
     public User() {
     }
@@ -13,6 +14,7 @@ public class User {
         this.id = id;
         this.email = email;
         this.passwordHash = passwordHash;
+        this.emailVerified = emailVerified; // Initialize the emailVerified field
     }
 
     // Getters and setters
@@ -38,5 +40,13 @@ public class User {
 
     public void setPasswordHash(String passwordHash) {
         this.passwordHash = passwordHash;
+    }
+
+    public boolean isEmailVerified() {
+        return emailVerified;
+    }
+
+    public void setEmailVerified(boolean emailVerified) {
+        this.emailVerified = emailVerified;
     }
 }
