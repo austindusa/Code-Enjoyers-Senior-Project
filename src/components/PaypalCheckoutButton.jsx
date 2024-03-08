@@ -5,6 +5,13 @@ const PaypalCheckoutButton = () => {
   // Define the amount to charge
   const amount = '1500'; // Example amount
 
+  // Define what happens when an order is successfully approved
+  const handleApprove = (orderId) => {
+    console.log("Order approved! Order ID:", orderId);
+    //updating UI or calling your backend
+    alert(`Order approved! Order ID: ${orderId}`);
+  };
+
   return (
     <PayPalScriptProvider options={{ "client-id": "REACT_APP_PAYPAL_CLIENT_ID" }}>
       <div style={{
@@ -23,7 +30,6 @@ const PaypalCheckoutButton = () => {
           style={{
             layout: "vertical",
             shape: "rect",
-            
           }}
           createOrder={(data, actions) => {
             return actions.order.create({
@@ -35,10 +41,10 @@ const PaypalCheckoutButton = () => {
               }],
             });
           }}
-          onApprove={(data, actions) => {
-            return actions.order.capture().then((details) => {
-              alert('Transaction completed by ' + details.payer.name.given_name);
-            });
+          onApprove={async (data, actions) => {
+            const order = await actions.order.capture();
+            console.log("Order", order);
+            handleApprove(data.orderID);
           }}
         />
       </div>
