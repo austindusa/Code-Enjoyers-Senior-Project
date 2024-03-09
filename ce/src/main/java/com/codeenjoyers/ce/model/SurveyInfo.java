@@ -4,6 +4,8 @@ import java.util.List;
 
 public class SurveyInfo {
 
+    private String id;
+
     private String title;
     private long completionYear;
     private boolean inUSA;
@@ -82,6 +84,14 @@ public class SurveyInfo {
     private String affordableHousing;
 
     public SurveyInfo() {}
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;

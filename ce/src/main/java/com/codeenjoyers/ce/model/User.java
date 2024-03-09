@@ -1,4 +1,6 @@
-package com.codeenjoyers.ce;
+package com.codeenjoyers.ce.model;
+
+import java.util.List;
 
 public class User {
 
@@ -6,6 +8,9 @@ public class User {
     private String email;
     private String passwordHash;
     private boolean emailVerified; // Field to indicate email confirmation
+    private boolean subscriber;
+    private List<SurveyInfo> submittedSurveys;
+    private List<SurveyInfo> savedSurveys;
 
     public User() {
     }
@@ -15,6 +20,9 @@ public class User {
         this.email = email;
         this.passwordHash = passwordHash;
         this.emailVerified = emailVerified; // Initialize the emailVerified field
+        this.subscriber = subscriber;
+        this.submittedSurveys = submittedSurveys;
+        this.savedSurveys = savedSurveys;
     }
 
     // Getters and setters
@@ -49,4 +57,30 @@ public class User {
     public void setEmailVerified(boolean emailVerified) {
         this.emailVerified = emailVerified;
     }
+
+    public boolean getSubscriberStatus() {
+        return emailVerified;
+    }
+
+    public void setSubscriberStatus(boolean subscriber) {
+        this.subscriber = subscriber;
+    }
+
+    public List<SurveyInfo> getSubmittedSurveys() {
+        return submittedSurveys;
+    }
+
+    public void setSubmittedSurveys(List<SurveyInfo> submittedSurveys) {
+        this.submittedSurveys = submittedSurveys;
+    }
+
+    public List<SurveyInfo> getSavedSurveys() {
+        return savedSurveys;
+    }
+
+    public void setSavedSurveys(List<SurveyInfo> savedSurveys) {
+        this.savedSurveys = savedSurveys;
+    }
+
 }
+
