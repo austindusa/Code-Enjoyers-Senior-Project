@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./SignInForm.css";
-import { Link, Route, useHistory, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase/config.js";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
@@ -43,6 +43,10 @@ const ForgotPasswordForm = ({ onBackToLogin }) => {
 
 export default function SignInForm() {
   const [showForgotPassword, setShowForgotPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleForgotPassword = () => {
     setShowForgotPassword(true);
@@ -51,12 +55,6 @@ export default function SignInForm() {
   const handleBackToLogin = () => {
     setShowForgotPassword(false);
   };
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-
-  const navigate = useNavigate();
 
   const handleSignIn = async (e) => {
     e.preventDefault();
@@ -70,7 +68,7 @@ export default function SignInForm() {
       const user = userCredential.user;
       localStorage.setItem("accessToken", user.accessToken);
       localStorage.setItem("user", JSON.stringify(user));
-      navigate("/");
+      navigate("/subscription");
     } catch (error) {
       setErrorMessage("Incorrect email or password.");
     }
@@ -90,7 +88,9 @@ export default function SignInForm() {
               </div>
             )}
             {errorMessage && (
-              <p style={{ color: "red", marginLeft: "25px" }}>{errorMessage}</p>
+              <p style={{ color: "red", marginLeft: "25px" }}>
+                {errorMessage}
+              </p>
             )}
             <div id="input-field">
               <label htmlFor="email">Email</label>
@@ -111,11 +111,9 @@ export default function SignInForm() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <Link to="/forgotpassword">
-                <button type="button" id="change-pass-btn">
-                  Forgot Your Password
-                </button>
-              </Link>
+              <button type="button" id="change-pass-btn" onClick={handleForgotPassword}>
+                Forgot Your Password
+              </button>
             </div>
             <div id="log-in-btn">
               <button id="login">Login</button>
