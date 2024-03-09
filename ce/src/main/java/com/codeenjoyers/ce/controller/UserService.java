@@ -68,7 +68,7 @@ public class UserService {
 
     public String deleteUser(String documentId) {
         Firestore dbFirestore = FirestoreClient.getFirestore();
-        ApiFuture<WriteResult> writeResult = dbFirestore.collection("user").document(documentId).delete();
+        ApiFuture<WriteResult> writeResult = dbFirestore.collection("users").document(documentId).delete();
         return "Successfully deleted " + documentId;
     }
 
