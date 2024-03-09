@@ -83,6 +83,9 @@ export default function SignInForm() {
               <ForgotPasswordForm onBackToLogin={handleBackToLogin} />
             ) : (
               <div>
+                <Link to="/" className="logo-link">
+                  <img src="path/to/logo.png" alt="Logo" className="logo" />
+                </Link>
                 <h1>Login</h1>
                 <p id="form-p">Enter Your Account Details</p>
               </div>
@@ -111,7 +114,11 @@ export default function SignInForm() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <button type="button" id="change-pass-btn" onClick={handleForgotPassword}>
+              <button
+                type="button"
+                id="change-pass-btn"
+                onClick={handleForgotPassword}
+              >
                 Forgot Your Password
               </button>
             </div>
