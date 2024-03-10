@@ -27,6 +27,7 @@ FunctionFactory.Instance.register("isValidYear", isValidYear);
   
 
 export const reviewSurveyJson = {
+    "storeOthersAsComment" : false,
     "logoPosition": "right",
     "pages": [
      {
@@ -104,6 +105,13 @@ export const reviewSurveyJson = {
         "name": "question7",
         "title": "Number of days per week?",
         "isRequired": true,
+        "validators": [
+            {
+             "type": "expression",
+             "text": "Please enter a valid answer containing only letters, numbers, or common punctuation.",
+             "expression": "isValidInput({question7})",
+            }
+           ],
         "choices": [
          "3",
          "4",
@@ -119,6 +127,13 @@ export const reviewSurveyJson = {
         "name": "question8",
         "title": "Hours per day?",
         "isRequired": true,
+        "validators": [
+            {
+             "type": "expression",
+             "text": "Please enter a valid answer containing only letters, numbers, or common punctuation.",
+             "expression": "isValidInput({question8})",
+            }
+           ],
         "choices": [
          "8",
          "10"
@@ -165,6 +180,13 @@ export const reviewSurveyJson = {
         "title": "How was compensation distributed?",
         "enableIf": "{question9} = 'Yes'",
         "isRequired": true,
+        "validators": [
+            {
+             "type": "expression",
+             "text": "Please enter a valid answer containing only letters, numbers, or common punctuation.",
+             "expression": "isValidInput({question11})",
+            }
+           ],
         "choices": [
          "Weekly",
          "Bi-weekly",
@@ -231,6 +253,13 @@ export const reviewSurveyJson = {
         "name": "question16",
         "title": "Preceptor's background:",
         "isRequired": true,
+        "validators": [
+            {
+             "type": "expression",
+             "text": "Please enter a valid answer containing only letters, numbers, or common punctuation.",
+             "expression": "isValidInput({question16})",
+            }
+           ],
         "choices": [
          "All preceptors have AuD",
          "All preceptors have MA in Audiology",
@@ -243,6 +272,13 @@ export const reviewSurveyJson = {
         "name": "question17",
         "title": "Feedback style of preceptors - Feedback is provided:",
         "isRequired": true,
+        "validators": [
+            {
+             "type": "expression",
+             "text": "Please enter a valid answer containing only letters, numbers, or common punctuation.",
+             "expression": "isValidInput({question17})",
+            }
+           ],
         "choices": [
          "If asked by students",
          "On the spot during appointments",
@@ -278,6 +314,13 @@ export const reviewSurveyJson = {
         "name": "question19",
         "title": "The clinic population is mainly:",
         "isRequired": true,
+        "validators": [
+            {
+             "type": "expression",
+             "text": "Please enter a valid answer containing only letters, numbers, or common punctuation.",
+             "expression": "isValidInput({question19})",
+            }
+           ],
         "choices": [
          "Only adults",
          "Pediatric-focused (80% or more Pediatrics)",
@@ -375,6 +418,13 @@ export const reviewSurveyJson = {
         "name": "question26",
         "title": "Please select which of the following experiences are provided to students:",
         "isRequired": true,
+        "validators": [
+            {
+             "type": "expression",
+             "text": "Please enter a valid answer containing only letters, numbers, or common punctuation.",
+             "expression": "isValidInput({question26})",
+            }
+           ],
         "choices": [
          "Routine audiological testing (Audiometry + immittance)",
          "Hearing aid consultation",
@@ -686,6 +736,13 @@ export const reviewSurveyJson = {
         "name": "question45",
         "title": "How long does the student shadow their preceptor(s)?",
         "isRequired": true,
+        "validators": [
+            {
+             "type": "expression",
+             "text": "Please enter a valid answer containing only letters, numbers, or common punctuation.",
+             "expression": "isValidInput({question45})",
+            }
+           ],
         "choices": [
          "2-3 days",
          "1 week",
@@ -701,6 +758,13 @@ export const reviewSurveyJson = {
         "name": "question46",
         "title": "After what duration are students independent (see patients by themselves without supervisor in the room)?",
         "isRequired": true,
+        "validators": [
+            {
+             "type": "expression",
+             "text": "Please enter a valid answer containing only letters, numbers, or common punctuation.",
+             "expression": "isValidInput({question46})",
+            }
+           ],
         "choices": [
          "<1month",
          "1-2 months",
@@ -726,6 +790,13 @@ export const reviewSurveyJson = {
         "name": "question48",
         "title": "Number of sites and student placement in each site: Which of the following is true about the site:",
         "isRequired": true,
+        "validators": [
+            {
+             "type": "expression",
+             "text": "Please enter a valid answer containing only letters, numbers, or common punctuation.",
+             "expression": "isValidInput({question48})",
+            }
+           ],
         "choices": [
          "Placed in one primary center/ externship has one site.",
          "Externship has multiple sites with student at a different site everyday.",
@@ -738,6 +809,13 @@ export const reviewSurveyJson = {
         "name": "question49",
         "title": "Are hearing aid technicians or other staff available for support?",
         "isRequired": true,
+        "validators": [
+            {
+             "type": "expression",
+             "text": "Please enter a valid answer containing only letters, numbers, or common punctuation.",
+             "expression": "isValidInput({question49})",
+            }
+           ],
         "choices": [
          "Staff handle the hearing device/ ear impression/ other new hearing device check-ins and other coordination.",
          "Staff are primarily for appointment scheduling and patient check-ins."
@@ -755,6 +833,13 @@ export const reviewSurveyJson = {
         "name": "question50",
         "title": "Which professionals does the clinic routinely collaborate with (daily or multiple times a week)?",
         "isRequired": true,
+        "validators": [
+            {
+             "type": "expression",
+             "text": "Please enter a valid answer containing only letters, numbers, or common punctuation.",
+             "expression": "isValidInput({question50})",
+            }
+           ],
         "choices": [
          "Educational Audiologist",
          "ENT",
@@ -777,6 +862,13 @@ export const reviewSurveyJson = {
         "name": "question51",
         "title": "How often are meetings conducted with inter-professional colleagues?",
         "isRequired": true,
+        "validators": [
+            {
+             "type": "expression",
+             "text": "Please enter a valid answer containing only letters, numbers, or common punctuation.",
+             "expression": "isValidInput({question51})",
+            }
+           ],
         "choices": [
          "Weekly",
          "Bi-weekly",
@@ -794,6 +886,13 @@ export const reviewSurveyJson = {
         "name": "question52",
         "title": "How often are meetings held within the department?",
         "isRequired": true,
+        "validators": [
+            {
+             "type": "expression",
+             "text": "Please enter a valid answer containing only letters, numbers, or common punctuation.",
+             "expression": "isValidInput({question52})",
+            }
+           ],
         "choices": [
          "Weekly",
          "Bi-weekly",
@@ -873,6 +972,13 @@ export const reviewSurveyJson = {
         "name": "question58",
         "title": "Is time off provided to attend conferences?",
         "isRequired": true,
+        "validators": [
+            {
+             "type": "expression",
+             "text": "Please enter a valid answer containing only letters, numbers, or common punctuation.",
+             "expression": "isValidInput({question58})",
+            }
+           ],
         "choices": [
          "Yes",
          "No"
@@ -903,6 +1009,13 @@ export const reviewSurveyJson = {
         "name": "question60",
         "title": "Where is/was the externship advertised?",
         "isRequired": true,
+        "validators": [
+            {
+             "type": "expression",
+             "text": "Please enter a valid answer containing only letters, numbers, or common punctuation.",
+             "expression": "isValidInput({question60})",
+            }
+           ],
         "choices": [
          "HearCareers",
          "ASHA website",
@@ -945,6 +1058,13 @@ export const reviewSurveyJson = {
         "name": "question63",
         "title": "Details about lunch breaks:",
         "isRequired": true,
+        "validators": [
+            {
+             "type": "expression",
+             "text": "Please enter a valid answer containing only letters, numbers, or common punctuation.",
+             "expression": "isValidInput({question63})",
+            }
+           ],
         "choices": [
          "Pre-determined time for lunch breaks when patients are not scheduled.",
          "Lunch time is flexible and student needs to manage to have lunch between patients.",
