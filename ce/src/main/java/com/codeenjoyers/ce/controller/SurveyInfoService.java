@@ -2,13 +2,17 @@ package com.codeenjoyers.ce.controller;
 
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedList;
 import java.util.concurrent.ExecutionException;
+import java.util.List;
 
 import com.codeenjoyers.ce.model.SurveyInfo;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.Firestore;
+import com.google.cloud.firestore.QueryDocumentSnapshot;
+import com.google.cloud.firestore.QuerySnapshot;
 import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.cloud.FirestoreClient;
 
@@ -43,5 +47,17 @@ public class SurveyInfoService {
         Firestore dbFirestore = FirestoreClient.getFirestore();
         ApiFuture<WriteResult> writeResult = dbFirestore.collection("info").document(documentId).delete();
         return "Successfully deleted " + documentId;
+    }
+    public List<SurveyInfo> getAllSurveyInfos() throws InterruptedException, ExecutionException {
+        Firestore dbFirestore = FirestoreClient.getFirestore();
+        SurveyInfo info;
+        List<SurveyInfo> infos = new LinkedList<SurveyInfo>();
+        ApiFuture<QuerySnapshot> future = dbFirestore.collection("info").get();
+        List<QueryDocumentSnapshot> documents = future.get().getDocuments();
+        for(QueryDocumentSnapshot document : documents) {
+            info = document.toObject(SurveyInfo.class);
+            infos.add(info);
+        }
+        return infos;
     }
 }

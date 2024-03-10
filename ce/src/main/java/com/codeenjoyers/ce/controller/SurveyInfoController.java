@@ -48,4 +48,14 @@ public class SurveyInfoController {
     public String deleteMethodName(@RequestParam String documentId) throws InterruptedException, ExecutionException {
         return service.deleteSurveyInfo(documentId);
     }
+
+    @GetMapping("/infos")
+    public SurveyInfo[] getAllSurveyInfos() throws InterruptedException, ExecutionException {
+        SurveyInfo[] infos = new SurveyInfo[service.getAllSurveyInfos().size()];
+        for(int i = 0; i < service.getAllSurveyInfos().size(); i++) {
+            infos[i] = service.getAllSurveyInfos().get(i);
+        }
+        return infos;
+
+    }
 }

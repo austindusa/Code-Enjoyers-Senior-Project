@@ -1,19 +1,40 @@
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import Pagination from "./Pagination";
+import axios from "axios";
 
-function CardListWindow({ onCardClick }) {
-  const cards = 34;
+export default function CardListWindow({ onCardClick }) {
+  const [infos, setInfo] = useState([]);
 
-  const cardData = {
-    organizationName: "Example Organization",
-    externshipTitle: "Software Engineering Intern",
-    location: "San Francisco, CA",
-    description:
-      "Exciting internship opportunity working on cutting-edge projects.",
+  useEffect(() => {
+    console.log('infotype', typeof infos);
+    cardData();
+  }, []);
+
+  const cardData = async() => {
+    const result= await axios.get("http://localhost:8080/api/v2/infos");
+    setInfo(result.data);
   };
 
-  const windowStyle = {
+  return(
+    <div className="container">
+      <table>
+        <tbody>
+            {infos.map((info, index) => (
+              <tr>
+                <th scope="row" key={index}>{index+1}</th>
+                <td>{info.title}</td>
+                <td>{info.location}</td>
+              </tr>
+            ))}
+        </tbody>
+      </table>
+    </div>
+  )
+}
+
+
+  /*const windowStyle = {
     display: "flex",
     width: "30.125rem",
     height: "46.4375rem",
@@ -68,7 +89,5 @@ function CardListWindow({ onCardClick }) {
         setCurrentPage={setCurrentPage}
       />
     </div>
-  );
-}
+  );*/
 
-export default CardListWindow;
