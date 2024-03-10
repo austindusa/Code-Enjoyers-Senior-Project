@@ -1,4 +1,4 @@
-/* Style for the background */
+
 .background {
   display: flex;
   justify-content: center;
@@ -15,6 +15,18 @@
   background-repeat: no-repeat;
 }
 
+.logo-link {
+  position: absolute;
+  top: 80px;
+  left: 395px;
+  z-index: 1000;
+}
+
+.logo {
+  width: 100px;
+  height: auto; 
+}
+
 .box-border {
   display: flex;
   align-items: center;
@@ -24,6 +36,7 @@
   height: 27rem;
   margin-top: 3.5rem;
 }
+
 .box-border h1 {
   display: flex;
   justify-content: center;
@@ -33,6 +46,7 @@
   font-style: normal;
   font-weight: 700;
 }
+
 .box-border #form-p {
   display: flex;
   justify-content: center;
@@ -47,11 +61,13 @@
   flex-direction: column;
   justify-content: center;
 }
+
 .box-border label {
   margin-top: 1.2rem;
   font-size: 0.625rem;
   font-weight: 400;
 }
+
 .box-border input {
   margin-top: 5px;
   padding: 6px 10px;
@@ -87,11 +103,13 @@
   border: none;
   cursor: pointer;
 }
+
 #log-in-btn #login-google-btn {
   padding: 7px 20px;
   cursor: pointer;
   margin-top: 0.5rem;
 }
+
 #sign-up-btn {
   display: flex;
   justify-content: center;
@@ -111,23 +129,22 @@
   text-decoration-line: underline;
   cursor: pointer;
 }
-/*CSS for the forgot password*/
+
 .forgot-password-button {
-  color: #0a0000; /* Text color */
-  padding: 10px 15px; /* Padding for the button */
-  border: 1px solid #0a0000; /* Border with a dark color */
-  border-radius: 4px; /* Rounded corners */
-  cursor: pointer; /* Cursor style on hover */
-  font-size: 16px; /* Font size */
+  color: #0a0000; 
+  padding: 10px 15px; 
+  border: 1px solid #0a0000; 
+  border-radius: 4px; 
+  cursor: pointer;
+  font-size: 16px; 
   margin: 10px;
-  margin-bottom: 10px; /* Margin at the bottom for spacing */
+  margin-bottom: 10px;
 }
 
 .forgot-password-button[type="button"] {
-  background-color: white; /* Background color for "Back to Login" button */
+  background-color: white; 
 }
 
 .forgot-password-button:hover {
-  background-color: white; /* Lighter background on hover */
+  background-color: white; 
 }
-

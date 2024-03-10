@@ -89,7 +89,7 @@ function NavigationBar() {
               <button onClick={handleAddExternshipClick}>Add Externship</button>
             </ul>
             <SignInButton />
-            <SignUpButton />
+    
           </div>
         </div>
       </div>

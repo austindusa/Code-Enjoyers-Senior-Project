@@ -34,9 +34,13 @@ export default function SignInForm() {
         <div className="box-border">
           <form onSubmit={handleSignIn}>
               <div>
-               <h1>Login</h1>
-              <p id="form-p">Enter Your Account Details</p>
-             </div>
+                <Link to="/" className="logo-link">
+                  <img src="path/to/logo.png" alt="Logo" className="logo" />
+                </Link>
+                <h1>Login</h1>
+                <p id="form-p">Enter Your Account Details</p>
+              </div>
+            
             {errorMessage && (
               <p style={{ color: "red", marginLeft: "25px" }}>
                 {errorMessage}
@@ -61,8 +65,12 @@ export default function SignInForm() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <button type="button" id="change-pass-btn" onClick={(e) => navigate("/forgotpassword")}>
-                Forgot Your Password?
+              <button
+                type="button"
+                id="change-pass-btn"
+                onClick={handleForgotPassword}
+              >
+                Forgot Your Password
               </button>
             </div>
             <div id="log-in-btn">
