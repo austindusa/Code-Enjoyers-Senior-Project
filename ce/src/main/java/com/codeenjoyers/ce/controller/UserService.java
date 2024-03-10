@@ -1,6 +1,9 @@
 package com.codeenjoyers.ce.controller;
 
 import java.util.concurrent.ExecutionException;
+
+import org.springframework.stereotype.Service;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +19,7 @@ import com.google.cloud.firestore.QuerySnapshot;
 import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.cloud.FirestoreClient;
 
+@Service
 public class UserService {
 
     public String createUser(User user) throws ExecutionException, InterruptedException {

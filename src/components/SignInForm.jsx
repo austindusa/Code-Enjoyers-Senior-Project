@@ -1,60 +1,14 @@
 import React, { useState } from "react";
 import "./SignInForm.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase/config.js";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
-const ForgotPasswordForm = ({ onBackToLogin }) => {
-  const [email, setEmail] = useState("");
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Send password recovery email to:", email);
-  };
-
-  return (
-    <div>
-      <h1>Forgot Password</h1>
-      <p>Enter your email to recover your password.</p>
-      <form onSubmit={handleSubmit}>
-        <label>Email</label>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <div>
-          <button
-            type="button"
-            onClick={onBackToLogin}
-            className="forgot-password-button"
-          >
-            Back to Login
-          </button>
-          <button type="submit" className="forgot-password-button">
-            Send Recovery Email
-          </button>
-        </div>
-      </form>
-    </div>
-  );
-};
-
 export default function SignInForm() {
-  const [showForgotPassword, setShowForgotPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
-
-  const handleForgotPassword = () => {
-    setShowForgotPassword(true);
-  };
-
-  const handleBackToLogin = () => {
-    setShowForgotPassword(false);
-  };
 
   const handleSignIn = async (e) => {
     e.preventDefault();
@@ -79,14 +33,10 @@ export default function SignInForm() {
       <div className="background form-box">
         <div className="box-border">
           <form onSubmit={handleSignIn}>
-            {showForgotPassword ? (
-              <ForgotPasswordForm onBackToLogin={handleBackToLogin} />
-            ) : (
               <div>
-                <h1>Login</h1>
-                <p id="form-p">Enter Your Account Details</p>
-              </div>
-            )}
+               <h1>Login</h1>
+              <p id="form-p">Enter Your Account Details</p>
+             </div>
             {errorMessage && (
               <p style={{ color: "red", marginLeft: "25px" }}>
                 {errorMessage}
@@ -111,8 +61,8 @@ export default function SignInForm() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <button type="button" id="change-pass-btn" onClick={handleForgotPassword}>
-                Forgot Your Password
+              <button type="button" id="change-pass-btn" onClick={(e) => navigate("/forgotpassword")}>
+                Forgot Your Password?
               </button>
             </div>
             <div id="log-in-btn">

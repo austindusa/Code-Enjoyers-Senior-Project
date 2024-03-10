@@ -108,7 +108,7 @@ const SignUpForm = () => {
       </form>
       {/* Google Sign-Up button */}
       <p className={styles.text}>
-        Already have an account? <a href="/signin" className={styles.link}>Log in</a>
+        Already have an account? <a href="/login" className={styles.link}>Log in</a>
       </p>
     </div>
   );
