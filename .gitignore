@@ -27,3 +27,6 @@ yarn-error.log*
 # Service Key
 serviceAccountKey.json
 src/firebase/config.js
+
+# .env
+.env
