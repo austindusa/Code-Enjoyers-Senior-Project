@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./SignInForm.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { auth } from "../firebase/config.js";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
@@ -33,18 +33,16 @@ export default function SignInForm() {
       <div className="background form-box">
         <div className="box-border">
           <form onSubmit={handleSignIn}>
-              <div>
-                <Link to="/" className="logo-link">
-                  <img src="path/to/logo.png" alt="Logo" className="logo" />
-                </Link>
-                <h1>Login</h1>
-                <p id="form-p">Enter Your Account Details</p>
-              </div>
-            
+            <div>
+              <Link to="/" className="logo-link">
+                <img src="path/to/logo.png" alt="Logo" className="logo" />
+              </Link>
+              <h1>Login</h1>
+              <p id="form-p">Enter Your Account Details</p>
+            </div>
+
             {errorMessage && (
-              <p style={{ color: "red", marginLeft: "25px" }}>
-                {errorMessage}
-              </p>
+              <p style={{ color: "red", marginLeft: "25px" }}>{errorMessage}</p>
             )}
             <div id="input-field">
               <label htmlFor="email">Email</label>
@@ -68,7 +66,7 @@ export default function SignInForm() {
               <button
                 type="button"
                 id="change-pass-btn"
-                onClick={handleForgotPassword}
+                // onClick={handleForgotPassword}
               >
                 Forgot Your Password
               </button>

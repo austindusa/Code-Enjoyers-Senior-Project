@@ -6,11 +6,11 @@ function SearchBar() {
     <div className={styles.container}>
       <div>
         <h1 className={styles.container.H1}>
-          Find and Rate Your <br />
-          Dream Externships
+          Find & Share your Audiology Externships
         </h1>
         <p className={styles.containerP}>
-          Discover the best externships and share your experiences with others.
+          Discover what your peers feel about their externship experience and
+          share your experiences with others.
         </p>
       </div>
       <div className={styles.searchBar}>
@@ -31,4 +31,3 @@ function SearchBar() {
 }
 
 export default SearchBar;
-
