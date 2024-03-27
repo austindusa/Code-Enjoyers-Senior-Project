@@ -73,13 +73,13 @@
   display: flex;
   justify-content: space-around;
   letter-spacing: -0.03rem;
-  color: #e8e8e8;
+  color: white;
   text-align: left;
   font-size: 1rem;
   margin-right: 4rem;
   list-style: none;
   margin-top: 1.5rem;
-  transition: background-color 0.1s;
+  transition: background-color 0.3s ease;
 }
 
 .box #us {
@@ -89,12 +89,18 @@
 
 ul li:hover {
   cursor: pointer;
-  color: #b3b3b3;
+  color: #4c644f;
 }
 .header {
-  width: 60%;
+  width: 100%;
   position: fixed;
   bottom: 0;
-  background-color: #333333;
+  background-color: #aec3b1;
   height: 4rem;
+}
+
+.my-container {
+  display: fixed;
+  height: 100vh;
+  background-image: url("../images/backround-img.png");
 }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./SignInForm.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { auth } from "../firebase/config.js";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
@@ -21,8 +21,8 @@ export default function SignInForm() {
       );
       const user = userCredential.user;
       localStorage.setItem("accessToken", user.accessToken);
-      localStorage.setItem("user", JSON.stringify(user));
-      navigate("/subscription");
+      localStorage.setItem("isLoggedIn", "true");
+      navigate("/SurveyPlanPage");
     } catch (error) {
       setErrorMessage("Incorrect email or password.");
     }
@@ -33,18 +33,16 @@ export default function SignInForm() {
       <div className="background form-box">
         <div className="box-border">
           <form onSubmit={handleSignIn}>
-              <div>
-                <Link to="/" className="logo-link">
-                  <img src="path/to/logo.png" alt="Logo" className="logo" />
-                </Link>
-                <h1>Login</h1>
-                <p id="form-p">Enter Your Account Details</p>
-              </div>
-            
+            <div>
+              <Link to="/" className="logo-link">
+                <img src="path/to/logo.png" alt="Logo" className="logo" />
+              </Link>
+              <h1>Login</h1>
+              <p id="form-p">Enter Your Account Details</p>
+            </div>
+
             {errorMessage && (
-              <p style={{ color: "red", marginLeft: "25px" }}>
-                {errorMessage}
-              </p>
+              <p style={{ color: "red", marginLeft: "25px" }}>{errorMessage}</p>
             )}
             <div id="input-field">
               <label htmlFor="email">Email</label>
@@ -65,7 +63,7 @@ export default function SignInForm() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <Link to = "/forgotpassword">
+              <Link to="/forgotpassword">
                 <button type="button" id="change-pass-btn">
                   Forgot Your Password
                 </button>

@@ -1,13 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CardListWindow from "../components/CardListWindow";
 import ReviewContainer from "../components/reviewContainer";
 import NavigationBar from "../components/navigationBar";
 import ResultSearchBar from "../components/resultSearchComp";
 import BookmarkToggle from "../components/bookmarkToggle";
 import "./SearchResultContainer.css";
+import { useNavigate } from "react-router";
 
 function ResultPage() {
   const [selectedCard, setSelected] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const hasPaid = localStorage.getItem("hasPaid") === "true";
+    if (!hasPaid) {
+      navigate("/");
+    }
+  }, [navigate]);
 
   const horizontalStyle = {
     display: "flex",

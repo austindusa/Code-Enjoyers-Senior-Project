@@ -10,29 +10,30 @@ import ChangePasswordPage from "./pages/ChangePasswordPage.jsx";
 import ForgotPassword from "./components/ForgotPassword.jsx";
 import SurveyPlanPage from "./components/SurveyPlanPage.jsx";
 import SubscriptionServiceInfoPage from "./components/SubscriptionServiceInfoPage.jsx";
-import { ChakraProvider } from '@chakra-ui/react';
+import PaypalCheckoutButton from "./components/PaypalCheckoutButton.jsx";
+import { ChakraProvider } from "@chakra-ui/react";
 
 function App() {
   return (
     <ChakraProvider>
       <Router>
-      <div>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<LogIn />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/resultpage" element={<ResultPage />} />
-          <Route path="/bookmarks" element={<Bookmarks />} />
-          <Route path="/change-password" element={<ChangePasswordPage />} />
-          <Route path="/forgotpassword" element={<ForgotPassword />} />
-          <Route path="/surveyplanpage" element={<SurveyPlanPage />} />
-          <Route
-            path="/subscription"
-            element={<SubscriptionServiceInfoPage />}
-          />
-        </Routes>
-      </div>
-    </Router>
+        <div>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<LogIn />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/resultpage" element={<ResultPage />} />
+            <Route path="/bookmarks" element={<Bookmarks />} />
+            <Route path="/change-password" element={<ChangePasswordPage />} />
+            <Route path="/forgotpassword" element={<ForgotPassword />} />
+            <Route path="/surveyplanpage" element={<SurveyPlanPage />} />
+            <Route
+              path="/pay-pal-checkout"
+              element={<PaypalCheckoutButton />}
+            />
+          </Routes>
+        </div>
+      </Router>
     </ChakraProvider>
   );
 }
