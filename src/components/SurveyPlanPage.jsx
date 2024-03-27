@@ -73,7 +73,7 @@ const surveyPlanPageStyle = {
   position: "absolute",
   width: "89.875rem",
   left: "0.125rem",
-  top: "8.25rem",
+  top: "10.25rem",
 };
 
 const imgHolderStyle = {
@@ -92,7 +92,7 @@ const headingStyle1 = {
   width: "541px",
   height: "156px",
   left: "46px",
-  top: "350px",
+  top: "400px",
   fontFamily: "'Roboto'",
   fontStyle: "normal",
   fontWeight: 700,
@@ -106,7 +106,7 @@ const headingStyle2 = {
   width: "900px",
   height: "200px",
   left: "766px",
-  top: "-85px",
+  top: "-45px",
   fontFamily: "'Roboto'",
   fontStyle: "normal",
   fontWeight: 700,
@@ -118,7 +118,7 @@ const headingStyle2 = {
 const headingStyle3 = {
   position: "absolute",
   left: "766px",
-  top: "90px",
+  top: "100px",
   fontFamily: "'Roboto'",
   fontStyle: "normal",
   fontWeight: 700,
@@ -130,7 +130,7 @@ const headingStyle3 = {
 const headingStyle5 = {
   position: "absolute",
   left: "766px",
-  top: "0.5px",
+  top: "30px",
   fontFamily: "'Roboto'",
   fontStyle: "normal",
   fontWeight: 700,
