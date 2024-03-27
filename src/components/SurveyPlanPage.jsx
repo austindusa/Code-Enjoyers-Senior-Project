@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import imgHolder from "../images/imageHold.jpeg";
+import imgHolder from "../images/SurveyPlanPage.jpg";
 import { useNavigate } from "react-router-dom";
 import PaypalCheckoutButton from "./PaypalCheckoutButton";
 
