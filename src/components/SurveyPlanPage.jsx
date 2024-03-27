@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import imgHolder from "../images/imageHold.jpeg";
+import imgHolder from "../images/SurveyPage.jpg";
 import { useNavigate } from "react-router-dom";
 import PaypalCheckoutButton from "./PaypalCheckoutButton";
 import NavigationBar from "./navigationBar";
@@ -17,7 +17,7 @@ const SurveyPlanPage = () => {
   }
 
   return (
-    <div>
+    <div style={pageStyle}>
       <NavigationBar />
       <div style={surveyPlanPageStyle}>
         <img src={imgHolder} alt="Image Holder" style={imgHolderStyle} />
@@ -53,6 +53,10 @@ const SurveyPlanPage = () => {
   );
 };
 
+const pageStyle = {
+  height: "98vh",
+  backgroundColor: "#f0fef0",
+};
 const surveyPlanPageStyle = {
   display: "flex",
   flexDirection: "row",
@@ -63,7 +67,6 @@ const surveyPlanPageStyle = {
   width: "89.875rem",
   left: "0.125rem",
   top: "8.25rem",
-  background: "#FFFFFF",
 };
 
 const imgHolderStyle = {
