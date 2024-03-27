@@ -1,10 +1,11 @@
 import React from "react";
 import NavigationBar from "./components/navigationBar";
-import SearchBar from "./components/searchComponent";
-import SecondPage from "./components/imageTextBox";
+import HeroSection from "./components/HeroSection";
+import AboutSiteSection from "./components/AboutSiteSection";
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "./firebase/config";
+import {colors} from "./colors"
 
 function Home() {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -19,10 +20,14 @@ function Home() {
   return (
     <div>
       <NavigationBar />
-      <SearchBar />
-      <SecondPage />
+      <HeroSection />
+      <AboutSiteSection />
     </div>
   );
+}
+
+const divStyle = {
+  color: colors.background
 }
 
 export default Home;

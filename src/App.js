@@ -10,10 +10,12 @@ import ChangePasswordPage from "./pages/ChangePasswordPage.jsx";
 import ForgotPassword from "./components/ForgotPassword.jsx";
 import SurveyPlanPage from "./components/SurveyPlanPage.jsx";
 import SubscriptionServiceInfoPage from "./components/SubscriptionServiceInfoPage.jsx";
+import { ChakraProvider } from '@chakra-ui/react';
 
 function App() {
   return (
-    <Router>
+    <ChakraProvider>
+      <Router>
       <div>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -31,6 +33,7 @@ function App() {
         </Routes>
       </div>
     </Router>
+    </ChakraProvider>
   );
 }
 
