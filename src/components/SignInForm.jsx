@@ -21,7 +21,7 @@ export default function SignInForm() {
       );
       const user = userCredential.user;
       localStorage.setItem("accessToken", user.accessToken);
-      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem("isLoggedIn", "true");
       navigate("/SurveyPlanPage");
     } catch (error) {
       setErrorMessage("Incorrect email or password.");

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import imgHolder from "../images/SurveyPage.jpg";
 import { useNavigate } from "react-router-dom";
 import PaypalCheckoutButton from "./PaypalCheckoutButton";
@@ -10,6 +10,13 @@ const SurveyPlanPage = () => {
   function handleGetStarted() {
     navigate("/pay-pal-checkout");
   }
+
+  useEffect(() => {
+    const hasPaid = localStorage.getItem("hasPaid") === "true";
+    if (hasPaid) {
+      navigate("/resultpage");
+    }
+  }, [navigate]);
 
   const [isCheckout, setIsCheckout] = useState(false); // State to manage the navigation simulation
   if (isCheckout) {
