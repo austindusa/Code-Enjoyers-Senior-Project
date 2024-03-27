@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { auth } from "../firebase/config.js";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import SignUpButton from "./signUpButton.jsx";
+import { Button } from '@chakra-ui/react'
+import {colors} from '../colors';
 
 function SignInButton() {
     const [user, setUser] = useState(null);
@@ -52,14 +54,12 @@ function SignInButton() {
         alignItems: 'center',
         padding: '0.5rem 1.25rem',
         gap: '0.5rem',
-        fontFamily: 'Roboto',
-        fontSize: '0.625rem',
         fontStyle: 'normal',
-        fontWeight: '400',
+        fontWeight: '600',
         lineHeight: '150%',
 
-        background: 'var(--Black, #060606)',
-        color: 'var(--White, #ffffff)',
+        background: colors.primary,
+        color: colors.text,
     };
 
     return (
@@ -76,7 +76,7 @@ function SignInButton() {
                     )}
                 </>
             ) : (
-                <Link to="/login"><button style={buttonStyle}>Sign in</button></Link>
+                <Link to="/login"><Button style={buttonStyle} size='sm'>Sign in</Button></Link>
             )}
             {showSignUpButton && <SignUpButton />}
         </>

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import logo from "../images/logo.svg";
+import logo from "../images/AudiologyLogo.png";
 import SignInButton from "./signInButton";
 import SignUpButton from "./signUpButton";
 import AddExternship from "./AddExternship";
 import { Link, useNavigate } from "react-router-dom";
 import SignInForm from "./SignInForm.jsx";
 import SurveyPlanPage from "./SurveyPlanPage.jsx";
+import {colors} from '../colors';
 
 function NavigationBar() {
   const [addExternshipButton, setButtonAddExternship] = useState(false);
@@ -40,8 +41,8 @@ function NavigationBar() {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    borderBottom: "1px solid var(--Black, #060606)",
-    background: "var(--White, #FFF)",
+    borderBottom: "1px solid " + colors.text,
+    background: colors.background,
   };
 
   const innerContainerStyle = {
@@ -58,25 +59,16 @@ function NavigationBar() {
     gap: "2rem",
   };
 
-  const signInStyle = {
-    background: "black",
-    color: "white",
-    border: "2px solid black",
-    padding: "10px 20px",
-  };
-
-  const signUpStyle = {
-    background: "white",
-    color: "black",
-    border: "2px solid black",
-    padding: "10px 20px",
-  };
+  const imageStyle = {
+    height: '30px',
+    width: '220px',
+  }
 
   return (
     <>
       <div style={navigationStyle}>
         <div style={innerContainerStyle}>
-          <img src={logo} alt="Logo" className="logo" />
+          <img src={logo} alt="Logo" style={imageStyle} />
           <div style={clickableComponentsStyle}>
             <ul className="navbar-menu">
               <li>

@@ -63,13 +63,11 @@ export default function SignInForm() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <button
-                type="button"
-                id="change-pass-btn"
-                // onClick={handleForgotPassword}
-              >
-                Forgot Your Password
-              </button>
+              <Link to="/forgotpassword">
+                <button type="button" id="change-pass-btn">
+                  Forgot Your Password
+                </button>
+              </Link>
             </div>
             <div id="log-in-btn">
               <button id="login">Login</button>
