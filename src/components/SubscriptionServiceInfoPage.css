@@ -100,7 +100,6 @@ ul li:hover {
 }
 
 .my-container {
-  display: fixed;
   height: 100vh;
   background-image: url("../images/backround-img.png");
 }

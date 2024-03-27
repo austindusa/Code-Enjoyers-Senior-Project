@@ -62,13 +62,14 @@ const SurveyPlanPage = () => {
 
 const pageStyle = {
   height: "98vh",
+  overflow: "hidden",
   backgroundColor: "#f0fef0",
 };
 const surveyPlanPageStyle = {
   display: "flex",
-  flexDirection: "row",
+  flexDirection: "column",
   alignItems: "center",
-  padding: "4.25rem 4rem 5.875rem",
+  padding: "2rem",
   isolation: "isolate",
   position: "absolute",
   width: "89.875rem",
@@ -81,7 +82,7 @@ const imgHolderStyle = {
   width: "31.25rem",
   height: "25rem",
   top: "-35px",
-  left: "19%",
+  left: "22%",
   transform: "translateX(-50%)",
 };
 
@@ -91,7 +92,7 @@ const headingStyle1 = {
   position: "absolute",
   width: "541px",
   height: "156px",
-  left: "46px",
+  left: "60px",
   top: "400px",
   fontFamily: "'Roboto'",
   fontStyle: "normal",
@@ -103,7 +104,7 @@ const headingStyle1 = {
 
 const headingStyle2 = {
   position: "absolute",
-  width: "900px",
+  width: "50vw",
   height: "200px",
   left: "766px",
   top: "-45px",
