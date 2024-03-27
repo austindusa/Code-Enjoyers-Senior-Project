@@ -79,7 +79,7 @@
   margin-right: 4rem;
   list-style: none;
   margin-top: 1.5rem;
-  transition: background-color 0.1s;
+  transition: background-color 0.3s ease;
 }
 
 .box #us {
@@ -92,9 +92,9 @@ ul li:hover {
   color: #b3b3b3;
 }
 .header {
-  width: 60%;
+  width: 100%;
   position: fixed;
   bottom: 0;
-  background-color: #333333;
+  background-color: #654421;
   height: 4rem;
 }

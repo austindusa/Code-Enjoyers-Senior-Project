@@ -2,53 +2,52 @@ import React, { useState } from "react";
 import imgHolder from "../images/imageHold.jpeg";
 import { useNavigate } from "react-router-dom";
 import PaypalCheckoutButton from "./PaypalCheckoutButton";
+import NavigationBar from "./navigationBar";
 
 const SurveyPlanPage = () => {
   const navigate = useNavigate();
 
   function handleGetStarted() {
-    navigate("/subscription");
+    navigate("/pay-pal-checkout");
   }
 
   const [isCheckout, setIsCheckout] = useState(false); // State to manage the navigation simulation
-
-  // Function to simulate navigation
-  const handleMonthlyClick = () => {
-    setIsCheckout(true); // Simulates navigating to the PaypalCheckoutButton page
-  };
-
   if (isCheckout) {
     return <PaypalCheckoutButton />; // Show the PayPal checkout page if isCheckout is true
   }
 
   return (
     <div>
+      <NavigationBar />
       <div style={surveyPlanPageStyle}>
         <img src={imgHolder} alt="Image Holder" style={imgHolderStyle} />
         <h2 style={headingStyle1}>
           <span>Join Our Audiology</span>
-          <span>Survey</span>
-          <span>Community</span>
+          <span>Survey Community</span>
         </h2>
-        <h2 style={headingStyle2}>Membership</h2>
+        <h2 style={headingStyle2}>Audiology Membership Plan</h2>
+        <h3 style={headingStyle5}>Unlock the Power of Externship Reviews</h3>
         <h2 style={headingStyle3}>
-          $1,500<span style={slashMStyle}>/m</span>
+          $1 <span style={slashMStyle}>/ Month</span>
         </h2>
-        <div style={buttonFilledStyle} onClick={handleMonthlyClick}>
-          <span style={monthlyStyle}>Monthly</span>
-        </div>
         <div style={lineStyle} />
-        <h3 style={headingStyle4}>Pause Or Cancel nytime</h3>
-        <h3 style={includedTextStyle}>What's included</h3>
-        <ul style={listStyle}>
-          <li>Unlimited Reviews</li>
-          <li>Feedbacks</li>
-          <li>Unlimited Users</li>
-          <li>Pause or cancel anytime</li>
-        </ul>
+        <h3 style={includedTextStyle}>Why Subscribe?</h3>
+        <p style={listStyle1}>
+          Enjoy the freedom to access an unlimited number of reviews, receiving
+          continuous and comprehensive feedback from users to stay informed.
+          Plus, take control of your subscription with the flexibility to pause
+          or cancel anytime, allowing unlimited users to benefit from this
+          exceptional service.
+        </p>
         <button style={buttonStyle} onClick={handleGetStarted}>
-          Get Started
+          SUBSCRIBE
         </button>
+      </div>
+      <div className="header">
+        <ul>
+          <li>About Us</li>
+          <li>Contact Us</li>
+        </ul>
       </div>
     </div>
   );
@@ -58,22 +57,20 @@ const surveyPlanPageStyle = {
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
-  padding: "68px 64px 94px",
-  gap: "80px",
+  padding: "4.25rem 4rem 5.875rem",
   isolation: "isolate",
   position: "absolute",
-  width: "1438px",
-  height: "817px",
-  left: "2px",
-  top: "84px",
+  width: "89.875rem",
+  left: "0.125rem",
+  top: "8.25rem",
   background: "#FFFFFF",
 };
 
 const imgHolderStyle = {
   position: "absolute",
-  width: "500px",
-  height: "400px",
-  top: "-50px",
+  width: "31.25rem",
+  height: "25rem",
+  top: "-35px",
   left: "19%",
   transform: "translateX(-50%)",
 };
@@ -96,10 +93,10 @@ const headingStyle1 = {
 
 const headingStyle2 = {
   position: "absolute",
-  width: "581px",
+  width: "900px",
   height: "200px",
   left: "766px",
-  top: "-100px",
+  top: "-85px",
   fontFamily: "'Roboto'",
   fontStyle: "normal",
   fontWeight: 700,
@@ -110,20 +107,31 @@ const headingStyle2 = {
 
 const headingStyle3 = {
   position: "absolute",
-  width: "581px",
-  height: "104px",
   left: "766px",
-  top: "70px",
+  top: "90px",
   fontFamily: "'Roboto'",
   fontStyle: "normal",
   fontWeight: 700,
-  fontSize: "48px",
+  fontSize: "40px",
   lineHeight: "120%",
   color: "#060606",
 };
 
+const headingStyle5 = {
+  position: "absolute",
+  left: "766px",
+  top: "0.5px",
+  fontFamily: "'Roboto'",
+  fontStyle: "normal",
+  fontWeight: 700,
+  fontSize: "1.5rem",
+  lineHeight: "120%",
+  color: "#060606",
+  letterSpacing: "-0.2px",
+};
 const slashMStyle = {
-  fontSize: "24px",
+  fontSize: "35px",
+  marginBottom: "40px",
 };
 
 const buttonFilledStyle = {
@@ -144,27 +152,12 @@ const buttonFilledStyle = {
   borderRadius: "100px",
 };
 
-const monthlyStyle = {
-  position: "absolute",
-  width: "72px",
-  height: "24px",
-  left: "60px",
-  bottom: "15px",
-  fontFamily: "'Roboto'",
-  fontStyle: "normal",
-  fontWeight: 400,
-  fontSize: "20px",
-  lineHeight: "24px",
-  textAlign: "center",
-  color: "#ECECEC",
-};
-
 const lineStyle = {
   position: "absolute",
   width: "636px",
   height: "0px",
   left: "766px",
-  top: "240px",
+  top: "220px",
   border: "1px solid #000000",
   transform: "rotate(0.23deg)",
 };
@@ -189,16 +182,21 @@ const buttonStyle = {
   flexDirection: "row",
   justifyContent: "center",
   alignItems: "center",
-  padding: "12px 24px",
+  padding: "12px 50px",
+  fontSize: "1.2rem",
   gap: "8px",
   position: "absolute",
-  width: "141px",
-  height: "52px",
+  width: "20rem",
+  height: "3rem",
   left: "770px",
-  top: "400px",
-  background: "#000000",
+  top: "450px",
+  background: "#E5A35C",
   color: "#FFFFFF",
   border: "1px solid #000000",
+  borderRadius: "18px",
+  cursor: "pointer",
+  border: "none",
+  Transition: "background-color 0.3s ease",
 };
 
 const includedTextStyle = {
@@ -206,25 +204,28 @@ const includedTextStyle = {
   width: "auto",
   height: "auto",
   left: "766px",
-  top: "250px",
+  top: "240px",
   fontFamily: "'Roboto'",
   fontStyle: "normal",
-  fontWeight: 400,
-  fontSize: "16px",
+  fontWeight: 600,
+  fontSize: "1.5rem",
   lineHeight: "120%",
   color: "#060606",
 };
 
-const listStyle = {
+const listStyle1 = {
   position: "absolute",
-  left: "766px",
-  top: "290px",
+  left: "47.875rem",
+  top: "18.125rem",
   fontFamily: "'Roboto'",
   fontStyle: "normal",
   fontWeight: 400,
-  fontSize: "16px",
+  fontSize: "1.2rem",
   lineHeight: "120%",
   color: "#060606",
+  marginBottom: "0.625rem",
+  listStyle: "none",
+  marginRight: "55px",
 };
 
 export default SurveyPlanPage;
