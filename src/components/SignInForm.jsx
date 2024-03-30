@@ -1,18 +1,19 @@
-import React, { useState } from "react";
-import "./SignInForm.css";
-import { useNavigate, Link } from "react-router-dom";
-import { auth } from "../firebase/config.js";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase/config';
+import styles from './SignInForm.module.css'; 
+import logo from '../images/AudiologyLogo.png'; 
+import { colors } from '../colors'; 
 
 export default function SignInForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
   const handleSignIn = async (e) => {
     e.preventDefault();
-
     try {
       const userCredential = await signInWithEmailAndPassword(
         auth,
@@ -29,57 +30,41 @@ export default function SignInForm() {
   };
 
   return (
-    <div className="background-img">
-      <div className="background form-box">
-        <div className="box-border">
-          <form onSubmit={handleSignIn}>
-            <div>
-              <Link to="/" className="logo-link">
-                <img src="path/to/logo.png" alt="Logo" className="logo" />
-              </Link>
-              <h1>Login</h1>
-              <p id="form-p">Enter Your Account Details</p>
-            </div>
-
-            {errorMessage && (
-              <p style={{ color: "red", marginLeft: "25px" }}>{errorMessage}</p>
-            )}
-            <div id="input-field">
-              <label htmlFor="email">Email</label>
-              <input
-                id="email"
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div id="input-field">
-              <label htmlFor="password">Password</label>
-              <input
-                id="password"
-                type="password"
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <Link to="/forgotpassword">
-                <button type="button" id="change-pass-btn">
-                  Forgot Your Password
-                </button>
-              </Link>
-            </div>
-            <div id="log-in-btn">
-              <button id="login">Login</button>
-              <button id="login-google-btn">Login with Google</button>
-            </div>
-            <span id="sign-up-btn">
-              <span>Don't have an account?</span>
-              <button>Sign Up</button>
-            </span>
-          </form>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: colors.background }}>
+      <form style={{ width: '100%', maxWidth: '320px', padding: '20px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', background: '#fff', textAlign: 'center' }} onSubmit={handleSignIn}>
+        <img src={logo} alt="Audiology Externship" className={styles.logo} />
+        <h1 className={styles.heading}>Login</h1>
+        {errorMessage && <div className={styles.error}>{errorMessage}</div>}
+        <div className={styles.inputGroup}>
+          <label htmlFor="email" className={styles.label}>Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className={styles.input}
+            required
+          />
         </div>
-      </div>
+        <div className={styles.inputGroup}>
+          <label htmlFor="password" className={styles.label}>Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className={styles.input}
+            required
+          />
+        </div>
+        <button type="submit" className={styles.button}>Login</button>
+        <button type="button" className={styles.googleSignUp}>Login with Google</button>
+        <div className={styles.text}>
+          Don't have an account? <span className={styles.link} onClick={() => navigate('/signup')}>Sign Up</span>
+        </div>
+      </form>
     </div>
   );
 }
