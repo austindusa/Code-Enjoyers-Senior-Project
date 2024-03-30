@@ -1,91 +1,118 @@
-/*style for the sign up */
-
+/* General styles */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0; 
+  background-color: #f0fef0; /* Using color from colors.js */
 }
 
-/* Styles for SignUpForm component */
-.signUpForm {
-  max-width: 300px;
-  margin: 20px auto;
+/* Centering the SignUp form on the page */
+.signUpForm-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   padding: 20px;
-  border: 1px solid #131111;
-  border-radius: 5px;
+}
+
+/* SignUp form styling */
+.signUpForm {
+  width: 100%;
+  max-width: 320px; /* Adjust width as needed */
+  background: #fff; /* White background */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
   text-align: center;
 }
 
+/* Logo styles */
 .logo {
-  max-width: 100%;
+  width: 200px; /* or any size you want */
   height: auto;
-  margin-bottom: 20px;
-  font-weight: bold;
 }
 
+/* Heading styles */
 .heading {
-  font-size: 1.5em;
+  font-size: 24px; /* Larger font size for heading */
+  color: #68986f; /* Primary color from colors.js */
   margin-bottom: 20px;
 }
 
-/* Style for labels */
+/* Label styles */
 .label {
-  display: block;
+  font-size: 14px; /* Smaller font size for labels */
+  color: #111611; /* Text color from colors.js */
   margin-bottom: 8px;
   text-align: left;
+  display: block;
 }
 
-/* Style for input fields */
+/* Input field styles */
 .input {
   width: 100%;
-  padding: 8px;
+  padding: 10px;
   margin-bottom: 15px;
+  border: 1px solid #b0ccb4; /* Secondary color from colors.js */
+  border-radius: 4px;
   box-sizing: border-box;
-  border-radius: 10px;
 }
 
-/* Style for buttons */
+/* Button styles */
 .button {
-  background-color: #021302;
+  background-color: #68986f; /* Primary color from colors.js */
   color: white;
-  padding: 10px 20px;
+  padding: 10px 0; /* Same padding top/bottom */
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
   width: 100%;
-  box-sizing: border-box;
-  border-radius: 10px;
-  margin-bottom: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-size: 16px; /* Larger font size for button text */
 }
 
-/* Style for Google Sign Up button */
+.button:hover {
+  background-color: #80b287; /* Accent color from colors.js */
+}
+
+/* Google Sign Up button styles */
 .googleSignUp {
   background-color: white;
-  color: rgb(14, 13, 13);
+  color: #111611; /* Text color from colors.js */
+  padding: 10px 0; /* Same padding top/bottom */
+  border: 1px solid #68986f; /* Primary color from colors.js */
+  width: 100%;
+  text-align: center;
+  display: block;
+  margin-bottom: 15px;
+  text-decoration: none; /* Remove underline from anchor tags */
 }
 
-/* Hover effect for buttons */
-.button:hover {
-  background-color: #6c2ce2;
+.googleSignUp:hover {
+  background-color: #f0fef0; /* Background color from colors.js */
 }
 
-/* Style for text and link */
+/* Text and link styles */
 .text {
+  font-size: 14px;
+  color: #111611; /* Text color from colors.js */
   margin-top: 20px;
 }
 
 .link {
-  color: #171618;
+  color: #68986f; /* Primary color from colors.js */
   text-decoration: none;
 }
 
 .link:hover {
   text-decoration: underline;
 }
-/* Style for error messages */
+
+/* Error message styles */
 .error {
   color: red;
-  font-size: 0.9em;
+  font-size: 14px; /* Readability */
+  margin-top: 10px; /* Spacing */
   margin-bottom: 10px;
 }
-
