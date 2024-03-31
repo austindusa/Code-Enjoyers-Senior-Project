@@ -76,7 +76,6 @@ const SignUpForm = () => {
       sendEmailVerification(userCredential.user)
         .then(() => {
           alert('Verification email sent. Please check your email to verify your account.');
-          navigate('/dashboard'); // Adjust the redirect as needed
         })
         .catch((verificationError) => setError(verificationError.message));
     } catch (signupError) {
