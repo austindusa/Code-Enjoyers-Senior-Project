@@ -29,6 +29,10 @@ export default function SignInForm() {
     }
   };
 
+  const handleGoHome = () => {
+    navigate('/'); // This will navigate to the home route when clicked
+  };
+
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: colors.background }}>
       <form style={{ width: '100%', maxWidth: '320px', padding: '20px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', background: '#fff', textAlign: 'center' }} onSubmit={handleSignIn}>
@@ -61,8 +65,10 @@ export default function SignInForm() {
         </div>
         <button type="submit" className={styles.button}>Login</button>
         <button type="button" className={styles.googleSignUp}>Login with Google</button>
+        <button className={styles.homeButton} onClick={handleGoHome}>Home</button>
         <div className={styles.text}>
           Don't have an account? <span className={styles.link} onClick={() => navigate('/signup')}>Sign Up</span>
+          
         </div>
       </form>
     </div>
