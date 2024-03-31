@@ -30,13 +30,14 @@ body {
 .logo {
   width: 200px; /* or any size you want */
   height: auto;
+  margin-bottom: 10px;
 }
 
 /* Heading styles */
 .heading {
   font-size: 24px; /* Larger font size for heading */
   color: #68986f; /* Primary color from colors.js */
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 /* Label styles */

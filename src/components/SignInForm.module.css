@@ -19,13 +19,13 @@
 .logo {
   width: 200px;
   height: auto;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .heading {
   font-size: 24px;
   color: #68986f; /* Primary color from colors.js */
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .label {
