@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { createUserWithEmailAndPassword, sendEmailVerification, onAuthStateChanged,getAuth } from 'firebase/auth';
-import { doc, updateDoc, getFirestore } from 'firebase/firestore';
-import { auth } from '../firebase/config'; 
+import { createUserWithEmailAndPassword, sendEmailVerification, onAuthStateChanged, getAuth } from 'firebase/auth';
+import { doc, setDoc, getDoc, updateDoc, getFirestore } from 'firebase/firestore'; // Ensure updateDoc is imported
+import { auth } from '../firebase/config.js'; 
 import styles from './SignUpForm.module.css'; 
 import logo from '../images/AudiologyLogo.png';
 import { colors } from '../colors';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // Confirm all imports are at the top
+
 
 const SignUpForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -36,41 +37,57 @@ const SignUpForm = () => {
     return () => unsubscribe();
   }, []);
 
+  async function getExternshipData(userId) {
+    const docRef = doc(getFirestore(), 'externships', userId);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      console.log('Externship data:', docSnap.data());
+      return docSnap.data();
+    } else {
+      console.log('No such externship document for userId:', userId);
+      return null;
+    }
+  }
+
   function handleCredentialsChange(e) {
     const { name, value } = e.target;
     setUserCredentials({ ...userCredentials, [name]: value });
   }
 
-  function handleSignup(e) {
+  const handleSignup = async (e) => {
     e.preventDefault();
     if (isLoading) return;
-
     if (userCredentials.password !== userCredentials.confirmPassword) {
       setError("Passwords do not match.");
       return;
     }
-
     setIsLoading(true);
-    createUserWithEmailAndPassword(auth, userCredentials.email, userCredentials.password)
-      .then((userCredential) => {
-        // User created, now send a verification email
-        sendEmailVerification(userCredential.user)
-          .then(() => {
-            alert('Verification email sent. Please check your email to verify your account.');
-          })
-          .catch((verificationError) => {
-            setError(verificationError.message);
-          });
-      })
-      .catch((signupError) => {
-        setError(signupError.message);
-      })
-      .finally(() => {
-        setIsLoading(false);
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, userCredentials.email, userCredentials.password);
+      const externshipData = await getExternshipData(userCredential.user.uid); // Fetch externship data after user creation
+      
+      // Set user data including externship details
+      await setDoc(doc(getFirestore(), 'users', userCredential.user.uid), {
+        uid: userCredential.user.uid,
+        email: userCredential.user.email,
+        externshipDetails: externshipData || {}, // Include fetched externship details
       });
-  }
-  const handleGoHome = () => {
-    navigate('/'); // This will navigate to the home route when clicked
+
+      sendEmailVerification(userCredential.user)
+        .then(() => {
+          alert('Verification email sent. Please check your email to verify your account.');
+          navigate('/dashboard'); // Adjust the redirect as needed
+        })
+        .catch((verificationError) => setError(verificationError.message));
+    } catch (signupError) {
+      setError(signupError.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleGoHome = () => { // Now 'handleGoHome' is defined
+    navigate('/'); // This navigates to the home route when invoked
   };
 
   return (
