@@ -3,6 +3,7 @@ import React from 'react';
 import { sendPasswordResetEmail } from 'firebase/auth';
 import { auth } from '../firebase/config'; 
 import "./ForgotPassword.css";
+import { colors } from "../colors";
 
 function ForgotPassword() {
   const navigate = useNavigate();
