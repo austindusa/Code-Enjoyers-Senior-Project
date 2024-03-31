@@ -86,7 +86,6 @@ body {
   width: 100%;
   text-align: center;
   display: block;
-  margin-bottom: 15px;
   text-decoration: none; /* Remove underline from anchor tags */
 }
 
@@ -126,7 +125,7 @@ body {
   border: 2px solid #68986f; /* Border color from colors.js */
   border-radius: 4px; /* Rounded corners */
   cursor: pointer; /* Cursor to pointer */
-  margin-top: 20px; /* Space above the button */
+  margin-top: 15px; /* Space above the button */
   text-decoration: none; /* No underline */
   display: inline-block; /* Allows margin to work properly */
   transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
