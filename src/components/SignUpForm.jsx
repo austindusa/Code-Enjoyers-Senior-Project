@@ -5,11 +5,13 @@ import { auth } from '../firebase/config';
 import styles from './SignUpForm.module.css'; 
 import logo from '../images/AudiologyLogo.png';
 import { colors } from '../colors';
+import { useNavigate } from 'react-router-dom';
 
 const SignUpForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [userCredentials, setUserCredentials] = useState({ email: '', password: '', confirmPassword: '' });
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const authInstance = getAuth();
@@ -67,6 +69,9 @@ const SignUpForm = () => {
         setIsLoading(false);
       });
   }
+  const handleGoHome = () => {
+    navigate('/'); // This will navigate to the home route when clicked
+  };
 
   return (
     <div className={styles['signUpForm-container']} style={{ backgroundColor: colors.background }}>
@@ -108,6 +113,7 @@ const SignUpForm = () => {
           {isLoading ? 'Signing Up...' : 'Sign Up'}
         </button>
         <button className={styles.googleSignUp}>Sign Up with Google</button>
+        <button className={styles.homeButton} onClick={handleGoHome}>Home</button>
         <p className={styles.text}>
           Already have an account? <a href="/login" className={styles.link}>Log in</a>
         </p>
