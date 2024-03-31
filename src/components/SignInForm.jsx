@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase/config';
 import styles from './SignInForm.module.css'; 
@@ -51,6 +51,7 @@ export default function SignInForm() {
             required
           />
         </div>
+      
         <div className={styles.inputGroup}>
           <label htmlFor="password" className={styles.label}>Password</label>
           <input
@@ -63,6 +64,10 @@ export default function SignInForm() {
             required
           />
         </div>
+        <div className="forgot-password-container">
+          <Link to="/forgotpassword" className="forgot-password-link">Forgot Password?</Link>
+        </div>
+
         <button type="submit" className={styles.button}>Login</button>
         <button type="button" className={styles.googleSignUp}>Login with Google</button>
         <button className={styles.homeButton} onClick={handleGoHome}>Home</button>
