@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import styles from "./HeroSectionStyle";
 import heroImage from "../images/markPaton1.jpg";
-import { Button, ButtonGroup } from '@chakra-ui/react';
+import { Button } from '@chakra-ui/react';
 import { Link } from "react-router-dom";
 
 function HeroSection() {
@@ -17,9 +17,9 @@ function HeroSection() {
         share your experiences with others.
         </p>
         <div style={styles.buttonContainerStyle}>
-        <Link to="/signup"><Button style={styles.actionButtonStyle} size='lg' >Get Started</Button></Link>
-        </div>
         
+        <Link to="/SurveyPlanPage"><Button style={styles.actionButtonStyle} size='lg' >Get Started</Button></Link>
+        </div>
       </div>
 
       <div style={styles.container}>
