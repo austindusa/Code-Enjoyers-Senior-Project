@@ -30,13 +30,14 @@ body {
 .logo {
   width: 200px; /* or any size you want */
   height: auto;
+  margin-bottom: 10px;
 }
 
 /* Heading styles */
 .heading {
   font-size: 24px; /* Larger font size for heading */
   color: #68986f; /* Primary color from colors.js */
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 /* Label styles */
@@ -85,7 +86,6 @@ body {
   width: 100%;
   text-align: center;
   display: block;
-  margin-bottom: 15px;
   text-decoration: none; /* Remove underline from anchor tags */
 }
 
@@ -115,4 +115,23 @@ body {
   font-size: 14px; /* Readability */
   margin-top: 10px; /* Spacing */
   margin-bottom: 10px;
+}
+
+.homeButton {
+  background-color: #fff; /* White background */
+  color: #68986f; /* Primary color from colors.js */
+  padding: 10px 15px; /* Padding around the text */
+  font-size: 16px; /* Font size */
+  border: 2px solid #68986f; /* Border color from colors.js */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Cursor to pointer */
+  margin-top: 15px; /* Space above the button */
+  text-decoration: none; /* No underline */
+  display: inline-block; /* Allows margin to work properly */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+}
+
+.homeButton:hover {
+  background-color: #68986f; /* Background color changes on hover */
+  color: #fff; /* Text color changes on hover */
 }

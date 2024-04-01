@@ -16,7 +16,7 @@ export default function CardListWindow({ onCardClick, searchResults }) {
     setInfo(result.data);
   };
 
-  return(
+  /*return(
     <div className="container">
       <table>
         <tbody>
@@ -93,3 +93,4 @@ export default function CardListWindow({ onCardClick, searchResults }) {
     </div>
   );
 }
+

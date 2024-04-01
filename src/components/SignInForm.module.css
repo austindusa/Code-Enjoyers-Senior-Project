@@ -19,13 +19,13 @@
 .logo {
   width: 200px;
   height: auto;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .heading {
   font-size: 24px;
   color: #68986f; /* Primary color from colors.js */
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .label {
@@ -66,7 +66,6 @@
   background-color: white;
   color: #111611; /* Text color from colors.js */
   padding: 10px 0;
-  margin-top: 10px;
   border: 1px solid #68986f; /* Primary color from colors.js */
   text-align: center;
   display: block;
@@ -97,4 +96,23 @@
   font-size: 14px;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.homeButton {
+  background-color: #fff; /* White background */
+  color: #68986f; /* Primary color from colors.js */
+  padding: 10px 15px; /* Padding around the text */
+  font-size: 16px; /* Font size */
+  border: 2px solid #68986f; /* Border color from colors.js */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Cursor to pointer */
+  margin-top: 15px; /* Space above the button */
+  text-decoration: none; /* No underline */
+  display: inline-block; /* Allows margin to work properly */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+}
+
+.homeButton:hover {
+  background-color: #68986f; /* Background color changes on hover */
+  color: #fff; /* Text color changes on hover */
 }

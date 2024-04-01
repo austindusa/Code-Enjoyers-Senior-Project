@@ -7,6 +7,7 @@ import "./SearchResultContainer.css";
 import { useNavigate } from "react-router";
 import {dummyData} from "../dummyData.js"
 import styles from "../components/resultSearchComp.module.css";
+import { colors } from '../colors';
 
 function ResultPage() {
   const [selectedCard, setSelected] = useState(null);
@@ -19,12 +20,17 @@ function ResultPage() {
     }
   }, [navigate]);
 
+  const backgroundStyle = {
+    backgroundColor: "rgb(240, 254, 240)",
+  }
+
   const horizontalStyle = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     width: "70%",
     margin: "auto",
+    color: "rgb(240, 254, 240)",
   };
 
   const centerStyle = {
@@ -33,6 +39,7 @@ function ResultPage() {
     alignItems: "center",
     flexDirection: "column",
     marginTop: "20px",
+    color: "rgb(240, 254, 240)",
   };
 
   const handleCardClick = (dummyData) => {
@@ -55,6 +62,8 @@ function ResultPage() {
 
   return (
     <div>
+      <div style={backgroundStyle}>
+      <div>
       <NavigationBar />
       <div style={horizontalStyle}>
         <div className={styles.container}>
@@ -86,6 +95,8 @@ function ResultPage() {
           {selectedCard && <ReviewContainer cardData={selectedCard} />}
         </div>
       </div>
+      </div>
+    </div>
     </div>
   );
 }

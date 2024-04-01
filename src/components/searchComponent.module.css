@@ -1,10 +1,18 @@
-.container {
+/*.container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
   background-image: url("../images/backroundImage.png");
+}*/
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgb(240, 254, 240);
 }
 
 .container H1 {

@@ -5,6 +5,7 @@ import { Button } from '@chakra-ui/react';
 import { Link } from "react-router-dom";
 
 function HeroSection() {
+
   return (
     <div style={styles.container}>
       <div style={styles.textBox}>

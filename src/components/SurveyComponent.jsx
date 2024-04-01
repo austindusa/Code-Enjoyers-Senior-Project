@@ -153,10 +153,10 @@ function SurveyComponent({ surveyJson }) {
   }, []); 
 
   return (
-    <div style={{ position: 'relative', minHeight: '100vh' }}>
+    <div style={{ position: 'relative', minHeight: '100vh'}}>
       {surveyModel && (
         <>
-          <Survey model={surveyModel} />
+          <Survey model={surveyModel}/>
           <div style={{
             position: 'absolute',
             bottom: '2px',
@@ -164,7 +164,6 @@ function SurveyComponent({ surveyJson }) {
             right: '0',
             textAlign: 'center',
             fontSize: '12px',
-            color: 'gray'
           }}>
             {savedMessage && <p>{savedMessage}</p>}
           </div>

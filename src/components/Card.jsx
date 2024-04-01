@@ -2,10 +2,10 @@ import React, { useContext, useState } from "react";
 import Icon from "../images/Avatar Image.jpg";
 
 function Card({
-  organizationName,
-  externshipTitle,
+  id,
+  title,
   location,
-  description,
+  duration,
   onClick,
   isSelected,
 }) {
@@ -16,8 +16,9 @@ function Card({
     padding: "0.5rem 0.5rem 0.5rem 0.5rem",
     flexDirection: "column",
     alignItems: "flex-start",
+    borderRadius: "8px 8px",
     gap: "0.0625rem",
-    background: isSelected ? "#CCC" : "white",
+    background: isSelected ? "#68986f40" : "white",
     boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
     marginLeft: "50px",
   };
@@ -84,11 +85,11 @@ function Card({
     <div className="card" style={cardStyle} onClick={handleClick}>
       <div style={horizontalContainer}>
         <img style={imageStyle} src={Icon} alt="Organization Icon" />
-        <span style={h1Style}>{organizationName}</span>
+        <span style={h1Style}>{id}</span>
       </div>
-      <span style={h2Style}>{externshipTitle}</span>
+      <span style={h2Style}>{title}</span>
       <span style={locationTextStyle}>{location}</span>
-      <span style={descriptionStyle}>{description}</span>
+      <span style={descriptionStyle}>{duration}</span>
     </div>
   );
 }
