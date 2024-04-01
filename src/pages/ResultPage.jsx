@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CardListWindow from "../components/CardListWindow";
 import ReviewContainer from "../components/reviewContainer";
 import NavigationBar from "../components/navigationBar";
