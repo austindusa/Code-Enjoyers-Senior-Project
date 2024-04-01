@@ -16,7 +16,7 @@ export default function CardListWindow({ onCardClick }) {
     setInfo(result.data);
   };
 
-  return(
+  /*return(
     <div className="container">
       <table>
         <tbody>
@@ -30,11 +30,18 @@ export default function CardListWindow({ onCardClick }) {
         </tbody>
       </table>
     </div>
-  )
-}
+  )*/
+  const cards = 34;
 
+  /*const cardData = {
+    organizationName: "Example Organization",
+    externshipTitle: "Software Engineering Intern",
+    location: "San Francisco, CA",
+    description:
+      "Exciting internship opportunity working on cutting-edge projects.",
+  };*/
 
-  /*const windowStyle = {
+  const windowStyle = {
     display: "flex",
     width: "30.125rem",
     height: "46.4375rem",
@@ -50,13 +57,13 @@ export default function CardListWindow({ onCardClick }) {
     onCardClick(cardData);
   }, []);
 
-  const cardsArray = Array.from({ length: cards }, (_, index) => (
+  const cardsArray = infos.map((info, index) => (
     <Card
       key={index}
-      organizationName={cardData.organizationName}
-      externshipTitle={cardData.externshipTitle}
-      location={cardData.location}
-      description={cardData.description}
+      id={info.id}
+      title={info.title}
+      location={info.location}
+      duration={info.duration}
       onClick={() => handleCardClick(index)}
       isSelected={index === selectedCardIndex}
     />
@@ -89,5 +96,86 @@ export default function CardListWindow({ onCardClick }) {
         setCurrentPage={setCurrentPage}
       />
     </div>
+  )
+
+  /*return (
+    <div style={windowStyle}>
+      {currentPosts}
+      <Pagination
+        postsPerPage={postsPerPage}
+        totalPosts={cards}
+        paginate={paginate}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
+    </div>
+  )*/
+
+  /*const cards = 34;*/
+
+  /*const fakeCardData = {
+    id: "Example Organization",
+    title: "Software Engineering Intern",
+    location: "San Francisco, CA",
+    duration:
+      "Exciting internship opportunity working on cutting-edge projects.",
+  };
+
+  /*const windowStyle = {
+    display: "flex",
+    width: "30.125rem",
+    height: "46.4375rem",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    gap: "1.563rem",
+  };*/
+
+  /*const [selectedCardIndex, setSelectedCardIndex] = useState(null);
+
+  useEffect(() => {
+    setSelectedCardIndex(0);
+    onCardClick(fakeCardData);
+  }, []);
+
+  const cardsArray = Array.from({ length: cards }, (_, index) => (
+    <Card
+      key={index}
+      organizationName={fakeCardData.organizationName}
+      externshipTitle={fakeCardData.externshipTitle}
+      location={fakeCardData.location}
+      description={fakeCardData.description}
+      onClick={() => handleCardClick(index)}
+      isSelected={index === selectedCardIndex}
+    />
+  ));
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(6);
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = cardsArray.slice(indexOfFirstPost, indexOfLastPost);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const handleCardClick = (index) => {
+    if (selectedCardIndex !== index) {
+      setSelectedCardIndex(index);
+      onCardClick(fakeCardData);
+    }
+  };
+
+  return (
+    <div style={windowStyle}>
+      {currentPosts}
+      <Pagination
+        postsPerPage={postsPerPage}
+        totalPosts={cards}
+        paginate={paginate}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
+    </div>
   );*/
+}
 

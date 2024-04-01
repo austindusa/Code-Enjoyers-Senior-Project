@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Pagination({ postsPerPage, totalPosts, paginate, currentPage, setCurrentPage}) {
+function Pagination({ postsPerPage, totalPosts, paginate, currentPage, setCurrentPage, onClick, isSelected}) {
 
     const paginationStyle = {
         display: 'inline-flex',
@@ -15,7 +15,7 @@ function Pagination({ postsPerPage, totalPosts, paginate, currentPage, setCurren
         alignItems: 'flex-start',
         gap: '0.625rem',
         borderRadius: '6.25rem',
-        background: '#F8F9FA',
+        backgroundColor: "#68986f40",
 
         color: '#000',
         fontFamily: 'Product Sans',
@@ -24,7 +24,6 @@ function Pagination({ postsPerPage, totalPosts, paginate, currentPage, setCurren
         fontWeight: '400',
         lineHeight: '1.6875rem' /* 192.857% */
     }
-
     
     const pageNumbers = [];
 

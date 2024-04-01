@@ -5,6 +5,7 @@ import { Button, ButtonGroup } from '@chakra-ui/react';
 import { Link } from "react-router-dom";
 
 function HeroSection() {
+
   return (
     <div style={styles.container}>
       <div style={styles.textBox}>
@@ -17,7 +18,7 @@ function HeroSection() {
         share your experiences with others.
         </p>
         <div style={styles.buttonContainerStyle}>
-        <Link to="/signup"><Button style={styles.actionButtonStyle} size='lg' >Get Started</Button></Link>
+        <Link to="/login"><Button style={styles.actionButtonStyle} size='lg' >Get Started</Button></Link>
         </div>
         
       </div>

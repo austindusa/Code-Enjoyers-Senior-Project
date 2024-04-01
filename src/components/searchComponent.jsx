@@ -2,8 +2,14 @@ import React, { useRef } from "react";
 import styles from "./searchComponent.module.css";
 
 function SearchBar() {
+
+  const backgroundStyle = {
+    backgroundColor: "rgb(240, 254, 240)",
+  }
+
   return (
-    <div className={styles.container}>
+    <div style={backgroundStyle}>
+      <div className={styles.container}>
       <div>
         <h1 className={styles.container.H1}>
           Find & Share your Audiology Externships
@@ -26,6 +32,7 @@ function SearchBar() {
           placeholder="Location"
         />
       </div>
+    </div>
     </div>
   );
 }
