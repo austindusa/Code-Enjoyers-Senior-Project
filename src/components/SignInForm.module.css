@@ -3,13 +3,13 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f0fef0; /* color from colors.js */
+  background-color: #f0fef0; 
 }
 
 .signInForm {
   width: 100%;
   max-width: 320px;
-  background: #fff; /* White background */
+  background: #fff; 
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -20,11 +20,13 @@
   width: 200px;
   height: auto;
   margin-bottom: 10px;
+  margin-left: auto; 
+  margin-right: auto;
 }
 
 .heading {
   font-size: 24px;
-  color: #68986f; /* Primary color from colors.js */
+  color: #68986f; 
   margin-bottom: 10px;
 }
 
@@ -32,7 +34,7 @@
   display: block;
   text-align: left;
   font-size: 14px;
-  color: #111611; /* Text color from colors.js */
+  color: #111611; 
   margin-bottom: 8px;
 }
 
@@ -40,13 +42,13 @@
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
-  border: 1px solid #b0ccb4; /* Secondary color from colors.js */
+  border: 1px solid #b0ccb4; 
   border-radius: 4px;
 }
 
 .button {
   width: 100%;
-  background-color: #68986f; /* Primary color from colors.js */
+  background-color: #68986f; 
   color: white;
   padding: 10px 0;
   border: none;
@@ -58,32 +60,32 @@
 }
 
 .button:hover {
-  background-color: #80b287; /* Accent color from colors.js */
+  background-color: #80b287; 
 }
 
 .googleSignUp {
   width: 100%;
   background-color: white;
-  color: #111611; /* Text color from colors.js */
+  color: #111611; 
   padding: 10px 0;
-  border: 1px solid #68986f; /* Primary color from colors.js */
+  border: 1px solid #68986f; 
   text-align: center;
   display: block;
   border-radius: 4px;
 }
 
 .googleSignUp:hover {
-  background-color: #f0fef0; /* Background color from colors.js */
+  background-color: #f0fef0;
 }
 
 .text {
   font-size: 14px;
-  color: #111611; /* Text color from colors.js */
+  color: #111611; 
   margin-top: 20px;
 }
 
 .link {
-  color: #68986f; /* Primary color from colors.js */
+  color: #68986f; 
   text-decoration: none;
 }
 
@@ -99,20 +101,20 @@
 }
 
 .homeButton {
-  background-color: #fff; /* White background */
-  color: #68986f; /* Primary color from colors.js */
-  padding: 10px 15px; /* Padding around the text */
-  font-size: 16px; /* Font size */
-  border: 2px solid #68986f; /* Border color from colors.js */
-  border-radius: 4px; /* Rounded corners */
-  cursor: pointer; /* Cursor to pointer */
-  margin-top: 15px; /* Space above the button */
-  text-decoration: none; /* No underline */
-  display: inline-block; /* Allows margin to work properly */
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+  background-color: #fff; 
+  color: #68986f; 
+  padding: 10px 15px;
+  font-size: 16px; 
+  border: 2px solid #68986f; 
+  border-radius: 4px;
+  cursor: pointer; 
+  margin-top: 10px; 
+  text-decoration: none; 
+  display: inline-block; 
+  transition: background-color 0.3s, color 0.3s; 
 }
 
 .homeButton:hover {
-  background-color: #68986f; /* Background color changes on hover */
-  color: #fff; /* Text color changes on hover */
+  background-color: #68986f; 
+  color: #fff; 
 }

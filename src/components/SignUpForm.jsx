@@ -128,7 +128,7 @@ const SignUpForm = () => {
         <button type="submit" className={styles.button} disabled={isLoading}>
           {isLoading ? 'Signing Up...' : 'Sign Up'}
         </button>
-        <button className={styles.googleSignUp}>Sign Up with Google</button>
+        {/* <button className={styles.googleSignUp}>Sign Up with Google</button> */}
         <button className={styles.homeButton} onClick={handleGoHome}>Home</button>
         <p className={styles.text}>
           Already have an account? <a href="/login" className={styles.link}>Log in</a>

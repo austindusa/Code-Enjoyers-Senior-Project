@@ -69,7 +69,7 @@ export default function SignInForm() {
         </div>
 
         <button type="submit" className={styles.button}>Login</button>
-        <button type="button" className={styles.googleSignUp}>Login with Google</button>
+        {/* <button type="button" className={styles.googleSignUp}>Login with Google</button> */}
         <button className={styles.homeButton} onClick={handleGoHome}>Home</button>
         <div className={styles.text}>
           Don't have an account? <span className={styles.link} onClick={() => navigate('/signup')}>Sign Up</span>
