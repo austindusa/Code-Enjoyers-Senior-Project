@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
 import styles from "./resultSearchComp.module.css";
 
 function ResultSearchBar() {
@@ -8,8 +8,9 @@ function ResultSearchBar() {
         <i className={styles.searchIcon}></i>
         <input
           className={styles.searchInput}
-          type="text"
-          placeholder="Search"
+          type = "text"
+          name = "search"
+          placeholders = "Search"
         />
         <input
           className={styles.locationInput}
@@ -17,7 +18,7 @@ function ResultSearchBar() {
           placeholder="Location"
         />
       </div>
-      
+
     </div>
   );
 }

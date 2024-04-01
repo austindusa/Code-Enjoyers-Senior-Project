@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import Pagination from "./Pagination";
-import axios from "axios";
+//import axios from "axios";
 
-export default function CardListWindow({ onCardClick }) {
-  const [infos, setInfo] = useState([]);
+export default function CardListWindow({ onCardClick, searchResults }) {
+  /*const [infos, setInfo] = useState([]);
 
   useEffect(() => {
     console.log('infotype', typeof infos);
@@ -16,7 +16,7 @@ export default function CardListWindow({ onCardClick }) {
     setInfo(result.data);
   };
 
-  return(
+  /*return(
     <div className="container">
       <table>
         <tbody>
@@ -31,10 +31,12 @@ export default function CardListWindow({ onCardClick }) {
       </table>
     </div>
   )
-}
+}*/
 
 
-  /*const windowStyle = {
+  const cards = searchResults.length;
+
+  const windowStyle = {
     display: "flex",
     width: "30.125rem",
     height: "46.4375rem",
@@ -47,19 +49,19 @@ export default function CardListWindow({ onCardClick }) {
 
   useEffect(() => {
     setSelectedCardIndex(0);
-    onCardClick(cardData);
+    onCardClick(searchResults);
   }, []);
 
   const cardsArray = Array.from({ length: cards }, (_, index) => (
-    <Card
-      key={index}
-      organizationName={cardData.organizationName}
-      externshipTitle={cardData.externshipTitle}
-      location={cardData.location}
-      description={cardData.description}
-      onClick={() => handleCardClick(index)}
-      isSelected={index === selectedCardIndex}
-    />
+      <Card
+        key = {searchResults[index].id}
+        organizationName = {searchResults[index].organizationName}
+        externshipTitle = {searchResults[index].externshipTitle}
+        location = {searchResults[index].location}
+        description = {searchResults[index].description}
+        onClick = {() => handleCardClick(searchResults[index].id)}
+        isSelected = {searchResults[index].id === selectedCardIndex}
+      />
   ));
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -74,7 +76,7 @@ export default function CardListWindow({ onCardClick }) {
   const handleCardClick = (index) => {
     if (selectedCardIndex !== index) {
       setSelectedCardIndex(index);
-      onCardClick(cardData);
+      onCardClick(searchResults);
     }
   };
 
@@ -89,5 +91,6 @@ export default function CardListWindow({ onCardClick }) {
         setCurrentPage={setCurrentPage}
       />
     </div>
-  );*/
+  );
+}
 
