@@ -5,7 +5,7 @@ import AboutSiteSection from "./components/AboutSiteSection";
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "./firebase/config";
-import {colors} from "./colors"
+import { colors } from "./colors";
 
 function Home() {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -27,7 +27,7 @@ function Home() {
 }
 
 const divStyle = {
-  color: colors.background
-}
+  color: colors.background,
+};
 
 export default Home;

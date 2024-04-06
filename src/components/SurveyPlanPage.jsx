@@ -50,18 +50,12 @@ const SurveyPlanPage = () => {
           SUBSCRIBE
         </button>
       </div>
-      <div className="header">
-        <ul>
-          <li>About Us</li>
-          <li>Contact Us</li>
-        </ul>
-      </div>
     </div>
   );
 };
 
 const pageStyle = {
-  height: "98vh",
+  height: "100vh",
   overflow: "hidden",
   backgroundColor: "#f0fef0",
 };
@@ -74,7 +68,7 @@ const surveyPlanPageStyle = {
   position: "absolute",
   width: "89.875rem",
   left: "0.125rem",
-  top: "10.25rem",
+  top: "12.5rem",
 };
 
 const imgHolderStyle = {
@@ -84,6 +78,8 @@ const imgHolderStyle = {
   top: "-35px",
   left: "22%",
   transform: "translateX(-50%)",
+  objectFit: "cover",
+  borderRadius: "25px",
 };
 
 const headingStyle1 = {
