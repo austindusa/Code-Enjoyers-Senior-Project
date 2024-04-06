@@ -6,8 +6,9 @@ import AddExternship from "./AddExternship";
 import { Link, useNavigate } from "react-router-dom";
 import SignInForm from "./SignInForm.jsx";
 import SurveyPlanPage from "./SurveyPlanPage.jsx";
-import {colors} from '../colors';
+import { colors } from "../colors";
 
+import "./navigationBar.css";
 function NavigationBar() {
   const [addExternshipButton, setButtonAddExternship] = useState(false);
   const navigate = useNavigate();
@@ -34,54 +35,25 @@ function NavigationBar() {
     }
   };
 
-  const navigationStyle = {
-    display: "flex",
-    height: "3.25rem",
-    padding: "0rem 4rem",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    borderBottom: "1px solid " + colors.text,
-    background: colors.background,
-  };
-
-  const innerContainerStyle = {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    alignSelf: "stretch",
-  };
-
-  const clickableComponentsStyle = {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "2rem",
-  };
-
-  const imageStyle = {
-    height: '30px',
-    width: '220px',
-  }
-
   return (
     <>
-      <div style={navigationStyle}>
-        <div style={innerContainerStyle}>
-          <img src={logo} alt="Logo" style={imageStyle} />
-          <div style={clickableComponentsStyle}>
-            <ul className="navbar-menu">
-              <li>
+      <div className="navigationStyle">
+        <div className="innerContainerStyle">
+          <img src={logo} alt="Logo" className="imageStyle" />
+          <div className="clickableComponentsStyle">
+            <ol className="navbar-menu">
+              <li id="home">
                 <Link to="/">Home</Link>
               </li>
 
-              <li>
+              <li id="home">
                 <Link to="/SurveyPlanPage">Pricing</Link>
               </li>
-              <button onClick={handleAddExternshipClick}>Add Externship</button>
-            </ul>
+              <button id="home" onClick={handleAddExternshipClick}>
+                Fillout Survey
+              </button>
+            </ol>
             <SignInButton />
-    
           </div>
         </div>
       </div>
