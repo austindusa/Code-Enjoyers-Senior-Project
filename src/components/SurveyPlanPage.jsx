@@ -50,6 +50,12 @@ const SurveyPlanPage = () => {
           SUBSCRIBE
         </button>
       </div>
+      <div className="header">
+        <ul>
+          <li>About Us</li>
+          <li>Contact Us</li>
+        </ul>
+      </div>
     </div>
   );
 };
