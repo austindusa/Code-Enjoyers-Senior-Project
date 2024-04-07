@@ -20,7 +20,6 @@ function Card({
     gap: "0.0625rem",
     background: isSelected ? "#68986f40" : "white",
     boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
-    marginLeft: "50px",
   };
 
   function handleClick() {

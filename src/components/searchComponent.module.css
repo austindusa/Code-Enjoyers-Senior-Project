@@ -44,6 +44,7 @@
   padding-left: 25px;
   background-position: right center;
   background-position-x: 8px;
+  color: #111611;
 }
 
 .searchInput {
@@ -62,6 +63,7 @@
   padding-left: 28px;
   background-position: left center;
   background-position-x: 8px;
+  color: #111611;
 }
 
 input::placeholder {
@@ -70,6 +72,6 @@ input::placeholder {
 
 .searchInput:focus,
 .locationInput:focus {
-  border: 2px solid #1adeff;
+  border: 2px solid #80b287;
   outline: none;
 }

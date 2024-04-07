@@ -8,20 +8,26 @@ import { useNavigate } from "react-router";
 import {dummyData} from "../dummyData.js"
 import styles from "../components/resultSearchComp.module.css";
 import { colors } from '../colors';
+import SearchResultPlaceholder from "../components/SearchResultPlaceholder";
+import NoActiveSearch from "../components/NoActiveSearch";
 
 function ResultPage() {
   const [selectedCard, setSelected] = useState(null);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const hasPaid = localStorage.getItem("hasPaid") === "true";
-    if (!hasPaid) {
-      navigate("/");
-    }
-  }, [navigate]);
+  const [searchTerm, setSearchTerm] = useState("");
+  
+  //useEffect(() => {
+    //const hasPaid = localStorage.getItem("hasPaid") === "true";
+    //if (!hasPaid) {
+      //navigate("/");
+    //}
+  //}, [navigate]);
+  
+  
 
   const backgroundStyle = {
     backgroundColor: "rgb(240, 254, 240)",
+    paddingBottom: '1.5rem'
   }
 
   const horizontalStyle = {
@@ -52,10 +58,12 @@ function ResultPage() {
   const handleSubmit = (e) => e.preventDefault()
 
   const handleSearchChange = (e) => {
-    if (!e.target.value) return setSearchResults(surveys)
+    const value = e.target.value;
+    setSearchTerm(value);
+    if (!value) return setSearchResults(surveys)
 
-    const resultsArray = surveys.filter(post => post.organizationName.includes(e.target.value) || post.externshipTitle.includes(e.target.value) 
-    || post.location.includes(e.target.value) || post.description.includes(e.target.value))
+    const resultsArray = surveys.filter(post => post.organizationName.includes(value) || post.externshipTitle.includes(value) 
+    || post.location.includes(value) || post.description.includes(value))
 
     setSearchResults(resultsArray)
   }
@@ -74,6 +82,7 @@ function ResultPage() {
               type = "text"
               name = "search"
               placeholder = "Search"
+              value={searchTerm}
               onChange={handleSearchChange}
             />
             <button className="searchButton">
@@ -90,11 +99,25 @@ function ResultPage() {
         </div>
       </div>
       <div className="result-container">
-        <CardListWindow onCardClick={handleCardClick} searchResults={searchResults} />
-        <div className="detailed-result-container">
-          {selectedCard && <ReviewContainer cardData={selectedCard} />}
+       {searchResults.length === 0 ? (
+            <div style={{ textAlign: "center", padding: "20px" }}>
+              
+                {searchTerm !== "" ? <SearchResultPlaceholder searchTerm={searchTerm} /> : <NoActiveSearch/>}
+            </div>
+          ) : (
+            <div style={{
+              display: 'flex',
+              gap: '4rem'
+            }}>
+               <CardListWindow onCardClick={handleCardClick} searchResults={searchResults} />
+                <div className="detailed-result-container">
+                  {selectedCard && <ReviewContainer cardData={selectedCard} />}
+                </div>
+            </div>
+           
+          )}
+          
         </div>
-      </div>
       </div>
     </div>
     </div>

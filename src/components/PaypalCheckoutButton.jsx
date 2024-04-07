@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
+import { colors } from '../colors';
+import { Text, Divider } from '@chakra-ui/react';
+import logo from "../images/AudiologyLogo.png";
 
 const PaypalCheckoutButton = () => {
   const amount = '1500'; // Example amount
@@ -12,6 +15,11 @@ const PaypalCheckoutButton = () => {
     // Simulate checking subscription status
     setHasAlreadyBoughtSubscription(false);
   }, []);
+
+  const imageStyle = {
+    height: '3rem',
+    width: '21rem',
+  }
 
   if (hasAlreadyBoughtSubscription) {
     return (
@@ -32,26 +40,79 @@ const PaypalCheckoutButton = () => {
 
   // Render payment details form followed by PayPal button inside a scrollable div
   return (
-    <PayPalScriptProvider options={{ "client-id": "REACT_APP_PAYPAL_CLIENT_ID" }}>
-      <div style={{
+    //Outter most container
+    <div style={{
+      display:'flex',
+      width: '100vw',
+      height: '100vh',
+      justifyContent: 'center',
+      backgroundColor: colors.background,
+      overflow: 'clip'
+    }}>
+      <div style={{//Card Container
         display: 'flex',
-        flexDirection: 'column', // To stack form and button vertically
-        justifyContent: 'flex-start', // Align content to the top
-        alignItems: 'center',
-        position: 'fixed',
-        width: '50%', 
-        height: '50%',
-        top: '25%',
-        left: '25%',
-        overflow: 'auto', // Enable scrolling
-        padding: '20px', // Add some padding around the content
-        boxSizing: 'border-box', // Ensure padding does not increase the size of the box
+        width: '45%',
+        height: '100%',
+        backgroundColor: colors.background,
+        flexDirection: 'column',
+        boxShadow: '5px 0px 10px rgba(0, 0, 0, 0.2), -5px 0px 10px rgba(0, 0, 0, 0.2), 0px 5px 10px rgba(0, 0, 0, 0.2)',
+
       }}>
-        
-        <div style={{
-          transform: 'scale(1)', // Adjust button size if needed
-          transformOrigin: 'center',
+        <div style={{//Banner Container
+          backgroundColor: colors.accent,
+          width: '100%',
+          height: '20%',
+          overflow: 'auto'
         }}>
+          <div style={{//Inside Banner Content
+            display: 'flex',
+            flexDirection: 'column',
+            paddingTop: '1rem',
+            paddingLeft: '1.5rem',
+            paddingRight: '1.5rem',
+            paddingBottom: '2rem',
+          }}>
+            <img src={logo} alt="Logo" style={imageStyle} />
+            <Text fontSize='md'>
+              By subscribing to our Audiology Membership Plan for just $1 per month, you're unlocking the power of externship reviews.
+               Gain unlimited access to valuable feedback from users, empowering you to make an informed decision on the next externship you take. 
+            </Text>
+
+            <div style={{
+              paddingTop: '8px'
+            }}>
+              <Text fontSize='md'>
+              Ready to elevate your audiology journey? Choose your preferred payment option below.
+              </Text>
+            </div>
+            
+          </div>
+        </div>
+
+        <div style={{//paypal card container
+          display: 'flex',
+          width: '100%',
+          height: '80%',
+          maxHeight: '80%',
+          justifyContent: 'center',
+          paddingTop: '2rem',
+          overflow: 'clip'
+        }}>
+          <div style={{//paypal card 
+          display: 'flex',
+          width: '65%',
+          height: '85%',
+          maxHeight: '85%',
+          backgroundColor: colors.background,
+          flexDirection: 'column',
+          boxShadow: '5px 0px 10px rgba(0, 0, 0, 0.2), -5px 0px 10px rgba(0, 0, 0, 0.2), 0px 5px 10px rgba(0, 0, 0, 0.2)',
+          padding: '1.5rem',
+          borderTop: '4px solid' + colors.primary,
+          overflow: 'scroll',
+          gap: '1rem'
+        }}>
+           <Text fontSize='2xl'>Payment Method</Text>
+          <PayPalScriptProvider options={{ "client-id": "REACT_APP_PAYPAL_CLIENT_ID" }}>  
           <PayPalButtons
             style={{
               layout: "vertical",
@@ -77,9 +138,14 @@ const PaypalCheckoutButton = () => {
               setError(err); // Optionally handle error
             }}
           />
+          </PayPalScriptProvider>
+
         </div>
+        </div>
+        
       </div>
-    </PayPalScriptProvider>
+    </div>
+    
   );
 };
 
