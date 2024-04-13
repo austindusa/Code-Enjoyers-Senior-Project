@@ -1,4 +1,3 @@
-// GetStartedButton.jsx
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
@@ -55,7 +54,6 @@ function GetStartedButton() {
         color: 'var(--Black, #060606)',
         marginTop: '7em',
         marginLeft: '5em',
-        // Add any additional styling you need here
     };
 
     return (
