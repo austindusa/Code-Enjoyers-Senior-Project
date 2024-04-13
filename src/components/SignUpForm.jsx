@@ -1,22 +1,11 @@
 import React, { useState, useEffect } from "react";
-import {
-  createUserWithEmailAndPassword,
-  sendEmailVerification,
-  onAuthStateChanged,
-  getAuth,
-} from "firebase/auth";
-import {
-  doc,
-  setDoc,
-  getDoc,
-  updateDoc,
-  getFirestore,
-} from "firebase/firestore"; // Ensure updateDoc is imported
+import { createUserWithEmailAndPassword, sendEmailVerification, onAuthStateChanged, getAuth } from "firebase/auth";
+import { doc, setDoc, getDoc, updateDoc, getFirestore } from "firebase/firestore"; 
 import { auth } from "../firebase/config.js";
 import styles from "./SignUpForm.module.css";
 import logo from "../images/AudiologyLogo.png";
 import { colors } from "../colors";
-import { useNavigate } from "react-router-dom"; // Confirm all imports are at the top
+import { useNavigate } from "react-router-dom"; 
 
 const SignUpForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -125,7 +114,7 @@ const SignUpForm = () => {
           className={styles.logo}
           style={{ maxWidth: "200px" }}
         />
-        <h2 className={styles.sign}>Sign Up</h2>
+        <h2 className={styles.heading}>Sign Up</h2>
         {error && <div className={styles.error}>{error}</div>}
         <label htmlFor="email" className={styles.label}>
           Email
