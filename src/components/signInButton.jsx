@@ -25,7 +25,6 @@ function SignInButton() {
     setShowLogoutPopup(!showLogoutPopup);
   };
 
-  // This method will be passed down to LogoutPopup
   const onSignOut = () => {
     setUser(null);
     setShowSignUpButton(true);
@@ -41,10 +40,10 @@ function SignInButton() {
     fontStyle: "normal",
     fontWeight: "600",
     lineHeight: "150%",
-    background: colors.secondary, // Assuming you've defined colors.secondary
-    color: colors.text, // Assuming you've defined colors.text
+    background: colors.secondary,
+    color: colors.text, 
     _hover: {
-      bg: colors.primary, // Assuming you've defined colors.primary
+      bg: colors.primary,
     },
   };
 

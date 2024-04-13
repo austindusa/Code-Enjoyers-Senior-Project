@@ -16,7 +16,6 @@ function NavigationBar() {
   const [isUserSignedIn, setUserSignedIn] = useState(false);
 
   const checkUserSignIn = () => {
-    // Implement your user authentication logic here
     return isUserSignedIn;
   };
 
