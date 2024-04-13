@@ -1,27 +1,36 @@
-import React, { useEffect, useState } from "react";
-import imgHolder from "../images/SurveyPage.jpg";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import PaypalCheckoutButton from "./PaypalCheckoutButton";
 import NavigationBar from "./navigationBar";
+import imgHolder from "../images/SurveyPage.jpg";
 
 const SurveyPlanPage = () => {
   const navigate = useNavigate();
-
-  function handleGetStarted() {
-    navigate("/pay-pal-checkout");
-  }
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const hasPaid = localStorage.getItem("hasPaid") === "true";
-    if (hasPaid) {
-      navigate("/resultpage");
-    }
+    const auth = getAuth();
+    onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      if (currentUser) {
+        const hasPaid = localStorage.getItem("hasPaid") === "true";
+        if (hasPaid) {
+          navigate("/resultpage");
+        }
+      } else {
+        navigate("/login");
+      }
+    });
   }, [navigate]);
 
-  const [isCheckout, setIsCheckout] = useState(false); // State to manage the navigation simulation
-  if (isCheckout) {
-    return <PaypalCheckoutButton />; // Show the PayPal checkout page if isCheckout is true
-  }
+  const handleGetStarted = () => {
+    if (user) {
+      navigate("/pay-pal-checkout");
+    } else {
+      navigate("/login");
+    }
+  };
 
   return (
     <div style={pageStyle}>
@@ -44,7 +53,7 @@ const SurveyPlanPage = () => {
           continuous and comprehensive feedback from users to stay informed.
           Plus, take control of your subscription with the flexibility to pause
           or cancel anytime, allowing unlimited users to benefit from this
-          exceptional service.
+          exceptional service.
         </p>
         <button style={buttonStyle} onClick={handleGetStarted}>
           SUBSCRIBE
@@ -59,6 +68,7 @@ const pageStyle = {
   overflow: "hidden",
   backgroundColor: "#f0fef0",
 };
+
 const surveyPlanPageStyle = {
   display: "flex",
   flexDirection: "column",
@@ -136,27 +146,10 @@ const headingStyle5 = {
   color: "#060606",
   letterSpacing: "-0.2px",
 };
+
 const slashMStyle = {
   fontSize: "35px",
   marginBottom: "40px",
-};
-
-const buttonFilledStyle = {
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "center",
-  alignItems: "center",
-  padding: "16px 24px",
-  gap: "10px",
-  isolation: "isolate",
-  position: "absolute",
-  width: "140px",
-  height: "20px",
-  left: "766px",
-  top: "10px",
-  background:
-    "linear-gradient(273.22deg, #000000 4.74%, rgba(162, 129, 134, 0.58) 103.12%)",
-  borderRadius: "100px",
 };
 
 const lineStyle = {
@@ -167,21 +160,6 @@ const lineStyle = {
   top: "220px",
   border: "1px solid #000000",
   transform: "rotate(0.23deg)",
-};
-
-const headingStyle4 = {
-  position: "absolute",
-  width: "581px",
-  height: "171px",
-  left: "766px",
-  top: "calc(21% - 171px/2 + 48px)",
-  fontFamily: "'Roboto'",
-  fontStyle: "normal",
-  fontWeight: 400,
-  fontSize: "16px",
-  lineHeight: "120%",
-  color: "#060606",
-  textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
 };
 
 const buttonStyle = {
@@ -202,7 +180,6 @@ const buttonStyle = {
   border: "1px solid #000000",
   borderRadius: "18px",
   cursor: "pointer",
-  border: "none",
   Transition: "background-color 0.3s ease",
 };
 

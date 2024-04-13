@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase/config.js";
-import { onAuthStateChanged, signOut } from "firebase/auth";
 import SignUpButton from "./signUpButton.jsx";
+import LogoutPopup from './LogoutPopup'; 
 import { Button } from "@chakra-ui/react";
-import { colors } from "../colors";
+import { colors } from '../colors';
 
 function SignInButton() {
   const [user, setUser] = useState(null);
@@ -12,40 +13,23 @@ function SignInButton() {
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(user);
-        setShowSignUpButton(false);
-      } else {
-        setUser(null);
-        setShowSignUpButton(true);
-      }
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setShowSignUpButton(!currentUser);
     });
-    return () => unsubscribe();
+
+    return unsubscribe;
   }, []);
 
-  const handleSignOut = () => {
-    signOut(auth)
-      .then(() => {
-        setUser(null);
-        setShowSignUpButton(true); // Show the sign-up button when the user signs out
-      })
-      .catch((error) => {
-        console.error("Error signing out:", error);
-      });
+  const toggleLogoutPopup = () => {
+    setShowLogoutPopup(!showLogoutPopup);
   };
 
-  const openLogoutPopup = () => {
-    setShowLogoutPopup(true);
-  };
-
-  const closeLogoutPopup = () => {
+  // This method will be passed down to LogoutPopup
+  const onSignOut = () => {
+    setUser(null);
+    setShowSignUpButton(true);
     setShowLogoutPopup(false);
-  };
-
-  const confirmLogout = () => {
-    handleSignOut();
-    closeLogoutPopup();
   };
 
   const buttonStyle = {
@@ -57,38 +41,30 @@ function SignInButton() {
     fontStyle: "normal",
     fontWeight: "600",
     lineHeight: "150%",
-
-    background: colors.secondary,
-    color: colors.text,
-  };
-
-  const hoverButtonStyle = {
-    ...buttonStyle,
-    "&:hover": {
-      bg: colors.primary,
-      transition: "background-color 0.4s ease",
+    background: colors.secondary, // Assuming you've defined colors.secondary
+    color: colors.text, // Assuming you've defined colors.text
+    _hover: {
+      bg: colors.primary, // Assuming you've defined colors.primary
     },
   };
 
   return (
     <>
       {user ? (
-        <>
-          <span style={{ cursor: "pointer" }} onClick={openLogoutPopup}>
+        <div style={{ position: "relative" }}>
+          <span style={{ cursor: "pointer" }} onClick={toggleLogoutPopup}>
             {user.email}
           </span>
-          {showLogoutPopup && (
-            <div className="logout-popup">
-              <p>Logout?</p>
-              <button onClick={confirmLogout}>Yes</button>
-              <button onClick={closeLogoutPopup}>No</button>
-            </div>
-          )}
-        </>
+          <LogoutPopup
+            onSignOut={onSignOut}
+            onClose={toggleLogoutPopup}
+            show={showLogoutPopup}
+          />
+        </div>
       ) : (
         <Link to="/login">
-          <Button sx={{ ...hoverButtonStyle }} size="sm">
-            Sign in
+          <Button sx={buttonStyle} size="sm">
+          Sign in
           </Button>
         </Link>
       )}
