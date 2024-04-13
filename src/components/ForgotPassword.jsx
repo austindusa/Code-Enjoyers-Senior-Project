@@ -1,51 +1,54 @@
-import { Link, useNavigate } from "react-router-dom";
-import React from 'react';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { sendPasswordResetEmail } from 'firebase/auth';
-import { auth } from '../firebase/config'; 
-import "./ForgotPassword.css";
+import { auth } from '../firebase/config';
+import styles from './ForgotPassword.module.css';
+import logo from "../images/AudiologyLogo.png";
 import { colors } from "../colors";
 
 function ForgotPassword() {
-  const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
 
-  const handleSubmit = async(e) => {
-    e.preventDefault()
-    const emailVal = e.target.email.value;
-    sendPasswordResetEmail(auth, emailVal).then(data=>{
-      alert("Check your email")
-      navigate("/login")
-  }).catch(err=>{
-      alert(err.code)
-  })
-  };
-   
-  return (
-    <div className="background-img">
-      <div className="background form-box">
-        <div className="box-border-fp">
-          <form onSubmit={(e)=>handleSubmit(e)}>
-            <div>
-                <h1>Forgot Password</h1>
-                <p id="form-p">Please Enter Your Email Address:</p>
-            </div>
-            <div id="input-field-fp">
-              <label>Email</label>
-              <input 
-                name="email"
-                required 
-              />
-            </div>
-            <div id="send-email-btn">
-              <button id="send-email">Send Email</button>
-            </div>
-            <span id="back-to-sign-in">
-                <span>Go back to sign in?</span>
-                <Link to = "/login"><button type="button">Sign In</button></Link>
-            </span>
-          </form>
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await sendPasswordResetEmail(auth, email);
+            alert("Check your email for a link to reset your password.");
+            navigate('/login'); // Redirect to login after email is sent
+        } catch (error) {
+            setError(error.message);
+        }
+    };
+
+    return (
+        <div className={styles.forgotPasswordContainer}>
+            <form className={styles.forgotPasswordForm} onSubmit={handleSubmit}>
+                <div className={styles.logoContainer}>
+                    <img src={logo} alt="Logo" className={styles.logo} />
+                </div>
+                <h2 className={styles.heading}>Forgot Password</h2>
+                {error && <p className={styles.error}>{error}</p>}
+                <div className={styles.inputField}>
+                    <label htmlFor="email" className={styles.label}>Email</label>
+                    <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        className={styles.input}
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
+                </div>
+                <button type="submit" className={styles.button}>Send Email</button>
+                <p className={styles.text}>
+                    Remember your password? <Link to="/login" className={styles.link}>Log in</Link>
+                </p>
+            </form>
         </div>
-      </div>
-    </div>
-  )
+    );
 }
+
 export default ForgotPassword;
