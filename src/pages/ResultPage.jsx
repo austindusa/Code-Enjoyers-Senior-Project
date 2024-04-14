@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import CardListWindow from "../components/CardListWindow";
 import ReviewContainer from "../components/reviewContainer";
 import NavigationBar from "../components/navigationBar";
-import BookmarkToggle from "../components/bookmarkToggle";
 import "./SearchResultContainer.css";
 import { useNavigate } from "react-router";
 import {dummyData} from "../dummyData.js"
@@ -93,9 +92,6 @@ function ResultPage() {
               placeholder="Location"
             />
           </div>
-        </div>
-        <div style={centerStyle}>
-          <BookmarkToggle />
         </div>
       </div>
       <div className="result-container">
