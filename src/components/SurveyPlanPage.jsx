@@ -44,7 +44,7 @@ const SurveyPlanPage = () => {
         <h2 style={headingStyle2}>Audiology Membership Plan</h2>
         <h3 style={headingStyle5}>Unlock the Power of Externship Reviews</h3>
         <h2 style={headingStyle3}>
-          $1 <span style={slashMStyle}>/ Month</span>
+          $1 <span style={slashMStyle}>/ Week</span>
         </h2>
         <div style={lineStyle} />
         <h3 style={includedTextStyle}>Why Subscribe?</h3>
