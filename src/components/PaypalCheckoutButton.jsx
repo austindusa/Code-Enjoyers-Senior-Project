@@ -3,7 +3,7 @@ import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import { colors } from '../colors';
 import { Text } from '@chakra-ui/react';
 import logo from "../images/AudiologyLogo.png";
-import { db } from "../../firebase/config";
+//import { db } from "../../firebase/config";
 
 const PaypalCheckoutButton = ({ testHasAlreadyBought = false }) => {
   const amount = '1500'; // Example amount
