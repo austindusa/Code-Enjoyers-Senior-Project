@@ -15,6 +15,7 @@ export default function CardListWindow({ onCardClick, searchResults }) {
     const result= await axios.get("http://localhost:8080/api/v2/infos");
     setInfo(result.data);
   };
+  */
 
   /*return(
     <div className="container">
@@ -46,6 +47,7 @@ export default function CardListWindow({ onCardClick, searchResults }) {
   };
 
   const [selectedCardIndex, setSelectedCardIndex] = useState(null);
+  //const question6;
 
   useEffect(() => {
     setSelectedCardIndex(0);
@@ -53,19 +55,24 @@ export default function CardListWindow({ onCardClick, searchResults }) {
   }, []);
 
   const cardsArray = Array.from({ length: cards }, (_, index) => (
+    /*if (searchResults[index].question6 == null) {
+      question6 = "N/A"
+    } else {
+      question6 = searchResults[index].question6
+    }*/
       <Card
         key = {searchResults[index].id}
-        organizationName = {searchResults[index].organizationName}
-        externshipTitle = {searchResults[index].externshipTitle}
-        location = {searchResults[index].location}
-        description = {searchResults[index].description}
+        id = {searchResults[index].question1}
+        title = {searchResults[index].question5}
+        location = {searchResults[index].question6}
+        duration = {searchResults[index].question10}
         onClick = {() => handleCardClick(searchResults[index].id)}
         isSelected = {searchResults[index].id === selectedCardIndex}
       />
   ));
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(6);
+  const [postsPerPage] = useState(51);
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;

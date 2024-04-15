@@ -19,9 +19,14 @@ import com.google.firebase.cloud.FirestoreClient;
 @Service
 public class SurveyInfoService {
     public String createSurveyInfo(SurveyInfo info) throws ExecutionException, InterruptedException {
-        Firestore dbFirestore = FirestoreClient.getFirestore();
-        ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection("info").document(info.getTitle()).set(info);
-        return collectionsApiFuture.get().getUpdateTime().toString();
+        /*Firestore dbFirestore = FirestoreClient.getFirestore();
+        ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection("info").document(info.getQuestion1()).set(info);
+        return collectionsApiFuture.get().getUpdateTime().toString();*/
+
+        Firestore db = FirestoreClient.getFirestore();
+        // Add document data with auto-generated id.
+        ApiFuture<DocumentReference> addedDocRef = db.collection("info").add(info);
+         return "Added document with ID: " + addedDocRef.get().getId();
     }
 
     public SurveyInfo getSurveyInfo(String documentId) throws InterruptedException, ExecutionException {
@@ -37,11 +42,16 @@ public class SurveyInfoService {
         return null;
     }
 
-    public String updateSurveyInfo(SurveyInfo info) throws InterruptedException, ExecutionException {
-        Firestore dbFirestore = FirestoreClient.getFirestore();
-        ApiFuture<WriteResult> collecApiFuture = dbFirestore.collection("info").document(info.getTitle()).set(info);
-        return collecApiFuture.get().getUpdateTime().toString();
-    }
+    /*public String updateSurveyInfo(SurveyInfo info) throws InterruptedException, ExecutionException {
+        //Firestore dbFirestore = FirestoreClient.getFirestore();
+        //ApiFuture<WriteResult> collecApiFuture = dbFirestore.collection("info").document(info.getQuestion1()).set(info);
+        //return collecApiFuture.get().getUpdateTime().toString();
+
+        Firestore db = FirestoreClient.getFirestore();
+        // Add document data with auto-generated id.
+        ApiFuture<DocumentReference> addedDocRef = db.collection("info").add(info);
+         return "Added document with ID: " + addedDocRef.get().getId();
+    }*/
 
     public String deleteSurveyInfo(String documentId) {
         Firestore dbFirestore = FirestoreClient.getFirestore();

@@ -23,7 +23,7 @@ class Service {
     }
 
     getAllSurveys() {
-        return axios.get(EXTERNSHIP_WEBSITE_URL + 'results');
+        return axios.get(EXTERNSHIP_WEBSITE_URL + '/infos');
     }
 
     getSurvey(surveyId) {

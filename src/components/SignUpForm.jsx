@@ -6,6 +6,7 @@ import styles from "./SignUpForm.module.css";
 import logo from "../images/AudiologyLogo.png";
 import { colors } from "../colors";
 import { useNavigate } from "react-router-dom"; 
+import axios from "axios";
 
 const SignUpForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -14,8 +15,19 @@ const SignUpForm = () => {
     password: "",
     confirmPassword: "",
   });
+  const [inputData, setInputData] = useState({id: "", email: "", subscriber: false, savedSurveys: {}})
   const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  /*function handleSubmit(event) {
+    event.preventDefault()
+
+    axios.create('http://localhost:8080/api/v1/createUser', inputData)
+    .then(res =>  {
+      alert("Successfully Created Account!");
+      navigate('/');
+    }).catch(err => console.log(err));
+  }*/
 
   useEffect(() => {
     const authInstance = getAuth();
@@ -58,6 +70,7 @@ const SignUpForm = () => {
   function handleCredentialsChange(e) {
     const { name, value } = e.target;
     setUserCredentials({ ...userCredentials, [name]: value });
+    setInputData({...inputData, [name]: value});
   }
 
   const handleSignup = async (e) => {
@@ -76,11 +89,14 @@ const SignUpForm = () => {
       );
       const externshipData = await getExternshipData(userCredential.user.uid); // Fetch externship data after user creation
 
+      setInputData({...inputData, id: userCredential.user.uid})
+
       // Set user data including externship details
       await setDoc(doc(getFirestore(), "users", userCredential.user.uid), {
         uid: userCredential.user.uid,
         email: userCredential.user.email,
-        externshipDetails: externshipData || {}, // Include fetched externship details
+        subscriber: false,
+        savedSurveys: externshipData || {}, // Include fetched externship details
       });
 
       sendEmailVerification(userCredential.user)
@@ -95,6 +111,11 @@ const SignUpForm = () => {
     } finally {
       setIsLoading(false);
     }
+    axios.post('http://localhost:8080/api/v1/createUser', inputData)
+    .then(res =>  {
+      alert("Successfully Created Account!");
+    }).catch(err => console.log(err));
+    navigate('/');
   };
 
   const handleGoHome = () => {

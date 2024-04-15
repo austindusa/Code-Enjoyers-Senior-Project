@@ -15,29 +15,39 @@ import com.google.firebase.FirebaseOptions;
 @SpringBootApplication
 public class CeApplication {
 
-	public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
+        SpringApplication.run(CeApplication.class, args);
+        initializeFirebase();
+        uploadDataToFirestore();
+    }
 
-		ClassLoader classLoader = CeApplication.class.getClassLoader();
-		
-		File file = new File(Objects.requireNonNull(classLoader.getResource("serviceAccountKey.json")).getFile());
+    private static void initializeFirebase() {
+        try {
+            ClassLoader classLoader = CeApplication.class.getClassLoader();
+            File file = new File(Objects.requireNonNull(classLoader.getResource("")).getFile());
 
-		try {
-			FileInputStream serviceAccount =
-			new FileInputStream(file.getAbsolutePath());
+            FileInputStream serviceAccount = new FileInputStream(file.getAbsolutePath());
 
-			@SuppressWarnings("deprecation")
-			FirebaseOptions options = new FirebaseOptions.Builder()
-  			.setCredentials(GoogleCredentials.fromStream(serviceAccount))
-  			.build();
+            FirebaseOptions options = new FirebaseOptions.Builder()
+                    .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+                    .build();
 
-			FirebaseApp.initializeApp(options);
-			System.out.println("Service key found");
-		} catch (Exception e) {
-			System.out.println("An error occurred while fetching the service key");
-			System.out.println(e.getMessage());
-		}
+            FirebaseApp.initializeApp(options);
+            System.out.println("Firebase initialized successfully with service key");
+        } catch (Exception e) {
+            System.out.println("An error occurred while initializing Firebase:");
+            e.printStackTrace();
+        }
+    }
 
-		SpringApplication.run(CeApplication.class, args);
-	}
-
+    private static void uploadDataToFirestore() {
+        try {
+            StudyData.uploadData("Cleaned_ExternshipStudy_Data.json");
+            System.out.println("Data uploaded successfully to Firestore");
+        } catch (Exception e) {
+            System.out.println("An error occurred while uploading data to Firestore:");
+            e.printStackTrace();
+        }
+    
+    }
 }
