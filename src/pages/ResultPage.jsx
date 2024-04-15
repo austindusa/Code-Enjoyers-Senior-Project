@@ -5,11 +5,11 @@ import NavigationBar from "../components/navigationBar";
 import BookmarkToggle from "../components/bookmarkToggle";
 import "./SearchResultContainer.css";
 import { useNavigate } from "react-router";
-import {dummyData} from "../dummyData.js"
 import styles from "../components/resultSearchComp.module.css";
-import { colors } from '../colors';
 import SearchResultPlaceholder from "../components/SearchResultPlaceholder";
 import NoActiveSearch from "../components/NoActiveSearch";
+import { db } from "../firebase/config";
+import { collection, onSnapshot } from "firebase/firestore";
 
 function ResultPage() {
   const [selectedCard, setSelected] = useState(null);
@@ -48,24 +48,63 @@ function ResultPage() {
     color: "rgb(240, 254, 240)",
   };
 
-  const handleCardClick = (dummyData) => {
-    setSelected(dummyData);
-  }
-
-  const [surveys, setSurveys] = useState(dummyData)
-  const [searchResults, setSearchResults] = useState(dummyData)
-
-  const handleSubmit = (e) => e.preventDefault()
-
+  const [loading, setLoading] = useState(true);
+  const [posts, setPosts] = useState([]);
+  const [surveys, setSurveys] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
+    
+  useEffect(() => {
+    const storedPosts = JSON.parse(localStorage.getItem("posts"));
+    if (storedPosts) {
+      setPosts(storedPosts);
+      setSurveys(storedPosts);
+      setSearchResults(storedPosts);
+      setLoading(false);
+    } else {
+      fetchDataFromFirebase();
+    }
+  }, []);
+    
+  const fetchDataFromFirebase = () => {
+    const getPostsFromFirebase = [];
+    const subscriber = onSnapshot(collection(db, "info"), (querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          getPostsFromFirebase.push({
+            ...doc.data(),
+            key: doc.id,
+          });
+        });
+        if (getPostsFromFirebase.length > posts.length) {
+          setPosts(getPostsFromFirebase);
+          setSurveys(getPostsFromFirebase);
+          setSearchResults(getPostsFromFirebase);
+          localStorage.setItem("posts", JSON.stringify(getPostsFromFirebase));
+        }
+        setLoading(false);
+      });
+    return () => subscriber();
+  };
+  
+  const handleCardClick = (dataArray) => {
+    setSelected(dataArray);
+  };
+  
+  const handleSubmit = (e) => e.preventDefault();
+  
   const handleSearchChange = (e) => {
     const value = e.target.value;
     setSearchTerm(value);
-    if (!value) return setSearchResults(surveys)
+    if (!value) return setSearchResults(surveys);
+  
+    const resultsArray = surveys.filter(post => {
+      const question1Exists = post.question1 && post.question1.includes(value);
+      const question5Exists = post.question5 && post.question5.includes(value);
+      const question6Exists = post.question6 && post.question6.includes(value);
 
-    const resultsArray = surveys.filter(post => post.organizationName.includes(value) || post.externshipTitle.includes(value) 
-    || post.location.includes(value) || post.description.includes(value))
-
-    setSearchResults(resultsArray)
+      return question1Exists || question5Exists || question6Exists;
+    });
+  
+    setSearchResults(resultsArray);
   }
 
   return (
@@ -81,17 +120,13 @@ function ResultPage() {
               className={styles.searchInput}
               type = "text"
               name = "search"
-              placeholder = "Search"
+              placeholder = "Search by site name, state, or duration"
               value={searchTerm}
               onChange={handleSearchChange}
             />
             <button className="searchButton">
             </button>
-            <input
-              className={styles.locationInput}
-              type="text"
-              placeholder="Location"
-            />
+            
           </div>
         </div>
         <div style={centerStyle}>

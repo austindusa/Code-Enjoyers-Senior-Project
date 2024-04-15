@@ -53,8 +53,8 @@
   border: none;
   border-bottom-left-radius: 18px;
   border-top-left-radius: 18px;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+  border-top-right-radius: 18px;
+  border-bottom-right-radius: 18px;
   margin-left: 1px;
   cursor: pointer;
   background-image: url("../images/search-icon.png");

@@ -39,10 +39,10 @@ public class SurveyInfoController {
         return service.getSurveyInfo(documentId);
     }
     
-    @PutMapping("/update") //update
+    /*@PutMapping("/update") //update
     public String putMethodName(@RequestBody SurveyInfo info) throws InterruptedException, ExecutionException {
         return service.updateSurveyInfo(info);
-    }
+    }*/
     
     @PutMapping("/delete") //delete
     public String deleteMethodName(@RequestParam String documentId) throws InterruptedException, ExecutionException {
