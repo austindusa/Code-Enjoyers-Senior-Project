@@ -4,7 +4,6 @@ import { sendPasswordResetEmail } from 'firebase/auth';
 import { auth } from '../firebase/config';
 import styles from './ForgotPassword.module.css';
 import logo from "../images/AudiologyLogo.png";
-import { colors } from "../colors";
 
 function ForgotPassword() {
     const [email, setEmail] = useState('');
@@ -13,9 +12,16 @@ function ForgotPassword() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
+        const actionCodeSettings = {
+            url: 'http://localhost:3000/reset-password', // Base URL to redirect to after password reset
+            handleCodeInApp: false // Indicates that the password reset will be handled within your app
+        };
+        
+        
         try {
-            await sendPasswordResetEmail(auth, email);
-            alert("Check your email for a link to reset your password.");
+            await sendPasswordResetEmail(auth, email, actionCodeSettings);
+            alert("Email Sent.");
             navigate('/login'); // Redirect to login after email is sent
         } catch (error) {
             setError(error.message);
