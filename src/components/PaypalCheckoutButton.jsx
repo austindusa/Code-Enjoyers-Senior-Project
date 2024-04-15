@@ -3,18 +3,42 @@ import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import { colors } from '../colors';
 import { Text, Divider } from '@chakra-ui/react';
 import logo from "../images/AudiologyLogo.png";
+import { db } from "../../firebase/config";
 
 const PaypalCheckoutButton = () => {
   const amount = '1500'; // Example amount
+  //const [user, setUsers] = useState([]);
   
   // States
   const [hasAlreadyBoughtSubscription, setHasAlreadyBoughtSubscription] = useState(false);
   const [error, setError] = useState(null);
+  //const [checkOutData, setCheckOutData] = useState({subscriber: false});
 
   useEffect(() => {
     // Simulate checking subscription status
     setHasAlreadyBoughtSubscription(false);
   }, []);
+
+  /*useEffect(() => {
+    const getUsersFromFirebase = [];
+    const subscribe = db
+      .collection("users")
+      .onSnapshot((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          getPostsFromFirebase.push({
+            ...doc.data(),
+            key: doc.id,
+          });
+        });
+      });
+  });*/
+
+  /*function handleSubcription() {
+    setCheckOutData({...checkOutData, subscriber: true});
+    await setDoc(doc(getFirestore(), "users", userCredential.user.uid)) {
+
+    }
+  }*/
 
   const imageStyle = {
     height: '3rem',
@@ -132,6 +156,7 @@ const PaypalCheckoutButton = () => {
               const order = await actions.order.capture();
               console.log("Order", order);
               alert(`Order approved! Order ID: ${order.id}`);
+              //handleSubcription();
             }}
             onError={(err) => {
               console.error("PayPal Checkout onError", err);
