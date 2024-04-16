@@ -2,9 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { TextDecoder, TextEncoder } from 'util';
-global.TextDecoder = TextDecoder;
-global.TextEncoder = TextEncoder;
+//import { TextDecoder, TextEncoder } from 'util';
+//global.TextDecoder = TextDecoder;
+//global.TextEncoder = TextEncoder;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

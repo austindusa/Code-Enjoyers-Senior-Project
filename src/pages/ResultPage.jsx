@@ -97,8 +97,8 @@ function ResultPage() {
   
     const resultsArray = surveys.filter(post => {
       const question1Exists = post.question1 && post.question1.includes(value);
-      const question5Exists = post.question5 && post.question5.includes(value);
-      const question6Exists = post.question6 && post.question6.includes(value);
+      const question5Exists = post.question6 && post.question6.includes(value);
+      const question6Exists = post.question7 && post.question7.includes(value);
 
       return question1Exists || question5Exists || question6Exists;
     });
