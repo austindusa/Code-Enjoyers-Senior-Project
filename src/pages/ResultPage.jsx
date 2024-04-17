@@ -7,7 +7,7 @@ import { useNavigate } from "react-router";
 import styles from "../components/resultSearchComp.module.css";
 import SearchResultPlaceholder from "../components/SearchResultPlaceholder";
 import NoActiveSearch from "../components/NoActiveSearch";
-import { db } from "../firebase/config";
+import { firestore } from "../firebase/config";
 import { collection, onSnapshot } from "firebase/firestore";
 
 function ResultPage() {
@@ -66,7 +66,7 @@ function ResultPage() {
     
   const fetchDataFromFirebase = () => {
     const getPostsFromFirebase = [];
-    const subscriber = onSnapshot(collection(db, "info"), (querySnapshot) => {
+    const subscriber = onSnapshot(collection(firestore, "info"), (querySnapshot) => {
         querySnapshot.forEach((doc) => {
           getPostsFromFirebase.push({
             ...doc.data(),
