@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase/config.js";
 import SignUpButton from "./signUpButton.jsx";
-import LogoutPopup from './LogoutPopup'; 
+import LogoutPopup from "./LogoutPopup";
 import { Button } from "@chakra-ui/react";
-import { colors } from '../colors';
+import { colors } from "../colors";
 
 function SignInButton() {
+  const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [showSignUpButton, setShowSignUpButton] = useState(true);
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
@@ -29,6 +30,7 @@ function SignInButton() {
     setUser(null);
     setShowSignUpButton(true);
     setShowLogoutPopup(false);
+    navigate("/");
   };
 
   const buttonStyle = {
@@ -41,7 +43,7 @@ function SignInButton() {
     fontWeight: "600",
     lineHeight: "150%",
     background: colors.secondary,
-    color: colors.text, 
+    color: colors.text,
     _hover: {
       bg: colors.primary,
     },
@@ -63,7 +65,7 @@ function SignInButton() {
       ) : (
         <Link to="/login">
           <Button sx={buttonStyle} size="sm">
-          Sign in
+            Sign in
           </Button>
         </Link>
       )}
