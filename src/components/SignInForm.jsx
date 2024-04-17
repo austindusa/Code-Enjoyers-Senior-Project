@@ -5,6 +5,7 @@ import { auth } from '../firebase/config';
 import styles from './SignInForm.module.css'; 
 import logo from '../images/AudiologyLogo.png'; 
 import { colors } from '../colors'; 
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 
 export default function SignInForm() {
   const [email, setEmail] = useState('');
@@ -15,22 +16,17 @@ export default function SignInForm() {
   const handleSignIn = async (e) => {
     e.preventDefault();
     try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      const user = userCredential.user;
-      localStorage.setItem("accessToken", user.accessToken);
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      localStorage.setItem("accessToken", userCredential.user.accessToken);
       localStorage.setItem("isLoggedIn", "true");
-      navigate("/SurveyPlanPage");
+      navigate("/");
     } catch (error) {
       setErrorMessage("Incorrect email or password.");
     }
   };
 
   const handleGoHome = () => {
-    navigate('/'); // This will navigate to the home route when clicked
+    navigate('/'); 
   };
 
   return (
@@ -69,7 +65,6 @@ export default function SignInForm() {
         </div>
 
         <button type="submit" className={styles.button}>Login</button>
-        {/* <button type="button" className={styles.googleSignUp}>Login with Google</button> */}
         <button className={styles.homeButton} onClick={handleGoHome}>Home</button>
         <div className={styles.text}>
           Don't have an account? <span className={styles.link} onClick={() => navigate('/signup')}>Sign Up</span>

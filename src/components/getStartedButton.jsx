@@ -7,41 +7,53 @@ function GetStartedButton() {
     const navigate = useNavigate();
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [isSubscribed, setIsSubscribed] = useState(false);
 
     useEffect(() => {
         const auth = getAuth();
         onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
-            setLoading(false);
+            if (currentUser) {
+                checkSubscription(currentUser.uid);
+            } else {
+                setLoading(false);
+            }
         });
-    }, []);
+    }, [navigate]);
 
     const checkSubscription = async (uid) => {
-        const docRef = doc(getFirestore(), 'subscriptions', uid);
+        const docRef = doc(getFirestore(), 'users', uid);
         const docSnap = await getDoc(docRef);
-        return docSnap.exists() && docSnap.data().isSubscribed;
+        if (docSnap.exists() && docSnap.data().subscriber) {
+            setIsSubscribed(true);
+        }
+        setLoading(false);
     };
 
-    const handleGetStartedClick = async () => {
-        if (loading) {
-            // If still checking user status, do nothing or show a loading indicator
-            return;
-        }
-
-        if (!user) {
-            // Not signed in, redirect to login page
-            navigate('/login');
-        } else {
-            // Check if the user is subscribed
-            const isSubscribed = await checkSubscription(user.uid);
+    useEffect(() => {
+        if (!loading) {
             if (isSubscribed) {
-                // User is subscribed, redirect to result page
                 navigate('/resultpage');
-            } else {
-                // User is not subscribed, redirect to subscription page
+            } else if (user) {
                 navigate('/surveyplanpage');
+            } else {
+                navigate('/login');
             }
         }
+    }, [loading, isSubscribed, user, navigate]);
+
+    const handleGetStartedClick = () => {
+        if (loading) {
+            // If still loading, do nothing
+            return;
+        }
+        // The navigation logic is handled in the useEffect
+    };
+
+    const renderButtonContent = () => {
+        if (loading) return 'Loading...';
+        if (isSubscribed) return 'Go to Results';
+        return 'Get Started';
     };
 
     const buttonStyle = {
@@ -57,8 +69,8 @@ function GetStartedButton() {
     };
 
     return (
-        <button className="getStarted" style={buttonStyle} onClick={handleGetStartedClick}>
-            {loading ? 'Loading...' : 'Get Started'}
+        <button className="getStarted" style={buttonStyle} onClick={handleGetStartedClick} disabled={loading}>
+            {renderButtonContent()}
         </button>
     );
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import PaypalCheckoutButton from "./PaypalCheckoutButton";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 import NavigationBar from "./navigationBar";
 import imgHolder from "../images/SurveyPage.jpg";
 
@@ -11,12 +11,15 @@ const SurveyPlanPage = () => {
 
   useEffect(() => {
     const auth = getAuth();
-    onAuthStateChanged(auth, (currentUser) => {
+    onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
       if (currentUser) {
-        const hasPaid = localStorage.getItem("hasPaid") === "true";
-        if (hasPaid) {
+        const userRef = doc(getFirestore(), 'users', currentUser.uid);
+        const userSnap = await getDoc(userRef);
+        if (userSnap.exists() && userSnap.data().subscriber) {
           navigate("/resultpage");
+        } else {
+          navigate("/surveyplanpage");
         }
       } else {
         navigate("/login");
