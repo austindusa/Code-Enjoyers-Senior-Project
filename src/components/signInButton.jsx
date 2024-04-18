@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../firebase/config";
 import SignUpButton from "./signUpButton.jsx";
-import LogoutPopup from './LogoutPopup';
+import LogoutPopup from "./LogoutPopup";
 import { Button } from "@chakra-ui/react";
 import { colors } from "../colors";
 
@@ -17,7 +17,7 @@ function SignInButton() {
       setUser(currentUser);
     });
 
-    return () => unsubscribe; 
+    return () => unsubscribe;
   }, []);
 
   const toggleLogoutPopup = () => {
@@ -26,11 +26,10 @@ function SignInButton() {
 
   const handleSignOut = async () => {
     try {
-      await signOut(auth); 
+      await signOut(auth);
     } catch (error) {
       console.error("Error signing out: ", error);
     }
-
   };
 
   const buttonStyle = {
@@ -71,7 +70,6 @@ function SignInButton() {
           </Link>
           <SignUpButton />
         </>
-
       )}
     </>
   );
