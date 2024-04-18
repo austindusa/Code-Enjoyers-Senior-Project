@@ -63,9 +63,9 @@ export default function CardListWindow({ onCardClick, searchResults }) {
       <Card
         key = {searchResults[index].id}
         id = {searchResults[index].question1}
-        title = {searchResults[index].question5}
-        location = {searchResults[index].question6}
-        duration = {searchResults[index].question10}
+        title = {searchResults[index].question6}
+        location = {searchResults[index].question7}
+        duration = {searchResults[index].question11}
         onClick = {() => handleCardClick(searchResults[index].id)}
         isSelected = {searchResults[index].id === selectedCardIndex}
       />

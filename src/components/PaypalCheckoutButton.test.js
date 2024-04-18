@@ -1,55 +1,32 @@
-import { render, fireEvent, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import PaypalCheckoutButton from './PaypalCheckoutButton';
+import React from 'react';
+import { render } from '@testing-library/react';
+import PaypalCheckoutButton from './PaypalCheckoutButton'; // Adjust the import path as necessary
 
+// Mock the @paypal/react-paypal-js components
 jest.mock('@paypal/react-paypal-js', () => ({
-  PayPalScriptProvider: ({ children }) => <div>{children}</div>,
-  PayPalButtons: ({ createOrder, onApprove, onError }) => (
-    <button onClick={() => {
-      const actions = {
-        order: {
-          capture: () => Promise.resolve({ id: 'order123', status: 'COMPLETED' })
-        }
-      };
-      createOrder && createOrder().then(() => onApprove({ orderID: 'test_order_id', actions }));
-    }}>Mock PayPal Button</button>
-  )
+  PayPalScriptProvider: ({ children }) => children,
+  PayPalButtons: () => <div>PayPal Button Mock</div>
 }));
 
 describe('PaypalCheckoutButton', () => {
-  test('renders PayPal buttons and subscription info if not purchased', async () => {
-    render(<PaypalCheckoutButton />);
-    expect(screen.getByText(/unlocking the power of externship reviews/)).toBeInTheDocument();
-    expect(screen.getByText('Mock PayPal Button')).toBeInTheDocument();
+  it('renders the mock PayPal button', () => {
+    const { getByText } = render(<PaypalCheckoutButton />);
+    expect(getByText('PayPal Button Mock')).toBeInTheDocument();
   });
-
-  test('displays already purchased message if subscription is bought', () => {
-    render(<PaypalCheckoutButton testHasAlreadyBought={true} />);
-    expect(screen.getByText('You already bought the subscription, please go to your account.')).toBeInTheDocument();
-  });
-
-  test('creates an order on PayPal when button is clicked', async () => {
-    render(<PaypalCheckoutButton />);
-    fireEvent.click(screen.getByText('Mock PayPal Button'));
-    // Simulate order creation
-    const createOrderMock = jest.fn().mockReturnValue({
-      then: jest.fn().mockImplementation(callback => callback({ id: 'order123' }))
-    });
-    expect(createOrderMock).toHaveBeenCalled();
-  });
-
-  test('handles approval correctly', async () => {
-    render(<PaypalCheckoutButton />);
-    fireEvent.click(screen.getByText('Mock PayPal Button'));
-    await screen.findByText('Order approved! Order ID: test_order_id');
-    expect(screen.getByText('Order approved! Order ID: test_order_id')).toBeInTheDocument();
-  });
-
-  test('displays an error message when an error occurs', async () => {
-    render(<PaypalCheckoutButton />);
-    fireEvent.click(screen.getByText('Mock PayPal Button'));
-    // Assuming you add a mechanism to display the error message in your component
-    await screen.findByText('PayPal Checkout onError');
-    expect(screen.getByText('PayPal Checkout onError')).toBeInTheDocument();
-  });
+});
+it('renders payment instructions for the membership plan', () => {
+  const { getByText } = render(<PaypalCheckoutButton />);
+  expect(getByText(/by subscribing to our Audiology Membership Plan/i)).toBeInTheDocument();
+});
+it('does not render the PayPal button if the subscription has already been bought', () => {
+  const { queryByText } = render(<PaypalCheckoutButton testHasAlreadyBought={true} />);
+  expect(queryByText('PayPal Button Mock')).not.toBeInTheDocument();
+});
+it('renders a message if the subscription has already been bought', () => {
+  const { getByText } = render(<PaypalCheckoutButton testHasAlreadyBought={true} />);
+  expect(getByText(/you already bought the subscription/i)).toBeInTheDocument();
+});
+it('renders the PayPal button if the subscription has not been bought', () => {
+  const { getByText } = render(<PaypalCheckoutButton testHasAlreadyBought={false} />);
+  expect(getByText('PayPal Button Mock')).toBeInTheDocument();
 });

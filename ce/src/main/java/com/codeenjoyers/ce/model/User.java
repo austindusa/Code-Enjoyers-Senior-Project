@@ -7,7 +7,7 @@ public class User {
     private String id; 
     private String email;
     private String passwordHash;
-    private boolean emailVerified; // Field to indicate email confirmation
+    private boolean emailVerified; 
     private boolean subscriber;
     private List<SurveyInfo> submittedSurveys;
     private List<SurveyInfo> savedSurveys;
@@ -15,14 +15,14 @@ public class User {
     public User() {
     }
 
-    public User(String id, String email, String passwordHash) {
+    public User(String id, String email, String passwordHash, boolean emailVerified, boolean subscriber, List<SurveyInfo> submittedSurveys, List<SurveyInfo> savedSurveys) {
         this.id = id;
         this.email = email;
         this.passwordHash = passwordHash;
-        this.emailVerified = emailVerified; // Initialize the emailVerified field
-        this.subscriber = subscriber;
-        this.submittedSurveys = submittedSurveys;
-        this.savedSurveys = savedSurveys;
+        this.emailVerified = emailVerified; 
+        this.subscriber = subscriber; 
+        this.submittedSurveys = submittedSurveys; 
+        this.savedSurveys = savedSurveys; 
     }
 
     // Getters and setters
@@ -58,8 +58,8 @@ public class User {
         this.emailVerified = emailVerified;
     }
 
-    public boolean getSubscriberStatus() {
-        return emailVerified;
+    public boolean isSubscriber() {
+        return subscriber;
     }
 
     public void setSubscriberStatus(boolean subscriber) {

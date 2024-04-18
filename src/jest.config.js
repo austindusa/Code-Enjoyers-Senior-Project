@@ -1,8 +1,10 @@
 module.exports = {
-  setupFilesAfterEnv: ['<rootDir>/src/setupTests.js'],
+  setupFilesAfterEnv: ['setupTests.js'],
+  testEnvironment: 'jsdom',
   moduleNameMapper: {
-    // Handle static assets (useful for your logo import)
-    '\\.(jpg|jpeg|png|gif|webp|svg)$': '<rootDir>/__mocks__/fileMock.js',
+    '\\.(css|less|scss|sass)$': 'identity-obj-proxy'
   },
-  testEnvironment: 'jest-environment-jsdom',
+  transform: {
+    '^.+\\.jsx?$': 'babel-jest'
+  },
 };
