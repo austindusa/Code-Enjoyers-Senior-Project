@@ -1,34 +1,34 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../firebase/config.js";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "../firebase/config";
 import SignUpButton from "./signUpButton.jsx";
-import LogoutPopup from './LogoutPopup'; 
+import LogoutPopup from './LogoutPopup';
 import { Button } from "@chakra-ui/react";
 import { colors } from '../colors';
 
 function SignInButton() {
   const [user, setUser] = useState(null);
-  const [showSignUpButton, setShowSignUpButton] = useState(true);
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setShowSignUpButton(!currentUser);
     });
 
-    return unsubscribe;
+    return () => unsubscribe; 
   }, []);
 
   const toggleLogoutPopup = () => {
     setShowLogoutPopup(!showLogoutPopup);
   };
 
-  const onSignOut = () => {
-    setUser(null);
-    setShowSignUpButton(true);
-    setShowLogoutPopup(false);
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth); 
+    } catch (error) {
+      console.error("Error signing out: ", error);
+    }
   };
 
   const buttonStyle = {
@@ -55,19 +55,21 @@ function SignInButton() {
             {user.email}
           </span>
           <LogoutPopup
-            onSignOut={onSignOut}
+            onSignOut={handleSignOut}
             onClose={toggleLogoutPopup}
             show={showLogoutPopup}
           />
         </div>
       ) : (
-        <Link to="/login">
-          <Button sx={buttonStyle} size="sm">
-          Sign in
-          </Button>
-        </Link>
+        <>
+          <Link to="/login">
+            <Button sx={buttonStyle} size="sm">
+              Sign in
+            </Button>
+          </Link>
+          <SignUpButton />
+        </>
       )}
-      {showSignUpButton && <SignUpButton />}
     </>
   );
 }

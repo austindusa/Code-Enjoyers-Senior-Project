@@ -23,7 +23,7 @@ export default function SignInForm() {
       const user = userCredential.user;
       localStorage.setItem("accessToken", user.accessToken);
       localStorage.setItem("isLoggedIn", "true");
-      navigate("/SurveyPlanPage");
+      navigate("/");
     } catch (error) {
       setErrorMessage("Incorrect email or password.");
     }

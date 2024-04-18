@@ -28,16 +28,23 @@
   width: 220px;
 }
 
-#home {
+.home {
   padding: 0.3rem 0.7rem;
   transition: background-color 0.4s ease-in-out;
   padding: 0.3rem 1rem;
   border-radius: 7px;
 }
-#home:hover {
+
+.home:hover {
   background-color: #68986f;
 }
 
 .sign {
   background-color: #68986f;
 }
+
+.no-scroll {
+  overflow: hidden;
+  height: 100%;
+}
+

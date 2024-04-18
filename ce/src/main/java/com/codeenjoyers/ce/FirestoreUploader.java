@@ -12,9 +12,9 @@ import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
-public class StudyData {
+public class FirestoreUploader {
     public static void uploadData(String resourcePath) throws Exception {
-        InputStream inputStream = StudyData.class.getClassLoader().getResourceAsStream(resourcePath);
+        InputStream inputStream = FirestoreUploader.class.getClassLoader().getResourceAsStream(resourcePath);
         if (inputStream == null) {
             throw new IllegalStateException("Cannot find file: " + resourcePath);
         }

@@ -134,23 +134,24 @@ function SurveyComponent({ surveyJson }) {
   });
     setSurveyModel(survey);
 
-    survey.onValueChanged.add((sender, options) => {
-      const surveyData = sender.data;
-      surveyDataService.saveSurveyResponse(surveyData)
-        .then(() => {
-          console.log("Survey data saved to Firebase");
-          setSavedMessage("Your survey response has been saved.");
-        })
-        .catch(error => {
-          console.error("Error saving survey data:", error);
-          setSavedMessage("There was an error saving your survey response. Please try again.");
-        });
-    });
+  // Inside SurveyComponent
+  survey.onComplete.add(async (sender) => {
+    const surveyData = sender.data;
+    try {
+      const docId = await surveyDataService.saveSurveyResponse(surveyData);
+      console.log("Survey data saved to Firestore with doc ID: ", docId);
+      setSavedMessage("Your survey response has been saved.");
+    } catch (error) {
+      console.error("Error saving survey data to Firestore:", error);
+      setSavedMessage("There was an error saving your survey response. Please try again.");
+    }
+  });
+
 
     return () => {
-      survey.onValueChanged.remove();
+      survey.onComplete.clear();
     };
-  }, []); 
+  }, [surveyJson]); 
 
   return (
     <div style={{ position: 'relative', minHeight: '100vh'}}>
