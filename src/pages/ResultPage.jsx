@@ -146,7 +146,7 @@ function ResultPage() {
                   searchResults={searchResults}
                 />
                 <div className="detailed-result-container">
-                  {selectedCard && <ReviewContainer cardData={selectedCard} />}
+                  {selectedCard && <ReviewContainer survey={selectedCard} />}
                 </div>
               </div>
             )}

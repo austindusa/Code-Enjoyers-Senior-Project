@@ -32,7 +32,7 @@ const styles = {
   },
   actionButtonStyle: {
     backgroundColor: colors.primary,
-    color: colors.text,
+    color: colors.text, 
   },
 };
 

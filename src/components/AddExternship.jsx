@@ -1,6 +1,11 @@
 import React, { useEffect } from 'react';
 import SurveyComponent from './SurveyComponent';
 import { externshipSurveyJson } from '../json';
+import {Modal,ModalOverlay,ModalContent,ModalHeader,ModalFooter,ModalBody,ModalCloseButton,Button
+} from '@chakra-ui/react'
+import { modalAnatomy as parts } from '@chakra-ui/anatomy'
+import { createMultiStyleConfigHelpers } from '@chakra-ui/styled-system'
+import { colors } from '../colors';
 
 
 function AddExternship({ trigger, setTrigger, children }) {
@@ -19,33 +24,55 @@ function AddExternship({ trigger, setTrigger, children }) {
 
   if (!trigger) return null;
 
+  const handleClose = () => {
+    setTrigger(false);
+  };
+
+  const modalStyle = {
+    backgroundColor: colors.background
+  }
+
+  const { definePartsStyle, defineMultiStyleConfig } =
+  createMultiStyleConfigHelpers(parts.keys)
+
+  const baseStyle = definePartsStyle({
+  // define the part you're going to style
+    overlay: {
+    bg: 'blackAlpha.200', //change the background
+  },
+    dialog: {
+    borderRadius: 'md',
+    bg: `purple.100`,
+  },
+})
+const modalTheme = defineMultiStyleConfig({
+  baseStyle,
+})
+
+
+
   return (
-    <div className="addExternship" style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-        zIndex: 1000
-      }}>
-      <div className="addExternship-inner">
-        <div className="addExternship-text">
-          Add a new externship opportunity to our database:
+      <Modal size='4xl' isOpen={trigger} onClose={handleClose}>
+      <ModalOverlay />
+      <ModalContent bg={colors.background}>
+        <ModalHeader>Add a new externship opportunity to our database</ModalHeader>
+        <ModalCloseButton />
+        <ModalBody>
           <div className="scrollableContainer" style={{ maxHeight: '650px', overflowY: 'auto' }}>
             <SurveyComponent surveyJson={externshipSurveyJson} />
           </div>
-          <div>
-            <button className="close-btn" onClick={() => setTrigger(false)}>Cancel</button>
-            {children}
-          </div>
-        </div>
-      </div>
-    </div>
+        </ModalBody>
+        <ModalFooter>
+          <Button bg={colors.primary} mr={3}  _hover={{ bg: colors.primary+90 }} onClick={handleClose}>
+            Cancel
+          </Button>
+          {children}
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
   );
 }
 
 export default AddExternship;
+
+

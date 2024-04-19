@@ -22,6 +22,7 @@
     "survey-react-ui": "^1.9.129",
     "text-encoding": "^0.7.0",
     "util": "^0.12.5",
+    "uuid": "^9.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

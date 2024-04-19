@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import Icon from "../images/Avatar Image.jpg";
+import {Text, Heading} from "@chakra-ui/react";
 
 function Card({
   id,
@@ -20,22 +20,16 @@ function Card({
     gap: "0.0625rem",
     background: isSelected ? "#68986f40" : "white",
     boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+    cursor: "pointer",
   };
 
   function handleClick() {
-    onClick();
+    onClick(id);
   }
 
   const horizontalContainer = {
     display: "flex",
-    width: "11.625rem",
     alignItems: "flex-start",
-    gap: "0.52125rem",
-  };
-
-  const imageStyle = {
-    width: "1.92188rem",
-    height: "1.875rem",
   };
 
   const h1Style = {
@@ -81,15 +75,19 @@ function Card({
   };
 
   return (
-    <div className="card" style={cardStyle} onClick={handleClick}>
-      <div style={horizontalContainer}>
-        <img style={imageStyle} src={Icon} alt="Organization Icon" />
-        <span style={h1Style}>{id}</span>
+    <div style={{
+      display: "flex",
+    }}>
+      <div style={cardStyle} onClick={handleClick}>
+        <div style={horizontalContainer}>
+        <Heading size='sm' noOfLines={1}>{id}</Heading>
       </div>
-      <span style={h2Style}>{title}</span>
-      <span style={locationTextStyle}>{location}</span>
-      <span style={descriptionStyle}>{duration}</span>
+      <Text fontSize='sm' noOfLines={1}>{title}</Text>
+        <Text fontSize='sm' noOfLines={1}>{location}</Text>
+        <Text fontSize='sm' noOfLines={1}>{duration}</Text>
+      </div>
     </div>
+    
   );
 }
 
