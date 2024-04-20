@@ -6,7 +6,7 @@ import logo from "../images/AudiologyLogo.png";
 //import { db } from "../../firebase/config";
 
 const PaypalCheckoutButton = ({ testHasAlreadyBought = false }) => {
-  const amount = '1500'; // Example amount
+  const amount = '1'; // Example amount
   //const [user, setUsers] = useState([]);
   
   const [hasAlreadyBoughtSubscription, setHasAlreadyBoughtSubscription] = useState(testHasAlreadyBought);
@@ -62,7 +62,7 @@ const PaypalCheckoutButton = ({ testHasAlreadyBought = false }) => {
           backgroundColor: colors.accent,
           width: '100%',
           height: '20%',
-          overflow: 'auto'
+          overflow: 'hidden'
         }}>
           <div style={{
             display: 'flex',
@@ -71,10 +71,11 @@ const PaypalCheckoutButton = ({ testHasAlreadyBought = false }) => {
             paddingLeft: '1.5rem',
             paddingRight: '1.5rem',
             paddingBottom: '2rem',
+            overflow: "hidden"
           }}>
             <img src={logo} alt="Logo" style={imageStyle} />
             <Text fontSize='md'>
-              By subscribing to our Audiology Membership Plan for just $1 per month, you're unlocking the power of externship reviews.
+              By subscribing to our Audiology Membership Plan for just $1 per week, you're unlocking the power of externship reviews.
               Gain unlimited access to valuable feedback from users, empowering you to make an informed decision on the next externship you take. 
             </Text>
             <div style={{ paddingTop: '8px' }}>
@@ -103,7 +104,7 @@ const PaypalCheckoutButton = ({ testHasAlreadyBought = false }) => {
             boxShadow: '5px 0px 10px rgba(0, 0, 0, 0.2), -5px 0px 10px rgba(0, 0, 0, 0.2), 0px 5px 10px rgba(0, 0, 0, 0.2)',
             padding: '1.5rem',
             borderTop: '4px solid' + colors.primary,
-            overflow: 'scroll',
+            overflowY: 'scroll',
             gap: '1rem'
           }}>
             <Text fontSize='2xl'>Payment Method</Text>
