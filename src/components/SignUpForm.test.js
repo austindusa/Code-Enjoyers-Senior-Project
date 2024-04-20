@@ -18,7 +18,7 @@ describe("SignUpForm", () => {
 
   it("handles form submission", async () => {
     render(<SignUpForm />);
-    
+
     fireEvent.change(screen.getByLabelText("Email"), {
       target: { value: "test@example.com" },
     });
