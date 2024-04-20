@@ -1,75 +1,54 @@
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import Pagination from "./Pagination";
-//import axios from "axios";
+import { v4 as uuidv4 } from 'uuid';
 
 export default function CardListWindow({ onCardClick, searchResults }) {
-  /*const [infos, setInfo] = useState([]);
-
-  useEffect(() => {
-    console.log('infotype', typeof infos);
-    cardData();
-  }, []);
-
-  const cardData = async() => {
-    const result= await axios.get("http://localhost:8080/api/v2/infos");
-    setInfo(result.data);
-  };
-  */
-
-  /*return(
-    <div className="container">
-      <table>
-        <tbody>
-            {infos.map((info, index) => (
-              <tr>
-                <th scope="row" key={index}>{index+1}</th>
-                <td>{info.title}</td>
-                <td>{info.location}</td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
-    </div>
-  )
-}*/
-
 
   const cards = searchResults.length;
 
   const windowStyle = {
     display: "flex",
-    width: "30.125rem",
     height: "46.4375rem",
     flexDirection: "column",
     alignItems: "flex-start",
     gap: "1.563rem",
+    maxWidth: "30rem"
   };
+  const cardListStyle = {
+    display: "flex",
+    width: "30rem",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    gap: "1.563rem",
+    overflowY: "scroll",
+    overflowX: "hidden"
+  }
 
   const [selectedCardIndex, setSelectedCardIndex] = useState(null);
-  //const question6;
-
   useEffect(() => {
     setSelectedCardIndex(0);
     onCardClick(searchResults);
-  }, []);
+  }, [searchResults]);
 
-  const cardsArray = Array.from({ length: cards }, (_, index) => (
-    /*if (searchResults[index].question6 == null) {
-      question6 = "N/A"
-    } else {
-      question6 = searchResults[index].question6
-    }*/
+  const cardsArray = searchResults.map((result, index) => {
+    const uuid = uuidv4();
+    return(
       <Card
-        key = {searchResults[index].id}
-        id = {searchResults[index].question1}
-        title = {searchResults[index].question6}
-        location = {searchResults[index].question7}
-        duration = {searchResults[index].question11}
-        onClick = {() => handleCardClick(searchResults[index].id)}
-        isSelected = {searchResults[index].id === selectedCardIndex}
-      />
-  ));
+      key={uuid}
+      id={result.question1 || "N/A"}
+      title={result.question6 || "N/A"}
+      location={result.question7 || "N/A"}
+      duration={result.question11 || "Pay: N/A"}
+      onClick={() => handleCardClick(index)} 
+      isSelected={index === selectedCardIndex}
+     />
+    )
+   
+  })
+    
+    
+  
 
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(51);
@@ -83,13 +62,16 @@ export default function CardListWindow({ onCardClick, searchResults }) {
   const handleCardClick = (index) => {
     if (selectedCardIndex !== index) {
       setSelectedCardIndex(index);
-      onCardClick(searchResults);
+      onCardClick(searchResults[index]); 
     }
   };
 
   return (
     <div style={windowStyle}>
-      {currentPosts}
+      <div style={cardListStyle}>
+        {currentPosts}
+      </div>
+      
       <Pagination
         postsPerPage={postsPerPage}
         totalPosts={cards}

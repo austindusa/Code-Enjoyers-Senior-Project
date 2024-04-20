@@ -3,6 +3,7 @@ import styles from "./HeroSectionStyle";
 import heroImage from "../images/markPaton1.jpg";
 import { Button } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import {colors} from "../colors";
 
 function HeroSection() {
   return (
@@ -19,7 +20,7 @@ function HeroSection() {
         </p>
         <div style={styles.buttonContainerStyle}>
           <Link to="/SurveyPlanPage">
-            <Button style={styles.actionButtonStyle} size="lg">
+            <Button bg={colors.primary} _hover={{ bg: colors.accent }} size="lg">
               Get Started
             </Button>
           </Link>

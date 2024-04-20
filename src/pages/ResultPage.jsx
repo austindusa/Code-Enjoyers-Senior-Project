@@ -25,6 +25,8 @@ function ResultPage() {
   const backgroundStyle = {
     backgroundColor: "rgb(240, 254, 240)",
     paddingBottom: "1.5rem",
+    
+    
   };
 
   const horizontalStyle = {
@@ -146,7 +148,7 @@ function ResultPage() {
                   searchResults={searchResults}
                 />
                 <div className="detailed-result-container">
-                  {selectedCard && <ReviewContainer cardData={selectedCard} />}
+                  {selectedCard && <ReviewContainer survey={selectedCard} />}
                 </div>
               </div>
             )}
