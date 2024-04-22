@@ -3,25 +3,46 @@ import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import { colors } from '../colors';
 import { Text } from '@chakra-ui/react';
 import logo from "../images/AudiologyLogo.png";
-//import { db } from "../../firebase/config";
+import { getDoc, getFirestore, doc, updateDoc } from 'firebase/firestore';
+import { onAuthStateChanged, getAuth } from 'firebase/auth';
+import { auth } from "../firebase/config.js";
+import styles from "./SignInForm.module.css";
 
 const PaypalCheckoutButton = ({ testHasAlreadyBought = false }) => {
   const amount = '1'; // Example amount
-  //const [user, setUsers] = useState([]);
-  
   const [hasAlreadyBoughtSubscription, setHasAlreadyBoughtSubscription] = useState(testHasAlreadyBought);
   const [error, setError] = useState(null);
-  //const [checkOutData, setCheckOutData] = useState({subscriber: false});
 
-  useEffect(() => {
-    if (!testHasAlreadyBought) {
-      setHasAlreadyBoughtSubscription(false);
+  const handleSubscription = async () => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+    if (!user) {
+      // Handle error: user not authenticated
+      return;
     }
-  }, [testHasAlreadyBought]);
 
-  const imageStyle = {
-    height: '3rem',
-    width: '21rem',
+    const db = getFirestore();
+    const userRef = doc(db, 'users', user.uid);
+
+    // Calculate expiration date (1 week from now)
+    const expirationDate = new Date();
+    expirationDate.setDate(expirationDate.getDate() + 7);
+
+    try {
+      // Update user document
+      await updateDoc(userRef, {
+        subscriber: true,
+        expirationDate: expirationDate
+      });
+
+      setHasAlreadyBoughtSubscription(true);
+      console.log('Subscription updated successfully.');
+    } catch (error) {
+      // Handle error updating document
+      console.error('Error updating user document:', error);
+      setError(error);
+    }
   };
 
   if (hasAlreadyBoughtSubscription) {
@@ -73,7 +94,7 @@ const PaypalCheckoutButton = ({ testHasAlreadyBought = false }) => {
             paddingBottom: '2rem',
             overflow: "hidden"
           }}>
-            <img src={logo} alt="Logo" style={imageStyle} />
+            <img src={logo} alt="Logo" style={{ height: '3rem', width: '21rem' }} />
             <Text fontSize='md'>
               By subscribing to our Audiology Membership Plan for just $1 per week, you're unlocking the power of externship reviews.
               Gain unlimited access to valuable feedback from users, empowering you to make an informed decision on the next externship you take. 
@@ -128,6 +149,7 @@ const PaypalCheckoutButton = ({ testHasAlreadyBought = false }) => {
                   const order = await actions.order.capture();
                   console.log("Order", order);
                   alert(`Order approved! Order ID: ${order.id}`);
+                  await handleSubscription(); // Update user document upon successful subscription
                 }}
                 onError={(err) => {
                   console.error("PayPal Checkout onError", err);

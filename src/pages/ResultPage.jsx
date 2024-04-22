@@ -8,49 +8,85 @@ import styles from "../components/resultSearchComp.module.css";
 import SearchResultPlaceholder from "../components/SearchResultPlaceholder";
 import NoActiveSearch from "../components/NoActiveSearch";
 import { auth, db } from "../firebase/config";
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot, doc, updateDoc, getDoc } from "firebase/firestore";
+import Cookies from 'js-cookie';
 
 function ResultPage() {
   const [selectedCard, setSelected] = useState(null);
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
-
-  //useEffect(() => {
-  //const hasPaid = localStorage.getItem("hasPaid") === "true";
-  //if (!hasPaid) {
-  //navigate("/");
-  //}
-  //}, [navigate]);
-
-  const backgroundStyle = {
-    backgroundColor: "rgb(240, 254, 240)",
-    paddingBottom: "1.5rem",
-    
-    
-  };
-
-  const horizontalStyle = {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    width: "70%",
-    margin: "auto",
-    color: "rgb(240, 254, 240)",
-  };
-
-  const centerStyle = {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "column",
-    marginTop: "20px",
-    color: "rgb(240, 254, 240)",
-  };
-
   const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState([]);
   const [surveys, setSurveys] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
+
+  useEffect(() => {
+    const checkUserCookies = async () => {
+      const subscriberCookie = Cookies.get('subscriber');
+      const expirationDateCookie = Cookies.get('expirationDate');
+      const user = auth.currentUser;
+      console.log("Checking user cookies:")
+      if(user) {
+        const userRef = doc(db, "users", user.uid);
+        const userSnap = await getDoc(userRef);
+        const userData = userSnap.data();
+        if(subscriberCookie !== String(userData.subscriber)){ 
+          Cookies.set('subscriber', userData.subscriber);
+          console.log("Cookie changed:", Cookies.get('subscriber'))
+        }
+        const expirationDate = userData.expirationDate.toDate();
+        if(expirationDateCookie !== String(userData.expirationDate)) {
+          Cookies.set('expirationDate', expirationDate.toISOString());
+          console.log("Cookie changed:", Cookies.get('expirationDate'))
+        }
+      }
+    }
+    checkUserCookies();
+  }, []);
+  
+
+  useEffect(() => {
+    const checkUserSubscription = async () => {
+      const user = auth.currentUser;
+      if (user) {
+        const userRef = doc(db, "users", user.uid);
+  
+        // Check if user is a subscriber
+        if (Cookies.get('subscriber') === String(false)) {
+          console.log("User is not a subscriber. Redirecting to surveyplanpage.");
+          navigate("/surveyplanpage");
+        }
+  
+        const currentDate = new Date();
+        console.log("Current Date:", currentDate);
+        const expirationDate = new Date(Cookies.get('expirationDate'))
+  
+        // Check if subscription has expired
+        if (currentDate > expirationDate) {
+          navigate("/surveyplanpage");
+          console.log("User's subscription has expired.");
+          // Update Firestore and redirect
+          await updateDoc(userRef, {
+            subscriber: false
+          });
+          console.log("User's subscription status updated in Firestore.");
+        } else {
+          console.log("User's subscription is still active.");
+        }
+      }
+    };
+
+  
+    // Check user subscription status initially
+    checkUserSubscription();
+  
+    // Poll user subscription status every 20 seconds
+    const interval = setInterval(checkUserSubscription, 0.5 * 1000);
+  
+    // Clean up interval to avoid memory leaks
+    return () => clearInterval(interval);
+  }, [navigate]);
+  
 
   useEffect(() => {
     const storedPosts = JSON.parse(localStorage.getItem("posts"));
@@ -82,6 +118,29 @@ function ResultPage() {
       setLoading(false);
     });
     return () => subscriber();
+  };
+
+  const backgroundStyle = {
+    backgroundColor: "rgb(240, 254, 240)",
+    paddingBottom: "1.5rem",
+  };
+
+  const horizontalStyle = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "70%",
+    margin: "auto",
+    color: "rgb(240, 254, 240)",
+  };
+
+  const centerStyle = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+    marginTop: "20px",
+    color: "rgb(240, 254, 240)",
   };
 
   const handleCardClick = (dataArray) => {
