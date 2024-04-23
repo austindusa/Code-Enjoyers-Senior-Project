@@ -11,7 +11,7 @@ jest.mock("firebase/auth", () => ({
 }));
 
 describe("SignInForm", () => {
-  it("renders form elements", () => {
+  test("renders form elements", () => {
     render(<SignInForm />, { wrapper: MemoryRouter });
 
     expect(screen.getByLabelText("Email")).toBeInTheDocument();
@@ -20,7 +20,7 @@ describe("SignInForm", () => {
     expect(screen.getByText("Don't have an account?")).toBeInTheDocument();
   });
 
-  it("allows user to input email and password", () => {
+  test("allows user to input email and password", () => {
     render(<SignInForm />, { wrapper: MemoryRouter });
 
     const emailInput = screen.getByLabelText("Email");
@@ -33,7 +33,7 @@ describe("SignInForm", () => {
     expect(passwordInput.value).toBe("password123");
   });
 
-  it("submits the form with valid credentials", async () => {
+  test("submits the form with valid credentials", async () => {
     render(<SignInForm />, { wrapper: MemoryRouter });
 
     const emailInput = screen.getByLabelText("Email");
@@ -49,7 +49,7 @@ describe("SignInForm", () => {
     expect(window.location.pathname).toBe("/");
   });
 
-  it("displays error message with invalid credentials", async () => {
+  test("displays error message with invalid credentials", async () => {
     render(<SignInForm />, { wrapper: MemoryRouter });
 
     const emailInput = screen.getByLabelText("Email");

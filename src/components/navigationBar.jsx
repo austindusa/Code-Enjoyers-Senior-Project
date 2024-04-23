@@ -59,12 +59,16 @@ function NavigationBar() {
           <div className="clickableComponentsStyle">
             <ol className="navbar-menu">
               <li>
-                <Link to="/">Home</Link>
+                <Link className="home" to="/">
+                  Home
+                </Link>
               </li>
               <li>
-                <Link to="/SurveyPlanPage">Pricing</Link>
+                <Link className="home" to="/SurveyPlanPage">
+                  Pricing
+                </Link>
               </li>
-              <button onClick={handleAddExternshipClick}>
+              <button className="home" onClick={handleAddExternshipClick}>
                 Fill Out Survey
               </button>
             </ol>

@@ -14,7 +14,7 @@ const SurveyPlanPage = () => {
     onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
       if (currentUser) {
-        const userRef = doc(getFirestore(), 'users', currentUser.uid);
+        const userRef = doc(getFirestore(), "users", currentUser.uid);
         const userSnap = await getDoc(userRef);
         if (userSnap.exists() && userSnap.data().subscriber) {
           navigate("/resultpage");
@@ -180,7 +180,6 @@ const buttonStyle = {
   top: "450px",
   background: "#68986F",
   color: "#FFFFFF",
-  border: "1px solid #000000",
   borderRadius: "18px",
   cursor: "pointer",
   Transition: "background-color 0.3s ease",
