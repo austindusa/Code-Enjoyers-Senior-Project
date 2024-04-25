@@ -4,32 +4,46 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import NavigationBar from "./navigationBar";
 import imgHolder from "../images/SurveyPage.jpg";
+import { db, auth } from "../firebase/config.js";
 
 const SurveyPlanPage = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
+  const [alertShown, setAlertShown] = useState(false); // Add state for tracking alert
 
   useEffect(() => {
     const auth = getAuth();
-    onAuthStateChanged(auth, async (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
       if (currentUser) {
         const userRef = doc(getFirestore(), "users", currentUser.uid);
         const userSnap = await getDoc(userRef);
-        if (userSnap.exists() && userSnap.data().subscriber) {
-          navigate("/resultpage");
-        } else {
-          navigate("/surveyplanpage");
-        }
       } else {
         navigate("/login");
       }
     });
-  }, [navigate]);
+
+    return () => unsubscribe(); // Clean up subscription
+  }, [navigate, alertShown]); // Add alertShown to dependency array
+
+  function checkSubscription() {
+    const user = auth.currentUser;
+    const checkUserSubscription = async () => {
+      const userRef = doc(db, "users", user.uid);
+      const userSnap = await getDoc(userRef);
+      const userData = userSnap.data();
+      if (userData.subscriber == true) {
+        alert("You are already subscribed.")
+      } else {
+        navigate("/pay-pal-checkout");
+      }
+    };
+    checkUserSubscription();
+  }
 
   const handleGetStarted = () => {
     if (user) {
-      navigate("/pay-pal-checkout");
+      checkSubscription();
     } else {
       navigate("/login");
     }

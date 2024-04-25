@@ -23,10 +23,12 @@ export default function SignInForm() {
       );
       localStorage.setItem("accessToken", userCredential.user.accessToken);
       localStorage.setItem("isLoggedIn", "true");
+      navigate("/"); // Redirect to home page
     } catch (error) {
       setErrorMessage("Incorrect email or password.");
     }
   };
+  
 
   const handleGoHome = () => {
     navigate("/");

@@ -13,42 +13,47 @@ function HeroSection() {
  
   const checkUserSubscription = async () => {
     const user = auth.currentUser;
-    if (user) {
-      const userRef = doc(db, "users", user.uid);
-      const userSnap = await getDoc(userRef);
-      const userData = userSnap.data();
-      console.log("User Data from Firestore:", userData);
-  
-      // Check if user is a subscriber
-      if (userData.subscriber) { // Adjusted condition
-        console.log("User is a subscriber. Redirecting to resultpage.");
-        Cookies.set('subscriber', userData.subscriber);
-        Cookies.set('expirationDate', userData.expirationDate.toDate());
-        navigate("/resultpage"); // Redirect to resultpage
-        return;
-      } else {
-        console.log("User is not a subscriber. Redirecting to surveyplanpage.");
-        navigate("/surveyplanpage"); // Redirect to surveyplanpage
-      }
-  
-      const expirationDate = userData.expirationDate.toDate();
-      const currentDate = new Date();
-      console.log("Current Date:", currentDate);
-      console.log("Expiration Date:", expirationDate);
-  
-      // Check if subscription has expired
-      if (currentDate > expirationDate) {
-        console.log("User's subscription has expired.");
-        // Update Firestore and redirect
-        await updateDoc(userRef, {
-          subscriber: false
-        });
-        Cookies.set('subscriber', false);
-        console.log("User's subscription status updated in Firestore.");
-        navigate("/surveyplanpage"); // Redirect to surveyplanpage
-      } else {
-        console.log("User's subscription is still active.");
-      }
+    if (!user) {
+      // If user is not signed in, redirect to sign-in page
+      navigate("/login"); // Redirect to sign-in page
+      return;
+    }
+
+    const userRef = doc(db, "users", user.uid);
+    const userSnap = await getDoc(userRef);
+    const userData = userSnap.data();
+    console.log("User Data from Firestore:", userData);
+
+    // Check if user is a subscriber
+    if (userData.subscriber) {
+      console.log("User is a subscriber. Redirecting to resultpage.");
+      Cookies.set('subscriber', userData.subscriber);
+      Cookies.set('expirationDate', userData.expirationDate.toDate());
+      navigate("/resultpage"); // Redirect to resultpage
+      return;
+    } else {
+      console.log("User is not a subscriber. Redirecting to surveyplanpage.");
+      navigate("/surveyplanpage"); // Redirect to surveyplanpage
+      return;
+    }
+
+    const expirationDate = userData.expirationDate.toDate();
+    const currentDate = new Date();
+    console.log("Current Date:", currentDate);
+    console.log("Expiration Date:", expirationDate);
+
+    // Check if subscription has expired
+    if (currentDate > expirationDate) {
+      console.log("User's subscription has expired.");
+      // Update Firestore and redirect
+      await updateDoc(userRef, {
+        subscriber: false
+      });
+      Cookies.set('subscriber', false);
+      console.log("User's subscription status updated in Firestore.");
+      navigate("/surveyplanpage"); // Redirect to surveyplanpage
+    } else {
+      console.log("User's subscription is still active.");
     }
   };
   
