@@ -8,7 +8,7 @@ import styles from "../components/resultSearchComp.module.css";
 import SearchResultPlaceholder from "../components/SearchResultPlaceholder";
 import NoActiveSearch from "../components/NoActiveSearch";
 import { auth, db } from "../firebase/config";
-import { collection, onSnapshot, doc, updateDoc, getDoc } from "firebase/firestore";
+import { collection, onSnapshot, doc, updateDoc, getDoc, getDocs } from "firebase/firestore";
 import Cookies from 'js-cookie';
 
 function ResultPage() {
@@ -19,6 +19,7 @@ function ResultPage() {
   const [posts, setPosts] = useState([]);
   const [surveys, setSurveys] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
+  const [surveyCollectionSize, setSurveyCollectionSize] = useState();
 
   useEffect(() => {
     const checkUserCookies = async () => {
@@ -50,22 +51,16 @@ function ResultPage() {
       const user = auth.currentUser;
       if (user) {
         const userRef = doc(db, "users", user.uid);
-  
-        // Check if user is a subscriber
         if (Cookies.get('subscriber') === String(false)) {
           console.log("User is not a subscriber. Redirecting to surveyplanpage.");
           navigate("/surveyplanpage");
         }
-  
         const currentDate = new Date();
         console.log("Current Date:", currentDate);
         const expirationDate = new Date(Cookies.get('expirationDate'))
-  
-        // Check if subscription has expired
         if (currentDate > expirationDate) {
           navigate("/surveyplanpage");
           console.log("User's subscription has expired.");
-          // Update Firestore and redirect
           await updateDoc(userRef, {
             subscriber: false
           });
@@ -75,22 +70,24 @@ function ResultPage() {
         }
       }
     };
-
-  
-    // Check user subscription status initially
     checkUserSubscription();
-  
-    // Poll user subscription status every 20 seconds
     const interval = setInterval(checkUserSubscription, 0.5 * 1000);
-  
-    // Clean up interval to avoid memory leaks
     return () => clearInterval(interval);
   }, [navigate]);
   
 
   useEffect(() => {
     const storedPosts = JSON.parse(localStorage.getItem("posts"));
-    if (storedPosts) {
+    const surveyCollectionRef = collection(db, "info");
+    getDocs(surveyCollectionRef).then((querySnapshot) => {
+      setSurveyCollectionSize(querySnapshot.size);
+      console.log("Survey Collection Size:", surveyCollectionSize);
+    }).catch((error) => {
+      console.error("Error getting survey collection size:", error);
+    });
+    console.log("stored posts size:", storedPosts.length)
+    console.log("Survey Collection Size:", surveyCollectionSize);
+    if (storedPosts.length == surveyCollectionSize && storedPosts) {
       setPosts(storedPosts);
       setSurveys(storedPosts);
       setSearchResults(storedPosts);
@@ -109,7 +106,7 @@ function ResultPage() {
           key: doc.id,
         });
       });
-      if (getPostsFromFirebase.length > posts.length) {
+      if (getPostsFromFirebase.length != posts.length) {
         setPosts(getPostsFromFirebase);
         setSurveys(getPostsFromFirebase);
         setSearchResults(getPostsFromFirebase);
