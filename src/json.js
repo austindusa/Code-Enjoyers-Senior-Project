@@ -1,7 +1,7 @@
 import { FunctionFactory } from "survey-core";
 
 function isValidInput(input) {
-    var disallowedPattern = /[<>;&$]/; 
+    var disallowedPattern = /[<>;&]/; 
 
     // Check if the input contains any disallowed characters
     if (disallowedPattern.test(input)) {
