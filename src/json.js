@@ -1,16 +1,16 @@
 import { FunctionFactory } from "survey-core";
 
 function isValidInput(input) {
-    //letters, numbers, and common punctuation are allowed.
-    var allowedPattern = /^[a-zA-Z0-9\s.,?!'"()]+$/;
-  
-    // Check if the input matches the allowed pattern
-    if (allowedPattern.test(input)) {
-      return true;
+    var disallowedPattern = /[<>;&$]/; 
+
+    // Check if the input contains any disallowed characters
+    if (disallowedPattern.test(input)) {
+        return false; 
     } else {
-      return false;
+        return true; 
     }
-  }
+}
+
 
 function isValidYear(yearString) {
     const year = parseInt(yearString, 10);
@@ -203,7 +203,11 @@ export const reviewSurveyJson = {
         "choices": [
          "Weekly",
          "Bi-weekly",
-         "Monthly"
+         "Monthly",
+         {
+            "value": "other",
+            "text": "Other"
+        }
         ],
         "showOtherItem": true
        },
