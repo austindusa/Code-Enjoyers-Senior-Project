@@ -26,19 +26,19 @@ function ResultPage() {
       const subscriberCookie = Cookies.get('subscriber');
       const expirationDateCookie = Cookies.get('expirationDate');
       const user = auth.currentUser;
-      console.log("Checking user cookies:")
+      //console.log("Checking user cookies:")
       if(user) {
         const userRef = doc(db, "users", user.uid);
         const userSnap = await getDoc(userRef);
         const userData = userSnap.data();
         if(subscriberCookie !== String(userData.subscriber)){ 
           Cookies.set('subscriber', userData.subscriber);
-          console.log("Cookie changed:", Cookies.get('subscriber'))
+          //console.log("Cookie changed:", Cookies.get('subscriber'))
         }
         const expirationDate = userData.expirationDate.toDate();
         if(expirationDateCookie !== String(userData.expirationDate)) {
           Cookies.set('expirationDate', expirationDate.toISOString());
-          console.log("Cookie changed:", Cookies.get('expirationDate'))
+          //console.log("Cookie changed:", Cookies.get('expirationDate'))
         }
       }
     }
@@ -52,7 +52,7 @@ function ResultPage() {
       if (user) {
         const userRef = doc(db, "users", user.uid);
         if (Cookies.get('subscriber') === String(false)) {
-          console.log("User is not a subscriber. Redirecting to surveyplanpage.");
+          //console.log("User is not a subscriber. Redirecting to surveyplanpage.");
           navigate("/surveyplanpage");
         }
         const currentDate = new Date();
@@ -60,13 +60,13 @@ function ResultPage() {
         const expirationDate = new Date(Cookies.get('expirationDate'))
         if (currentDate > expirationDate) {
           navigate("/surveyplanpage");
-          console.log("User's subscription has expired.");
+          //console.log("User's subscription has expired.");
           await updateDoc(userRef, {
             subscriber: false
           });
-          console.log("User's subscription status updated in Firestore.");
+          //console.log("User's subscription status updated in Firestore.");
         } else {
-          console.log("User's subscription is still active.");
+          //console.log("User's subscription is still active.");
         }
       }
     };
@@ -81,12 +81,12 @@ function ResultPage() {
     const surveyCollectionRef = collection(db, "info");
     getDocs(surveyCollectionRef).then((querySnapshot) => {
       setSurveyCollectionSize(querySnapshot.size);
-      console.log("Survey Collection Size:", surveyCollectionSize);
+      //console.log("Survey Collection Size:", surveyCollectionSize);
     }).catch((error) => {
       console.error("Error getting survey collection size:", error);
     });
-    console.log("stored posts size:", storedPosts.length)
-    console.log("Survey Collection Size:", surveyCollectionSize);
+    //console.log("stored posts size:", storedPosts.length)
+    //console.log("Survey Collection Size:", surveyCollectionSize);
     if (storedPosts.length == surveyCollectionSize && storedPosts) {
       setPosts(storedPosts);
       setSurveys(storedPosts);
