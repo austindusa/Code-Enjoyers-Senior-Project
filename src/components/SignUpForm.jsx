@@ -18,6 +18,7 @@ const SignUpForm = () => {
   const [inputData, setInputData] = useState({id: "", email: "", subscriber: false, savedSurveys: {}})
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
   /*function handleSubmit(event) {
     event.preventDefault()
@@ -76,10 +77,15 @@ const SignUpForm = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     if (isLoading) return;
+    if (!passwordRegex.test(userCredentials.password)) {
+      setError("Password must be at least 8 characters long, include an uppercase letter, a number, and a special character.");
+      return;
+    }
     if (userCredentials.password !== userCredentials.confirmPassword) {
       setError("Passwords do not match.");
       return;
     }
+
     setIsLoading(true);
     try {
       const userCredential = await createUserWithEmailAndPassword(
