@@ -56,7 +56,7 @@ function ResultPage() {
           navigate("/surveyplanpage");
         }
         const currentDate = new Date();
-        console.log("Current Date:", currentDate);
+        //console.log("Current Date:", currentDate);
         const expirationDate = new Date(Cookies.get('expirationDate'))
         if (currentDate > expirationDate) {
           navigate("/surveyplanpage");
