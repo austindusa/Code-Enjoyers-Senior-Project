@@ -7,11 +7,18 @@ import { getDoc, getFirestore, doc, updateDoc } from 'firebase/firestore';
 import { onAuthStateChanged, getAuth } from 'firebase/auth';
 import { auth } from "../firebase/config.js";
 import styles from "./SignInForm.module.css";
+import clientId from "../clientId.json";
 
 const PaypalCheckoutButton = ({ testHasAlreadyBought = false }) => {
   const amount = '1'; // Example amount
   const [hasAlreadyBoughtSubscription, setHasAlreadyBoughtSubscription] = useState(testHasAlreadyBought);
   const [error, setError] = useState(null);
+  const paypalClientId = clientId.client_id;
+  /*const [paypalClientId, setPaypalClientId] = useState("");
+
+  if (hasAlreadyBoughtSubscription == false) {
+    setPaypalClientId(clientid.client_id);
+  }*/
 
   const handleSubscription = async () => {
     const auth = getAuth();
@@ -129,7 +136,7 @@ const PaypalCheckoutButton = ({ testHasAlreadyBought = false }) => {
             gap: '1rem'
           }}>
             <Text fontSize='2xl'>Payment Method</Text>
-            <PayPalScriptProvider options={{ "client-id": "REACT_APP_PAYPAL_CLIENT_ID" }}>
+            <PayPalScriptProvider options={{ "client-id": paypalClientId }}>
               <PayPalButtons
                 style={{
                   layout: "vertical",

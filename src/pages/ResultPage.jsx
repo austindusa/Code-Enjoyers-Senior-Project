@@ -57,8 +57,13 @@ function ResultPage() {
         }
         const currentDate = new Date();
         //console.log("Current Date:", currentDate);
-        const expirationDate = new Date(Cookies.get('expirationDate'))
-        if (currentDate > expirationDate) {
+        //const expirationDate = new Date(Cookies.get('expirationDate'))
+
+        const expirationDateCookie = Cookies.get('expirationDate');
+        //console.log('Expiration Date Cookie:', expirationDateCookie);
+        const expirationDate = expirationDateCookie ? new Date(expirationDateCookie) : null;
+
+        if (expirationDate && currentDate > expirationDate) {
           navigate("/surveyplanpage");
           //console.log("User's subscription has expired.");
           await updateDoc(userRef, {
@@ -87,7 +92,7 @@ function ResultPage() {
     });
     //console.log("stored posts size:", storedPosts.length)
     //console.log("Survey Collection Size:", surveyCollectionSize);
-    if (storedPosts.length == surveyCollectionSize && storedPosts) {
+    if (storedPosts && storedPosts.length == surveyCollectionSize) {
       setPosts(storedPosts);
       setSurveys(storedPosts);
       setSearchResults(storedPosts);

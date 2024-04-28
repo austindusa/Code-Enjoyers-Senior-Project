@@ -28,5 +28,16 @@ yarn-error.log*
 serviceAccountKey.json
 src/firebase/config.js
 
+#paypal client id
+clientId.json
+
 # .env
 .env
+
+#firebase hosting files
+.firebaserc
+database-debug.log
+database.rules.json
+firebase-debug.log
+firebase.json
+ui-debug.log
